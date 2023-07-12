@@ -6,6 +6,7 @@ import Profile from './Profile';
 
 const ProfilePage = (props) => {
     return (
+
         <div id="profile_page" class="page">
             <Profile />
             <Balance />

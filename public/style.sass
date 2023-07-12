@@ -323,17 +323,21 @@ body
         font-size: 14px
         font-weight: 400
         line-height: 20px
-#modal
+
+.modal
     background: linear-gradient(180deg, rgba(11, 13, 27, 0.87) 0%, rgba(0, 0, 0, 0.44) 100%)
     backdrop-filter: blur(2px)
-    height: 100vh
     position: fixed
     top: 0px
     left: 0px
-    width: 100%
+    right: 0px
+    bottom: 0px
+    display: none
     z-index: 1
+    justify-content: center
     padding: 15px
     transition: opacity 500ms ease-in-out
+    align-items: center
     .modal_closer:hover
         transform: rotate(10deg) scale(1.1)
     .modal_closer
@@ -346,8 +350,6 @@ body
         border: 1px solid rgba(255, 255, 255, 0.10)
         background: var(--5, rgba(255, 255, 255, 0.05))
         backdrop-filter: blur(34px)
-        margin-top: 100px
-        margin: 0 auto
         padding: 24px
         .header
             display: flex
@@ -657,6 +659,8 @@ body
                 overflow: auto
         .accept_btn
             margin-top: 24px
+.modal_show
+    display: flex
 .container
     width: 100%
     max-width: 1440px
@@ -1574,3 +1578,524 @@ body
     display: none
 .onone
     opacity: 0
+
+
+
+// NIZE NACINAETSYA LOGIN
+// NIZE NACINAETSYA LOGIN
+// NIZE NACINAETSYA LOGIN
+// NIZE NACINAETSYA LOGIN
+// NIZE NACINAETSYA LOGIN
+// NIZE NACINAETSYA LOGIN
+// NIZE NACINAETSYA LOGIN
+// NIZE NACINAETSYA LOGIN
+// NIZE NACINAETSYA LOGIN
+// NIZE NACINAETSYA LOGIN
+// NIZE NACINAETSYA LOGIN
+// NIZE NACINAETSYA LOGIN
+// NIZE NACINAETSYA LOGIN
+// NIZE NACINAETSYA LOGIN
+// NIZE NACINAETSYA LOGIN
+// NIZE NACINAETSYA LOGIN
+// NIZE NACINAETSYA LOGIN
+// NIZE NACINAETSYA LOGIN
+// NIZE NACINAETSYA LOGIN
+// NIZE NACINAETSYA LOGIN
+// NIZE NACINAETSYA LOGIN
+
+
+.elements
+    display: flex
+    justify-content: space-between
+    width: 100%
+    overflow: hidden
+    flex-wrap: wrap
+    .transiton_show_hide
+        transition: width 100ms ease-out, opacity 200ms ease-out
+    .modal
+        overflow: hidden
+
+        width: 100%
+        display: flex
+        justify-content: center
+        flex-wrap: wrap
+        padding: 0px 10px
+        .fone
+            width: 0px
+            height: 0px
+            position: relative
+            top: -291px
+            left: -668px
+            z-index: -1
+            img
+                transform: rotate(294deg)
+        .text_with_a
+            margin-top: 26px
+            width: 100%
+            text-align: center
+            color: #B5B6B6
+            font-size: 14px
+            font-family: Inter
+            font-style: normal
+            font-weight: 400
+            line-height: 20px
+            overflow: hidden
+
+            button
+                background: none
+                color: #D9E44F
+                font-size: 14px
+                font-family: Inter Tight
+                font-style: normal
+                font-weight: 700
+                line-height: normal
+                letter-spacing: -0.28px
+
+        .back
+            button
+                background: none
+                color: rgba(255, 255, 255, 0.50)
+                font-size: 14px
+                font-family: Inter Tight
+                font-style: normal
+                font-weight: 700
+                line-height: normal
+                letter-spacing: -0.28px
+                width: 100%
+                img
+                    padding-right: 10px
+
+        .modal_inner
+            width: 100%
+            max-width: 450px
+            // @media (max-width: 500px)
+            .back
+                text-align: center
+                padding: 100px 0px 40px
+            .form
+                width: 100%
+                background: rgba(255, 255, 255, 0.02)
+                backdrop-filter: blur(150px)
+                border-radius: 17px
+                padding: 30px
+                @media (max-width:800px)
+                    padding: 30px 15px
+                .code_input
+                    margin-top: 24px
+                    overflow: hidden
+                    display: flex
+                    justify-content: space-between
+                    input:focus
+                        border: 1px solid #3763FF
+                        background: rgba(255, 255, 255, 0.05)
+
+                    input
+                        color: white
+                        outline: none
+                        width: 13%
+                        height: 86px
+                        text-align: center
+                        font-size: 24px
+                        font-family: Inter Tight
+                        font-style: normal
+                        font-weight: 700
+                        line-height: normal
+                        letter-spacing: -0.48px
+                        background: none
+                        border-radius: 11px
+                        border: 1px solid #272829
+                        transition: border 200ms, background 200ms
+
+                h2
+                    font-size: 36px
+                    font-family: Inter Tight
+                    font-style: normal
+                    font-weight: 700
+                    line-height: normal
+                    letter-spacing: -0.72px
+                    @media (max-width:800px)
+                        font-size: 24px
+                        letter-spacing: -0.48px
+                .body
+                    font-size: 16px
+                    font-family: Inter
+                    font-style: normal
+                    font-weight: 300
+                    line-height: 25px
+                    margin-top: 20px
+                    color: #B5B6B6
+                    @media (max-width:800px)
+                        margin-top: 10px
+                        font-size: 14px
+                .input_block
+                    margin-top: 20px
+                    border-radius: 11px
+                    width: 100%
+                    padding: 13px 20px
+                    border: 1px solid rgba(27,28,29,1)
+                    display: flex
+                    column-gap: 16px
+                    overflow: hidden
+                    transition: height 300ms, padding 200ms, border 1000ms
+                    img, .label_and_input
+                        margin: auto 0
+                    .label_and_input
+                        padding-left: 16px
+                        border-left: 1px solid rgba(27,28,29,1)
+                        display: flex
+                        justify-content: space-between
+                        flex-wrap: wrap
+                        .inp, .eye
+                            margin: auto 0
+                        .eye:hover
+                            cursor: pointer
+                        .eye
+                            padding-top: 6px
+                        .inp
+                            display: flex
+                            justify-content: left
+                            flex-wrap: wrap
+                            row-gap: 4px
+                            width: 70%
+                        .label
+                            color: #B5B6B6
+                            font-size: 12px
+                            font-family: "Inter"
+                            font-weight: 500
+                            letter-spacing: -0.24px
+                            width: 100%
+                        input
+                            background: none
+                            border: none
+                            color: white
+                            outline: none
+                            font-size: 15px
+                            font-family: "Inter"
+                            font-weight: 500
+                            line-height: 20px
+                            @media (max-width: 500px)
+                                font-size: 12px
+                .send_code_btn
+                    padding: 19px 44px
+                    width: 100%
+                    margin-top: 20px
+                    background: #3763FF
+                    border-radius: 65px
+                    font-size: 16px
+                    font-family: Inter Tight
+                    font-style: normal
+                    font-weight: 700
+                    line-height: normal
+                    letter-spacing: -0.32px
+
+    .left
+        overflow: hidden
+
+        width: 50%
+        @media (max-width: 800px)
+            width: 100%
+        #create_password_label
+            font-size: 14px
+            font-family: Inter Tight
+            font-weight: 700
+            letter-spacing: -0.28px
+            margin-top: 10px
+            width: 100%
+            overflow: hidden
+            max-width: 360px
+
+        .container
+
+            padding-top: 170px
+            width: 500px
+            margin: 0 auto
+            padding-left: 140px
+            display: flex
+            justify-content: center
+            flex-wrap: wrap
+            @media (max-width: 1150px)
+                padding-left: 0px
+                width: 100%
+                padding: 0px 15px
+                padding-top: 170px
+            @media (max-width: 800px)
+                max-width: 500px
+                padding-top: 15px
+
+        .logo
+            width: 100%
+            display: flex
+            justify-content: center
+            column-gap: 16px
+            .text, img
+                margin: auto 0
+            .text
+                color: white
+                font-size: 18.264px
+                font-family: Inter Tight
+                font-weight: 700
+                letter-spacing: -0.365px
+        h1
+            font-size: 36px
+            color: #ffff
+            font-family: 'Inter Tight'
+            font-weight: 700
+            margin-top: 22px
+            letter-spacing: -0.72px
+            @media (max-width: 800px)
+                margin-top: 32px
+                font-size: 24px
+                letter-spacing: -0.48px
+        h2
+            color: #B5B6B6
+            font-size: 16px
+            font-family: "Inter"
+            margin-top: 16px
+            font-weight: 300
+            @media (max-width: 800px)
+                margin-top: 6px
+                font-size: 14px
+        .log_reg_switcher_buttons
+            display: flex
+            justify-content: center
+            background-color: rgba(255, 255, 255, 0.05)
+            border-radius: 12px
+            margin-top: 20px
+            padding: 4px
+            column-gap: 8px
+            @media (max-width: 800px)
+                margin-top: 16px
+            button
+                background-color: transparent
+                width: 176px
+                height: 47px
+                font-size: 16px
+                font-family: Inter Tight
+                font-weight: 700
+                letter-spacing: -0.32px
+                border-radius: 12px
+                @media (max-width: 800px)
+                    width: 160px
+                    height: 44px
+                @media (max-width: 400px)
+                    width: 130px
+                    height: 40px
+            .active
+                background-color: rgba(255, 255, 255, 0.1)
+            button:hover
+                background-color: rgba(255, 255, 255, 0.15)
+                opacity: 1
+        .input_block:first-child
+            margin-top: 20px
+        .input_block
+            margin-top: 10px
+            border-radius: 11px
+            width: 100%
+            padding: 13px 20px
+            border: 1px solid rgba(27,28,29,1)
+            display: flex
+            column-gap: 16px
+            max-width: 360px
+            overflow: hidden
+            transition: height 300ms, padding 200ms, border 1000ms
+            img, .label_and_input
+                margin: auto 0
+            .label_and_input
+                padding-left: 16px
+                border-left: 1px solid rgba(27,28,29,1)
+                display: flex
+                justify-content: space-between
+                flex-wrap: wrap
+                .inp, .eye
+                    margin: auto 0
+                .eye:hover
+                    cursor: pointer
+                .eye
+                    padding-top: 6px
+                .inp
+                    display: flex
+                    justify-content: left
+                    flex-wrap: wrap
+                    row-gap: 4px
+                    width: 70%
+                .label
+                    color: #B5B6B6
+                    font-size: 12px
+                    font-family: "Inter"
+                    font-weight: 500
+                    letter-spacing: -0.24px
+                    width: 100%
+                input
+                    background: none
+                    border: none
+                    color: white
+                    outline: none
+                    font-size: 15px
+                    font-family: "Inter"
+                    font-weight: 500
+                    line-height: 20px
+                    @media (max-width: 500px)
+                        font-size: 12px
+        .log_reg_button
+            button
+                color: #ffff
+                width: 366px
+                height: 57px
+                background-color: rgba(55, 99, 255, 1)
+                border-radius: 65px
+                padding: 19px 44px 19px 44px
+                font-size: 16px
+                font-family: "Inter Tight"
+                font-weight: 700
+                letter-spacing: -0.32px
+                margin-top: 20px
+                @media (max-width: 400px)
+                    max-width: 280px
+        .forgot_password
+            display: flex
+            justify-content: center
+            margin-top: 20px
+            column-gap: 8px
+            overflow: hidden
+            .check_box:hover
+                opacity: 1
+            .check_box
+                height: 24px
+                width: 24px
+                border: 1px solid rgba(255, 255, 255, 0.25)
+                border-radius: 7px
+                background: none
+                .onone
+                    opacity: 0
+                img
+                    transition: opacity 200ms
+                    width: 14px
+
+            .text, .a
+                margin: auto 0
+            .text
+                color: #B5B6B6
+                font-size: 13px
+                font-family: Inter
+                line-height: 20px
+                a
+                    font-size: 14px
+                    font-family: Inter
+                    line-height: 20px
+            .a
+                a
+                    font-size: 14px
+                    font-family: Inter Tight
+                    font-weight: 700
+                    letter-spacing: -0.28px
+            a
+                color: #D9E44F
+
+    .right
+
+        width: 50%
+        min-height: 100vh
+        background: linear-gradient(180deg, rgba(18, 70, 255, 0.68) 0%, rgba(18, 47, 147, 0.00) 100%)
+        overflow: hidden
+
+        @media (max-width: 800px)
+            width: 100%
+            background: linear-gradient(0deg, rgba(18, 70, 255, 0.68) 0%, rgba(18, 47, 147, 0.00) 100%)
+            min-height: auto
+            height: 500px
+            display: flex
+            justify-content: center
+        .line
+            left: -34px
+            top: -39px
+            @media (max-width: 1050px)
+                left: -100px
+            @media (max-width: 800px)
+                left: -365px
+                top: -25px
+                img
+                    width: 600px
+        .shadow
+            left: -44px
+            top: 535px
+            animation: shadow_anim 12s infinite alternate ease-in-out
+            @media (max-width: 1050px)
+                left: -140px
+            @media (max-width: 800px)
+                left: -259px
+                top: 313px
+            @keyframes shadow_anim
+                0%
+                    transform: translate(0px, 0px)
+                100%
+                    transform: translate(90px, 10px)
+        .safe
+            left: 80px
+            top: 333px
+            animation: safe_anim 12s infinite alternate ease-in-out
+            @media (max-width: 1050px)
+                left: -40px
+            @media (max-width: 800px)
+                left: -150px
+                top: 157px
+                img
+                    width: 300px
+            @keyframes safe_anim
+                0%
+                    transform: translate(0px, 0px) rotate(0deg)
+                100%
+                    transform: translate(90px, 10px) rotate(10deg)
+        .rotate
+            animation: rotate_anim 500ms cubic-bezier(0.8,-0.3, 0.2, 1.3) alternate
+            @keyframes rotate_anim
+                0%
+                    transform: rotate(0deg)
+                100%
+                    transform: rotate(1080deg)
+
+        .eth
+            left: 297px
+            top: 255px
+            animation: eth_anim 14s infinite alternate ease-in-out
+            @media (max-width: 1050px)
+                left: 200px
+            @media (max-width: 800px)
+                left: 9px
+                top: 111px
+                img
+                    width: 130px
+            @keyframes eth_anim
+                0%
+                    transform: translate(0px, 0px) rotate(0deg)
+                100%
+                    transform: translate(100px, -100px) rotate(-5deg)
+
+        .btc
+            left: 57px
+            top: -22px
+            animation: btc_anim 20s infinite alternate ease-in-out
+            @media (max-width: 1050px)
+                left: -50px
+            @media (max-width: 800px)
+                left: -219px
+                top: 20px
+                img
+                    width: 210px
+            @keyframes btc_anim
+                0%
+                    transform: translate(0px, 0px) rotate(0deg)
+                100%
+                    transform: translate(-20px, 90px) rotate(8deg)
+
+.w100
+    width: 100% !important
+.o0
+    opacity: 0 !important
+.w0
+    width: 0px !important
+    padding: 0px !important
+    height: 0px
+.left_hide
+    transform: translateX(-2000px)
+.dnone
+    display: none !important

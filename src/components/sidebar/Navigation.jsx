@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const Navigation = (props) => {
+const Navigation = ({ setModalType }) => {
     return (
         <>
             <div className="navigation">
@@ -42,7 +42,7 @@ const Navigation = (props) => {
                     </div>
                 </Link>
             </div>
-            <button id="add_api_opener">
+            <button id="add_api_opener" onClick={() => setModalType('add_api')}>
                 <img src="img/pa/key.svg" alt="add api img" />
                 <div className="text">
                     Add api keys
