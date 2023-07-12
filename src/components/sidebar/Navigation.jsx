@@ -1,17 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const Navigation = ({ setModalType }) => {
+const Navigation = () => {
     return (
         <>
             <div className="navigation">
-                <div className="navigation_element">
+                <Link to="/statistic" className="navigation_element">
                     <img src="img/pa/navigation/rounds.svg" alt="stat menu img" />
                     <div className="text">
                         Statistics
                     </div>
-                </div>
-                <Link to="/profile" className="navigation_element active" id="profile_opener">
+                </Link>
+                <Link to="/profile" className="navigation_element" id="profile_opener">
                     <img src="img/pa/navigation/profile.svg" alt="profile menu img" />
                     <div className="text">
                         Profile
@@ -42,7 +42,7 @@ const Navigation = ({ setModalType }) => {
                     </div>
                 </Link>
             </div>
-            <button id="add_api_opener" onClick={() => setModalType('add_api')}>
+            <button id="add_api_opener">
                 <img src="img/pa/key.svg" alt="add api img" />
                 <div className="text">
                     Add api keys
@@ -54,18 +54,18 @@ const Navigation = ({ setModalType }) => {
                     Change language
                 </div>
             </button>
-            <button className="bottom_button">
+            <Link to="https://ivandalechenko.github.io/crypto_layout/" className="bottom_button">
                 <img src="img/pa/back_arrow.svg" alt="arrow back to main" />
                 <div className="text">
                     Back to website
                 </div>
-            </button>
-            <button className="bottom_button background_transparent">
+            </Link>
+            <Link to="/login" className="bottom_button background_transparent">
                 <img src="img/pa/return_arrow.svg" alt="arrow logout" />
                 <div className="text">
                     Log out
                 </div>
-            </button>
+            </Link>
         </>
     )
 }
