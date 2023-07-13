@@ -6,10 +6,10 @@ import Offers from './Offers';
 import CurrentTarif from './CurrentTarif';
 import Sidebar from '../sidebar/Sidebar';
 
-const ManageTarifPage = () => {
+const ManageTarifPage = ({ setLogged }) => {
     return (
         <div className="container">
-            <Sidebar />
+            <Sidebar setLogged={setLogged} />
             <div id='content'>
                 <div id="manage_tarif_page">
                     <CurrentTarif />

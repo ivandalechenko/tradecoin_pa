@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 import Input from '../UI/Input';
 import Images from './Images';
 import Modal from '../modal/Modal';
 import api from "../../api/api";
 
 
-const LoginPage = ({ setLogged }) => {
+const LoginPage = ({ setLogged, logged }) => {
+
     const [modalType, setModalType] = useState('hidden')
 
     const [email, setEmail] = useState('')
@@ -41,6 +42,7 @@ const LoginPage = ({ setLogged }) => {
                 setPrintedError(error.response.data.message)
             });
     }
+    if (logged) return <Navigate to="/profile" replace />
 
     return (
         <div className="elements">

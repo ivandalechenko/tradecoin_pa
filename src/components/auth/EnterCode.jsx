@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 import Modal from '../modal/Modal';
 import api from "../../api/api";
 
-const EnterCode = ({ setLogged }) => {
+const EnterCode = ({ setLogged, logged }) => {
     const [modalType, setModalType] = useState('hidden')
 
     const [code, setCode] = useState()
@@ -36,6 +36,7 @@ const EnterCode = ({ setLogged }) => {
 
 
 
+    if (logged) return <Navigate to="/profile" replace />
 
     return (
         <div className="elements">

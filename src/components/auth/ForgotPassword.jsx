@@ -1,7 +1,9 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 
-const ForgotPassword = (props) => {
+const ForgotPassword = ({ logged }) => {
+    if (logged) return <Navigate to="/profile" replace />
+
     return (
         <div className="elements">
             <div className="modal_auth transiton_show_hide" id="modal_auth">

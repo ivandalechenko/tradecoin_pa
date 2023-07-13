@@ -2,10 +2,10 @@ import React from 'react';
 import Sidebar from '../sidebar/Sidebar';
 import HorizontalLine from '../UI/HorizontalLine';
 
-const StatPage = () => {
+const StatPage = ({ setLogged }) => {
     return (
         <div className="container">
-            <Sidebar />
+            <Sidebar setLogged={setLogged} />
             <div id='content'>
                 <div id="ref_page">
                     <div className="section" id="ref">

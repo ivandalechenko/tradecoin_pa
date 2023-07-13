@@ -12,6 +12,7 @@ import StatPage from './content/StatPage';
 import api from "../api/api";
 import Modal from './modal/Modal';
 import ProtectedRoute from './ProtectedRoute';
+import HomePage from './content/HomePage';
 
 
 const Router = (props) => {
@@ -41,17 +42,17 @@ const Router = (props) => {
     return (
         < BrowserRouter >
             <Routes>
-                <Route element={<LoginPage setLogged={setLogged} />} path="/login" />
-                <Route element={<RegistrationPage />} path="/signup" />
-                <Route element={<ForgotPassword />} path="/forgot_password" />
-                <Route element={<EnterCode setLogged={setLogged} />} path="/enter_code" />
+                <Route element={<HomePage logged={logged} />} path="" />
+                <Route element={<LoginPage setLogged={setLogged} logged={logged} />} path="/login" />
+                <Route element={<RegistrationPage logged={logged} />} path="/signup" />
+                <Route element={<ForgotPassword logged={logged} />} path="/forgot_password" />
+                <Route element={<EnterCode setLogged={setLogged} logged={logged} />} path="/enter_code" />
                 <Route element={<NewPassword />} path="/new_password" />
-                {/* <Route element={<LoginPage />} path="/*" /> */}
                 <Route path='/' element={<ProtectedRoute logged={logged} />}>
-                    <Route element={<ProfilePage />} path="profile" />
-                    <Route element={<RefPage />} path="referal" />
-                    <Route element={<ManageTarifPage />} path="manage_tarif" />
-                    <Route element={<StatPage />} path="statistic" />
+                    <Route element={<ProfilePage setLogged={setLogged} />} path="profile" />
+                    <Route element={<RefPage setLogged={setLogged} />} path="referal" />
+                    <Route element={<ManageTarifPage setLogged={setLogged} />} path="manage_tarif" />
+                    <Route element={<StatPage setLogged={setLogged} />} path="statistic" />
                 </Route>
             </Routes>
         </BrowserRouter >

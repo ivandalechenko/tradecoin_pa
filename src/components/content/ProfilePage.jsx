@@ -5,10 +5,10 @@ import Balance from './Balance';
 import Profile from './Profile';
 import Sidebar from '../sidebar/Sidebar';
 
-const ProfilePage = () => {
+const ProfilePage = ({ setLogged }) => {
     return (
         <div className="container">
-            <Sidebar />
+            <Sidebar setLogged={setLogged} />
             <div id='content'>
                 <div id="profile_page" className="page">
                     <Profile />

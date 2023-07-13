@@ -3,7 +3,7 @@ import Header from './Header';
 import Navigation from './Navigation';
 import Modal from '../modal/Modal';
 
-const Sidebar = (props) => {
+const Sidebar = ({ setLogged }) => {
     const [modalType, setModalType] = useState('hidden')
 
     const [sidebarOpen, setSidebarOpen] = useState('')
@@ -12,7 +12,7 @@ const Sidebar = (props) => {
             <Modal modalType={modalType} setModalType={setModalType} />
             <div className="section">
                 <Header setSidebarOpen={setSidebarOpen} />
-                <Navigation setModalType={setModalType} />
+                <Navigation setModalType={setModalType} setLogged={setLogged} />
             </div>
         </div>
     )

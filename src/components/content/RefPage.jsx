@@ -9,10 +9,10 @@ import InviteLink from '../UI/InviteLink';
 import Sidebar from '../sidebar/Sidebar';
 
 
-const RefPage = () => {
+const RefPage = ({ setLogged }) => {
     return (
         <div className="container">
-            <Sidebar />
+            <Sidebar setLogged={setLogged} />
             <div id='content'>
                 <div id="ref_page">
                     <div className="section" id="ref">
