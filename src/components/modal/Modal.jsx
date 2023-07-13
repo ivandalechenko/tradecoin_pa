@@ -1,5 +1,6 @@
 import React from 'react';
 import ModalAddApi from './ModalAddApi';
+import ModalLoader from './ModalLoader';
 
 const Modal = ({ modalType, setModalType }) => {
     const rootClasses = ['modal']
@@ -10,7 +11,14 @@ const Modal = ({ modalType, setModalType }) => {
     return (
         <div className={rootClasses.join(' ')} onClick={() => setModalType("hidden")}>
             <div onClick={(e) => e.stopPropagation()}>
-                <ModalAddApi setModalType={setModalType} />
+                {modalType == 'add_api'
+                    ? <ModalAddApi setModalType={setModalType} />
+                    : <></>
+                }
+                {modalType == 'loader'
+                    ? <ModalLoader />
+                    : <></>
+                }
             </div>
         </div>
     )

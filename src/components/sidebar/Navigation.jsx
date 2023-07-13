@@ -42,7 +42,8 @@ const Navigation = ({ setModalType }) => {
                     </div>
                 </Link>
             </div>
-            <button id="add_api_opener" onClick={() => setModalType('show')}>
+
+            <button id="add_api_opener" onClick={() => setModalType('add_api')}>
                 <img src="img/pa/key.svg" alt="add api img" />
                 <div className="text">
                     Add api keys

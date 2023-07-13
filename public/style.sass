@@ -25,6 +25,12 @@ time, mark, audio, video, button
     font-family: "Inter"
 a
     text-decoration: none
+
+a,button
+    transition: opacity 300ms
+a:hover, button:hover
+    cursor: pointer
+    opacity: 0.7
 .secure
     margin-top: 34px
     display: flex
@@ -51,6 +57,7 @@ a
     width: 100%
     @media (max-width: 550px)
         font-size: 14px
+
 
 .btn
     font-weight: 700
@@ -189,52 +196,47 @@ h6
     letter-spacing: -0.04em
 
 .input_block
-    border-radius: 11px
+    border-radius: 12px
     width: 100%
-    padding: 13px 20px
+    padding: 12px 20px
     border: 1px solid rgba(255, 255, 255, 0.25)
     display: flex
     column-gap: 16px
-    @media (max-width: 550px)
-        width: 100% !important
-    img, .label_and_input
-        margin: auto 0
-    .label_and_input
-        padding-left: 16px
-        border-left: 1px solid rgba(255, 255, 255, 0.25)
+    align-items: center
+    .label_and_input_and_eye
         display: flex
         justify-content: space-between
-        flex-wrap: wrap
-        .inp, .eye
-            margin: auto 0
+        width: 100%
+        .label_and_input
+            padding-left: 16px
+            border-left: 1px solid rgba(255, 255, 255, 0.25)
+            display: flex
+            justify-content: space-between
+            flex-wrap: wrap
+            .label
+                padding-left: 2px
+                color: #B5B6B6
+                font-size: 12px
+                font-weight: 500
+                letter-spacing: -0.24px
+                width: 100%
+            input
+                background: none
+                border: none
+                color: white
+                outline: none
+                font-size: 15px
+                font-weight: 500
+                line-height: 20px
+                @media (max-width: 500px)
+                    font-size: 12px
+        .eye
+            transition: 300ms
         .eye:hover
             cursor: pointer
-        .eye
-            padding-top: 6px
-        .inp
-            display: flex
-            justify-content: left
-            flex-wrap: wrap
-            row-gap: 4px
-            width: 70%
-        .label
+            transform: rotate(10deg) scale(1.2)
 
-            padding-left: 2px
-            color: #B5B6B6
-            font-size: 12px
-            font-weight: 500
-            letter-spacing: -0.24px
-            width: 100%
-        input
-            background: none
-            border: none
-            color: white
-            outline: none
-            font-size: 15px
-            font-weight: 500
-            line-height: 20px
-            @media (max-width: 500px)
-                font-size: 12px
+
 
 body
     background: radial-gradient(63.04% 62.69% at 10.45% 12.57%, rgba(44, 39, 255, 0.26) 0%, rgba(39, 139, 255, 0.00) 100%), radial-gradient(50.96% 50.72% at 82.88% 61.38%, rgba(44, 39, 255, 0.20) 0%, rgba(44, 39, 255, 0.00) 100%), linear-gradient(180deg, #040B14 0%, #081934 100%)
@@ -362,6 +364,8 @@ body
                 img, .text
                     margin: auto 0
 
+    #inner_loader
+        background: red
     #inner_pay
         max-width: 487px
         .input_block
@@ -1732,54 +1736,54 @@ body
                     @media (max-width:800px)
                         margin-top: 10px
                         font-size: 14px
-                .input_block
-                    margin-top: 20px
-                    border-radius: 11px
-                    width: 100%
-                    padding: 13px 20px
-                    border: 1px solid rgba(27,28,29,1)
-                    display: flex
-                    column-gap: 16px
-                    overflow: hidden
-                    transition: height 300ms, padding 200ms, border 1000ms
-                    img, .label_and_input
-                        margin: auto 0
-                    .label_and_input
-                        padding-left: 16px
-                        border-left: 1px solid rgba(27,28,29,1)
-                        display: flex
-                        justify-content: space-between
-                        flex-wrap: wrap
-                        .inp, .eye
-                            margin: auto 0
-                        .eye:hover
-                            cursor: pointer
-                        .eye
-                            padding-top: 6px
-                        .inp
-                            display: flex
-                            justify-content: left
-                            flex-wrap: wrap
-                            row-gap: 4px
-                            width: 70%
-                        .label
-                            color: #B5B6B6
-                            font-size: 12px
-                            font-family: "Inter"
-                            font-weight: 500
-                            letter-spacing: -0.24px
-                            width: 100%
-                        input
-                            background: none
-                            border: none
-                            color: white
-                            outline: none
-                            font-size: 15px
-                            font-family: "Inter"
-                            font-weight: 500
-                            line-height: 20px
-                            @media (max-width: 500px)
-                                font-size: 12px
+                // .input_block
+                //     margin-top: 20px
+                //     border-radius: 11px
+                //     width: 100%
+                //     padding: 13px 20px
+                //     border: 1px solid rgba(27,28,29,1)
+                //     display: flex
+                //     column-gap: 16px
+                //     overflow: hidden
+                //     transition: height 300ms, padding 200ms, border 1000ms
+                //     img, .label_and_input
+                //         margin: auto 0
+                //     .label_and_input
+                //         padding-left: 16px
+                //         border-left: 1px solid rgba(27,28,29,1)
+                //         display: flex
+                //         justify-content: space-between
+                //         flex-wrap: wrap
+                //         .inp, .eye
+                //             margin: auto 0
+                //         .eye:hover
+                //             cursor: pointer
+                //         .eye
+                //             padding-top: 6px
+                //         .inp
+                //             display: flex
+                //             justify-content: left
+                //             flex-wrap: wrap
+                //             row-gap: 4px
+                //             width: 70%
+                //         .label
+                //             color: #B5B6B6
+                //             font-size: 12px
+                //             font-family: "Inter"
+                //             font-weight: 500
+                //             letter-spacing: -0.24px
+                //             width: 100%
+                //         input
+                //             background: none
+                //             border: none
+                //             color: white
+                //             outline: none
+                //             font-size: 15px
+                //             font-family: "Inter"
+                //             font-weight: 500
+                //             line-height: 20px
+                //             @media (max-width: 500px)
+                //                 font-size: 12px
                 .send_code_btn
                     padding: 19px 44px
                     width: 100%
@@ -1797,8 +1801,11 @@ body
         overflow: hidden
         background: black
         width: 50%
+        display: flex
+        align-items: center
         @media (max-width: 800px)
             width: 100%
+            display: block
         #create_password_label
             font-size: 14px
             font-family: Inter Tight
@@ -1810,8 +1817,6 @@ body
             max-width: 360px
 
         .container
-
-            padding-top: 170px
             width: 505px
             margin: 0 auto
             padding-left: 140px
@@ -1822,7 +1827,6 @@ body
                 padding-left: 0px
                 width: 100%
                 padding: 0px 15px
-                padding-top: 170px
             @media (max-width: 800px)
                 max-width: 500px
                 padding-top: 15px
@@ -1847,6 +1851,8 @@ body
             font-weight: 700
             margin-top: 22px
             letter-spacing: -0.72px
+            width: 100%
+            text-align: center
             @media (max-width: 800px)
                 margin-top: 32px
                 font-size: 24px
@@ -1857,6 +1863,8 @@ body
             font-family: "Inter"
             margin-top: 16px
             font-weight: 300
+            width: 100%
+            text-align: center
             @media (max-width: 800px)
                 margin-top: 6px
                 font-size: 14px
@@ -1893,122 +1901,48 @@ body
             button:hover
                 background-color: rgba(255, 255, 255, 0.15)
                 opacity: 1
-        .input_block:first-child
-            margin-top: 20px
         .input_block
             margin-top: 10px
-            border-radius: 11px
-            width: 100%
-            padding: 13px 20px
-            border: 1px solid rgba(27,28,29,1)
-            display: flex
-            column-gap: 16px
-            max-width: 360px
-            overflow: hidden
-            transition: height 300ms, padding 200ms, border 1000ms
-            img, .label_and_input
-                margin: auto 0
-            .label_and_input
-                padding-left: 16px
-                border-left: 1px solid rgba(27,28,29,1)
-                display: flex
-                justify-content: space-between
-                flex-wrap: wrap
-                .inp, .eye
-                    margin: auto 0
-                .eye:hover
-                    cursor: pointer
-                .eye
-                    padding-top: 6px
-                .inp
-                    display: flex
-                    justify-content: left
-                    flex-wrap: wrap
-                    row-gap: 4px
-                    width: 70%
-                .label
-                    color: #B5B6B6
-                    font-size: 12px
-                    font-family: "Inter"
-                    font-weight: 500
-                    letter-spacing: -0.24px
-                    width: 100%
-                input
-                    background: none
-                    border: none
-                    color: white
-                    outline: none
-                    font-size: 15px
-                    font-family: "Inter"
-                    font-weight: 500
-                    line-height: 20px
-                    @media (max-width: 500px)
-                        font-size: 12px
-        .log_reg_button
-            button
-                color: #ffff
-                width: 366px
-                height: 57px
-                background-color: rgba(55, 99, 255, 1)
-                border-radius: 65px
-                padding: 19px 44px 19px 44px
-                font-size: 16px
-                font-family: "Inter Tight"
-                font-weight: 700
-                letter-spacing: -0.32px
-                margin-top: 20px
-                @media (max-width: 400px)
-                    max-width: 280px
+
+        .accept_btn
+            margin-top: 20px
         .forgot_password
             display: flex
             justify-content: center
+            align-items: center
             margin-top: 20px
             column-gap: 8px
-            overflow: hidden
-            .check_box:hover
-                opacity: 1
-            .check_box
-                height: 24px
-                width: 24px
-                border: 1px solid rgba(255, 255, 255, 0.25)
-                border-radius: 7px
-                background: none
-                .onone
-                    opacity: 0
-                img
-                    transition: opacity 200ms
-                    width: 14px
-
-            .text, .a
-                margin: auto 0
             .text
                 color: #B5B6B6
                 font-size: 13px
-                font-family: Inter
                 line-height: 20px
-                a
-                    font-size: 14px
-                    font-family: Inter
-                    line-height: 20px
-            .a
-                a
-                    font-size: 14px
-                    font-family: Inter Tight
-                    font-weight: 700
-                    letter-spacing: -0.28px
             a
+                font-size: 14px
+                line-height: 20px
+                font-weight: 700
+                letter-spacing: -0.28px
                 color: #D9E44F
-
+        .errors
+            display: flex
+            justify-content: center
+            flex-wrap: wrap
+            margin-top: 20px
+            row-gap: 10px
+            .error
+                width: 100%
+                text-align: center
+                color: #FF5F72
+                font-size: 16px
+                font-weight: 700
     .right
-
         width: 50%
         min-height: 100vh
-        background: black, linear-gradient(180deg, rgba(18, 70, 255, 0.68) 0%, rgba(18, 47, 147, 0.00) 100%)
+        background: black linear-gradient(180deg, rgba(18, 70, 255, 0.68) 0%, rgba(18, 47, 147, 0.00) 100%)
         overflow: hidden
 
         @media (max-width: 800px)
             width: 100%
-            background: linear-gradient(0deg, rgba(18, 70, 255, 0.68) 0%, rgba(18, 47, 147, 0.00) 100%)
+            background: black linear-gradient(0deg, rgba(18, 70, 255, 0.68) 0%, rgba(18, 47, 147, 0.00) 100%)
             min-height: auto
             height: 500px
             display: flex
@@ -2095,15 +2029,3 @@ body
                 100%
                     transform: translate(-20px, 90px) rotate(8deg)
 
-.w100
-    width: 100% !important
-.o0
-    opacity: 0 !important
-.w0
-    width: 0px !important
-    padding: 0px !important
-    height: 0px
-.left_hide
-    transform: translateX(-2000px)
-.dnone
-    display: none !important

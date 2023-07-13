@@ -8,7 +8,7 @@ const EnterCode = (props) => {
         setCode(event.target.value);
     };
     const navigate = useNavigate()
-    const [token, setToken] = useState('');
+    const [token, setToken] = useState(localStorage.getItem('token'));
     useEffect(() => {
         localStorage.setItem('token', token)
     }, [token])
@@ -18,7 +18,7 @@ const EnterCode = (props) => {
         },
             {
                 headers: {
-                    'Authorization': localStorage.getItem('token')
+                    'Authorization': localStorage.getItem('reg_token')
                 },
             })
             .then(function (response) {
