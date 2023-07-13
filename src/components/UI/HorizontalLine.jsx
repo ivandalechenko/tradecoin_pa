@@ -2,7 +2,7 @@ import React from 'react';
 
 const HorizontalLine = (props) => {
     return (
-        <div class="hr" />
+        <div className="hr" />
     )
 }
 

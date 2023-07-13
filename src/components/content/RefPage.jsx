@@ -9,28 +9,28 @@ import InviteLink from '../UI/InviteLink';
 import Sidebar from '../sidebar/Sidebar';
 
 
-const RefPage = (props) => {
+const RefPage = ({ setModalType }) => {
     return (
         <div className="container">
-            <Sidebar />
+            <Sidebar setModalType={setModalType} />
             <div id='content'>
                 <div id="ref_page">
-                    <div class="section" id="ref">
-                        <div class="header h5">
+                    <div className="section" id="ref">
+                        <div className="header h5">
                             Your balance
                         </div>
                         <HorizontalLine />
-                        <div class="content">
-                            <div class="balance">
+                        <div className="content">
+                            <div className="balance">
                                 <img src="img/pa/peoples.png" alt='peoples' />
                                 <Balance />
                             </div>
                             <InviteLink />
                         </div>
                         <HorizontalLine />
-                        <div class="referals">
+                        <div className="referals">
                             <RefTable />
-                            <div class="security_and_pages">
+                            <div className="security_and_pages">
                                 <Secure />
                                 <Pagination />
                             </div>

@@ -4,9 +4,9 @@ import Offer from './Offer';
 
 const Offers = (props) => {
     return (
-        <div class="offers">
-            <div class="offers_container ">
-                <div class="offers_offers_list">
+        <div className="offers">
+            <div className="offers_container ">
+                <div className="offers_offers_list">
                     <Offer />
                     <Offer />
                     <Offer />

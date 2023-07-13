@@ -4,31 +4,31 @@ import Button from '../UI/Button';
 
 const ChangePassword = (props) => {
     return (
-        <div class="section" id="password">
-            <div class="section_header h5">
+        <div className="section" id="password">
+            <div className="section_header h5">
                 Change password
             </div>
-            <div class="hr">
+            <div className="hr">
             </div>
-            <div class="content">
-                <div class="img">
+            <div className="content">
+                <div className="img">
                     <img src="img/pa/change_password_lock.png" alt='change password' />
                 </div>
-                <div class="info">
-                    <div class="btn">
+                <div className="info">
+                    <div className="btn">
                         Old password
                     </div>
-                    <div class="form">
+                    <div className="form">
                         <Input props={{
                             imageName: 'dots.svg',
                             label: "Your password",
                             placeholder: "Enter your password"
                         }} />
                     </div>
-                    <div class="btn">
+                    <div className="btn">
                         New password
                     </div>
-                    <div class="form">
+                    <div className="form">
                         <Input props={{
                             imageName: 'dots.svg',
                             label: "Your password",

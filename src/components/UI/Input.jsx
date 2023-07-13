@@ -2,10 +2,10 @@ import React from 'react';
 
 const Input = ({ props }) => {
     return (
-        <div class="input_block" id="email">
+        <div className="input_block" id="email">
             <img src={"img/pa/login/" + props.imageName} alt={props.imageName} />
-            <div class="label_and_input">
-                <div class="label">
+            <div className="label_and_input">
+                <div className="label">
                     {props.label}
                 </div>
                 <input type="text" placeholder={props.placeholder} />

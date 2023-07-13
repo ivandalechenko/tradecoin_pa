@@ -6,30 +6,30 @@ import ChangeTarifCheckStatus from '../UI/ChangeTarifCheckStatus';
 
 const CurrentTarif = (props) => {
     return (
-        <div class="section" id="manage_tarifs">
-            <div class="header h5">
+        <div className="section" id="manage_tarifs">
+            <div className="header h5">
                 Manage tafis
             </div>
             <HorizontalLine />
-            <div class="content">
-                <div class="balance">
-                    <div class="info">
-                        <div class="name">
+            <div className="content">
+                <div className="balance">
+                    <div className="info">
+                        <div className="name">
                             <img src="img/pa/rounds_green.svg" alt='rounds' />
-                            <div class="text">
+                            <div className="text">
                                 Your current tarif
                             </div>
                         </div>
-                        <div class="count">
-                            <div class="num">
+                        <div className="count">
+                            <div className="num">
                                 F22 - RAPTOR
                             </div>
                         </div>
-                        <div class="earned">
-                            <div class="text">
+                        <div className="earned">
+                            <div className="text">
                                 Earned
                             </div>
-                            <div class="num">
+                            <div className="num">
                                 $990.33
                             </div>
                         </div>

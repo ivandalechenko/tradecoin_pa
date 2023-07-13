@@ -5,23 +5,23 @@ import HorizontalLine from '../UI/HorizontalLine';
 
 const Profile = (props) => {
     return (
-        <div class="section" id="profile">
-            <div class="section_header h5">
+        <div className="section" id="profile">
+            <div className="section_header h5">
                 Profile
             </div>
             <HorizontalLine />
-            <div class="content">
-                <div class="img">
+            <div className="content">
+                <div className="img">
                     <img src="img/pa/empty_profile_photo.png" alt='profile_photo' />
                 </div>
-                <div class="info">
-                    <div class="greetings">
+                <div className="info">
+                    <div className="greetings">
                         Welcome back!
                     </div>
-                    <div class="name">
+                    <div className="name">
                         @trader_best
                     </div>
-                    <div class="form">
+                    <div className="form">
                         <Input props={{
                             imageName: 'mail.svg',
                             label: "Your e-mail",

@@ -2,126 +2,126 @@ import React from 'react';
 
 const ModalAddApi = ({ setModalType }) => {
     return (
-        <div id="inner_add_api" class="modal_inner">
-            <div class="header">
-                <div class="name">
+        <div id="inner_add_api" className="modal_inner">
+            <div className="header">
+                <div className="name">
                     <img src="img/pa/modal/key.svg" alt="key" />
-                    <div class="text">
+                    <div className="text">
                         Add crypto-key API
                     </div>
                 </div>
-                <img class="modal_closer" src="img/pa/modal/cross.svg" alt="cross" onClick={() => setModalType("hidden")} />
+                <img className="modal_closer" src="img/pa/modal/cross.svg" alt="cross" onClick={() => setModalType("hidden")} />
             </div>
-            <div class="content">
-                <div class="platforms">
-                    <div class="platform">
-                        <div class="border">
+            <div className="content">
+                <div className="platforms">
+                    <div className="platform">
+                        <div className="border">
                         </div>
-                        <div class="img">
+                        <div className="img">
                             <img src="img/pa/modal/platforms/binance.svg" alt="binance" />
                         </div>
                     </div>
-                    <div class="platform selected">
-                        <div class="border">
+                    <div className="platform selected">
+                        <div className="border">
                         </div>
-                        <div class="img">
+                        <div className="img">
                             <img src="img/pa/modal/platforms/bybit.svg" alt="bybit" />
                         </div>
                     </div>
-                    <div class="platform">
-                        <div class="border">
+                    <div className="platform">
+                        <div className="border">
                         </div>
-                        <div class="img">
+                        <div className="img">
                             <img src="img/pa/modal/platforms/bitget.png" alt="bitget" />
                         </div>
                     </div>
                 </div>
-                <div class="input_block input_block_first" id="email">
+                <div className="input_block input_block_first" id="email">
                     <img src="img/pa/modal/form_key.svg" alt="key" />
-                    <div class="label_and_input">
-                        <div class="label">
+                    <div className="label_and_input">
+                        <div className="label">
                             API key
                         </div>
                         <input type="text" placeholder="Enter API key" />
                     </div>
                 </div>
-                <div class="input_block" id="email">
+                <div className="input_block" id="email">
                     <img src="img/pa/modal/form_lock.svg" alt="lock" />
-                    <div class="label_and_input">
-                        <div class="label">
+                    <div className="label_and_input">
+                        <div className="label">
                             Secret key
                         </div>
                         <input type="text" placeholder="Enter secret key" />
                     </div>
                 </div>
-                <div class="button_and_check">
-                    <button class="send_info_button input_block_first">
+                <div className="button_and_check">
+                    <button className="send_info_button input_block_first">
                         Add API key
                     </button>
-                    <div class="checkbox">
-                        <div class="checkbox_wrapper checked">
+                    <div className="checkbox">
+                        <div className="checkbox_wrapper checked">
                             <img src="img/pa/check.svg" alt="check" />
                         </div>
-                        <div class="text">
+                        <div className="text">
                             I understang how to use API keys
                         </div>
                     </div>
                 </div>
-                <div class="steps_and_notice">
-                    <div class="steps_and_bg">
-                        <div class="bg">
+                <div className="steps_and_notice">
+                    <div className="steps_and_bg">
+                        <div className="bg">
                         </div>
-                        <div class="steps">
-                            <div class="step">
-                                <button class="num">
+                        <div className="steps">
+                            <div className="step">
+                                <button className="num">
                                     1
                                 </button>
-                                <div class="text">
-                                    <div class="head">
+                                <div className="text">
+                                    <div className="head">
                                         Step 1
                                     </div>
-                                    <div class="info">
+                                    <div className="info">
                                         Перейдите на сайт биржи
                                     </div>
                                 </div>
                             </div>
-                            <div class="step">
-                                <button class="num">
+                            <div className="step">
+                                <button className="num">
                                     2
                                 </button>
-                                <div class="text">
-                                    <div class="head">
+                                <div className="text">
+                                    <div className="head">
                                         Step 2
                                     </div>
-                                    <div class="info">
+                                    <div className="info">
                                         Create key “only for reading”
                                     </div>
                                 </div>
                             </div>
-                            <div class="step">
-                                <button class="num">
+                            <div className="step">
+                                <button className="num">
                                     3
                                 </button>
-                                <div class="text">
-                                    <div class="head">
+                                <div className="text">
+                                    <div className="head">
                                         Step 3
                                     </div>
-                                    <div class="info">
+                                    <div className="info">
                                         Enter the key
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="notice">
-                        <div class="wrapper">
+                    <div className="notice">
+                        <div className="wrapper">
 
                             <img src="img/pa/notice.svg" alt="notice" />
-                            <div class="text">
-                                <div class="head">
+                            <div className="text">
+                                <div className="head">
                                     Important!
                                 </div>
-                                <div class="info">
+                                <div className="info">
                                     Always use API keys “only for reading. Dairy book available only for features
                                 </div>
                             </div>

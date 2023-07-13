@@ -2,22 +2,22 @@ import React from 'react';
 
 const ChangeTarifCheckStatus = (props) => {
     return (
-        <div class="buttons_balance">
-            <div class="button">
+        <div className="buttons_balance">
+            <div className="button">
                 <img src="img/pa/dual_arrows.svg" alt='arrows' />
-                <div class="name">
+                <div className="name">
                     Change tarif
                 </div>
-                <div class="desc">
+                <div className="desc">
                     Choose more profitable
                 </div>
             </div>
-            <div class="button">
+            <div className="button">
                 <img src="img/pa/right_up_arrow.svg" alt='arrow' />
-                <div class="name">
+                <div className="name">
                     Check stats
                 </div>
-                <div class="desc">
+                <div className="desc">
                     Link to profile
                 </div>
             </div>

@@ -6,25 +6,25 @@ import Offers from './Offers';
 import CurrentTarif from './CurrentTarif';
 import Sidebar from '../sidebar/Sidebar';
 
-const ManageTarifPage = (props) => {
+const ManageTarifPage = ([setModalType]) => {
     return (
         <div className="container">
-            <Sidebar />
+            <Sidebar setModalType={setModalType} />
             <div id='content'>
                 <div id="manage_tarif_page">
                     <CurrentTarif />
-                    <div class="section" id="select_other_tarif">
-                        <div class="header h5">
+                    <div className="section" id="select_other_tarif">
+                        <div className="header h5">
                             Select other tarif
                         </div>
                         <Offers />
                     </div>
-                    <div class="section" id="previous_payments">
-                        <div class="header h5">
+                    <div className="section" id="previous_payments">
+                        <div className="header h5">
                             Previous payments
                         </div>
                         <PreviousPaymentsTable />
-                        <div class="security_and_pages">
+                        <div className="security_and_pages">
                             <Secure />
                             <Pagination />
                         </div>

@@ -2,26 +2,26 @@ import React from 'react';
 
 const Balance = (props) => {
     return (
-        <div class="info">
-            <div class="name">
+        <div className="info">
+            <div className="name">
                 <img src="img/pa/rounds_green.svg" alt='green rounds' />
-                <div class="text">
+                <div className="text">
                     Your balance
                 </div>
             </div>
-            <div class="count">
-                <div class="num">
+            <div className="count">
+                <div className="num">
                     $110,3
                 </div>
-                <div class="percent">
+                <div className="percent">
                     +1,39%
                 </div>
             </div>
-            <div class="earned">
-                <div class="text">
+            <div className="earned">
+                <div className="text">
                     Earned
                 </div>
-                <div class="num">
+                <div className="num">
                     $990.33
                 </div>
             </div>

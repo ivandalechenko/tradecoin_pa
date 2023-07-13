@@ -1,43 +1,62 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 
 const EnterCode = (props) => {
+    const [code, setCode] = useState(0)
+    const codeChange = (event) => {
+        setCode(event.target.value);
+    };
+    const navigate = useNavigate()
+    const [token, setToken] = useState('');
+    useEffect(() => {
+        localStorage.setItem('token', token)
+    }, [token])
+    const sendCode = () => {
+        axios.post('https://apisite.tradecoinai.com/api/users/enterCode', {
+            code: code,
+        },
+            {
+                headers: {
+                    'Authorization': localStorage.getItem('token')
+                },
+            })
+            .then(function (response) {
+                setToken(response.data.token);
+                navigate("/profile")
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    }
     return (
-        <div class="elements">
-            <div class="modal_auth transiton_show_hide" id="modal_auth">
-                <div class="modal_auth_inner">
-                    <div class="back">
+        <div className="elements">
+            <div className="modal_auth transiton_show_hide" id="modal_auth">
+                <div className="modal_auth_inner">
+                    <div className="back">
                         <Link to="/login">
                             <img src="img/login/left_arr.svg" />
                             Back to login
                         </Link>
                     </div>
-                    <div class="form">
+                    <div className="form">
                         <h2 id="modal_h2">
                             Enter code
                         </h2>
-
-
-
-                        <div class="body" id="modal_body">
+                        <div className="body" id="modal_body">
                             Provide us e-mail of your account and we will send a code to your mailbox
                         </div>
-                        <div class="code_input" id="code_input">
-                            <input type="text" class="code_input_element" placeholder="1" maxlength="1" />
-                            <input type="text" class="code_input_element" placeholder="2" maxlength="1" />
-                            <input type="text" class="code_input_element" placeholder="3" maxlength="1" />
-                            <input type="text" class="code_input_element" placeholder="4" maxlength="1" />
-                            <input type="text" class="code_input_element" placeholder="5" maxlength="1" />
-                            <input type="text" class="code_input_element" placeholder="6" maxlength="1" />
+                        <div className="code_input" id="code_input">
+                            <input type="number" className="code_input_element" placeholder="123456" onChange={codeChange} value={code} maxLength={6} />
                         </div>
 
 
-                        <button class="send_code_btn" id="send_a_code">
+                        <button className="send_code_btn" id="send_a_code" onClick={sendCode}>
                             Recover password
                         </button>
 
 
-                        <div class="text_with_a" id="didnt_recieve_the_code">
+                        <div className="text_with_a" id="didnt_recieve_the_code">
                             I didn't receive the code?
                             <button>
                                 Send again
@@ -46,7 +65,7 @@ const EnterCode = (props) => {
                     </div>
 
                 </div>
-                <div class="fone">
+                <div className="fone">
                     <img src="img/login/line.png" />
                 </div>
             </div>

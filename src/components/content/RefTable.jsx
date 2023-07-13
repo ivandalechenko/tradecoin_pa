@@ -4,21 +4,21 @@ import RefTableElement from './RefTableElement';
 
 const RefTable = (props) => {
     return (
-        <div class="table">
-            <div class="element">
-                <div class="num">
+        <div className="table">
+            <div className="element">
+                <div className="num">
                     #
                 </div>
-                <div class="type">
+                <div className="type">
                     Nickname
                 </div>
-                <div class="date">
+                <div className="date">
                     Date
                 </div>
-                <div class="earned">
+                <div className="earned">
                     Earned
                 </div>
-                <div class="sum">
+                <div className="sum">
                     Your profit
                 </div>
             </div>

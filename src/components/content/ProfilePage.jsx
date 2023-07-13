@@ -5,12 +5,12 @@ import Balance from './Balance';
 import Profile from './Profile';
 import Sidebar from '../sidebar/Sidebar';
 
-const ProfilePage = (props) => {
+const ProfilePage = ({ setModalType }) => {
     return (
         <div className="container">
-            <Sidebar />
+            <Sidebar setModalType={setModalType} />
             <div id='content'>
-                <div id="profile_page" class="page">
+                <div id="profile_page" className="page">
                     <Profile />
                     <Balance />
                     <ChangePassword />
