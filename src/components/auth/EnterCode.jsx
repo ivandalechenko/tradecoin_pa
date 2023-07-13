@@ -1,10 +1,9 @@
-import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Modal from '../modal/Modal';
 import api from "../../api/api";
 
-const EnterCode = (props) => {
+const EnterCode = ({ setLogged }) => {
     const [modalType, setModalType] = useState('hidden')
 
     const [code, setCode] = useState()
@@ -25,6 +24,7 @@ const EnterCode = (props) => {
             .then(function (response) {
                 setModalType('hidden')
                 setToken(response.data.token);
+                setLogged(true)
                 navigate("/profile")
             })
             .catch(function (error) {
@@ -34,16 +34,7 @@ const EnterCode = (props) => {
             });
     }
 
-    useEffect(() => {
-        const token = localStorage.getItem('token');
-        if (token.length > 10) {
-            api.get('/users/checkAuth')
-                .then(function (response) {
-                    navigate("/profile")
-                })
-        }
 
-    }, [])
 
 
     return (

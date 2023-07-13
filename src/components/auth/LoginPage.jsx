@@ -6,7 +6,7 @@ import Modal from '../modal/Modal';
 import api from "../../api/api";
 
 
-const LoginPage = (props) => {
+const LoginPage = ({ setLogged }) => {
     const [modalType, setModalType] = useState('hidden')
 
     const [email, setEmail] = useState('')
@@ -33,6 +33,7 @@ const LoginPage = (props) => {
             .then(function (response) {
                 setModalType('hidden')
                 setToken(response.data.token);
+                setLogged(true)
                 navigate("/profile")
             })
             .catch(function (error) {
@@ -40,18 +41,6 @@ const LoginPage = (props) => {
                 setPrintedError(error.response.data.message)
             });
     }
-
-    useEffect(() => {
-        const token = localStorage.getItem('token');
-        if (token.length > 10) {
-            api.get('/users/checkAuth')
-                .then(function (response) {
-                    navigate("/profile")
-                })
-        }
-
-    }, [])
-
 
     return (
         <div className="elements">

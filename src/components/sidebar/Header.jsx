@@ -26,7 +26,7 @@ const Header = ({ setSidebarOpen }) => {
                 <div id="burger_opener" onClick={openSidebar}>
                     <img width="20" height="20" alt="menu_opener" src="img/pa/burger.svg" />
                 </div>
-                <div id="burger_closer" onClick={setSidebarOpen}>
+                <div id="burger_closer" onClick={closeSidebar}>
                     <img width="20" height="20" alt="menu_closer" src="img/pa/cross.svg" />
                 </div>
             </div>

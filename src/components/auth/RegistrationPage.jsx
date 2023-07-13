@@ -49,16 +49,7 @@ const RegistrationPage = (props) => {
 
     }
 
-    useEffect(() => {
-        const token = localStorage.getItem('token');
-        if (token.length > 10) {
-            api.get('/users/checkAuth')
-                .then(function (response) {
-                    navigate("/profile")
-                })
-        }
 
-    }, [])
     return (
         <div className="elements">
             <Modal modalType={modalType} setModalType={setModalType} />
