@@ -3,8 +3,13 @@ import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Input from '../UI/Input';
 import Images from './Images';
+import Modal from '../modal/Modal';
+import api from "../../api/api";
+
 
 const RegistrationPage = (props) => {
+    const [modalType, setModalType] = useState('hidden')
+
     const [email, setEmail] = useState('')
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
@@ -20,28 +25,43 @@ const RegistrationPage = (props) => {
     const [printedError, setPrintedError] = useState('')
     const [token, setToken] = useState(localStorage.getItem('token'));
     useEffect(() => {
-        localStorage.setItem('reg_token', token)
+        localStorage.setItem('token', token)
     }, [token])
 
     const navigate = useNavigate()
     const registration = () => {
-        axios.post('https://apisite.tradecoinai.com/api/users/signup',
+        setModalType('loader')
+        api.post('/users/signup',
             {
                 username: username,
                 email: email,
                 password: password,
             })
             .then(function (response) {
+                setModalType('hidden')
                 setToken(response.data.token);
                 navigate("/enter_code")
             })
             .catch(function (error) {
+                setModalType('hidden')
                 setPrintedError(error.response.data.message)
             });
 
     }
+
+    useEffect(() => {
+        const token = localStorage.getItem('token');
+        if (token.length > 10) {
+            api.get('/users/checkAuth')
+                .then(function (response) {
+                    navigate("/profile")
+                })
+        }
+
+    }, [])
     return (
         <div className="elements">
+            <Modal modalType={modalType} setModalType={setModalType} />
             <div className="left transiton_show_hide" id="left">
                 <div className="container" id="left_container">
                     <div className="logo">

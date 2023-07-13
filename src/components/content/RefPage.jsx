@@ -9,10 +9,10 @@ import InviteLink from '../UI/InviteLink';
 import Sidebar from '../sidebar/Sidebar';
 
 
-const RefPage = ({ setModalType }) => {
+const RefPage = () => {
     return (
         <div className="container">
-            <Sidebar setModalType={setModalType} />
+            <Sidebar />
             <div id='content'>
                 <div id="ref_page">
                     <div className="section" id="ref">

@@ -1,11 +1,14 @@
-import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Input from '../UI/Input';
 import Images from './Images';
+import Modal from '../modal/Modal';
+import api from "../../api/api";
 
 
 const LoginPage = (props) => {
+    const [modalType, setModalType] = useState('hidden')
+
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
@@ -21,21 +24,38 @@ const LoginPage = (props) => {
 
     const navigate = useNavigate()
     const login = () => {
-        axios.post('https://apisite.tradecoinai.com/api/users/login',
+        setModalType('loader')
+        api.post('https://apisite.tradecoinai.com/api/users/login',
             {
                 email: email,
                 password: password,
             })
             .then(function (response) {
+                setModalType('hidden')
                 setToken(response.data.token);
                 navigate("/profile")
             })
             .catch(function (error) {
+                setModalType('hidden')
                 setPrintedError(error.response.data.message)
             });
     }
+
+    useEffect(() => {
+        const token = localStorage.getItem('token');
+        if (token.length > 10) {
+            api.get('/users/checkAuth')
+                .then(function (response) {
+                    navigate("/profile")
+                })
+        }
+
+    }, [])
+
+
     return (
         <div className="elements">
+            <Modal modalType={modalType} setModalType={setModalType} />
             <div className="left transiton_show_hide" id="left">
                 <div className="container" id="left_container">
                     <div className="logo">

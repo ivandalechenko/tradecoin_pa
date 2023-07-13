@@ -1,7 +1,13 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Navigation = ({ setModalType }) => {
+    const navigate = useNavigate()
+    const logout = () => {
+        localStorage.setItem('token', '')
+        navigate("/login")
+    }
+
     return (
         <>
             <div className="navigation">
@@ -61,12 +67,12 @@ const Navigation = ({ setModalType }) => {
                     Back to website
                 </div>
             </Link>
-            <Link to="/login" className="bottom_button background_transparent">
+            <button onClick={logout} className="bottom_button background_transparent">
                 <img src="img/pa/return_arrow.svg" alt="arrow logout" />
                 <div className="text">
                     Log out
                 </div>
-            </Link>
+            </button>
         </>
     )
 }

@@ -1,36 +1,54 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import Modal from '../modal/Modal';
+import api from "../../api/api";
 
 const EnterCode = (props) => {
-    const [code, setCode] = useState(0)
+    const [modalType, setModalType] = useState('hidden')
+
+    const [code, setCode] = useState()
     const codeChange = (event) => {
         setCode(event.target.value);
     };
     const navigate = useNavigate()
+    const [printedError, setPrintedError] = useState('')
     const [token, setToken] = useState(localStorage.getItem('token'));
     useEffect(() => {
         localStorage.setItem('token', token)
     }, [token])
     const sendCode = () => {
-        axios.post('https://apisite.tradecoinai.com/api/users/enterCode', {
+        setModalType('loader')
+        api.post('/users/enterCode', {
             code: code,
-        },
-            {
-                headers: {
-                    'Authorization': localStorage.getItem('reg_token')
-                },
-            })
+        })
             .then(function (response) {
+                setModalType('hidden')
                 setToken(response.data.token);
                 navigate("/profile")
             })
             .catch(function (error) {
+                setModalType('hidden')
                 console.log(error);
+                setPrintedError(error.response.data.message)
             });
     }
+
+    useEffect(() => {
+        const token = localStorage.getItem('token');
+        if (token.length > 10) {
+            api.get('/users/checkAuth')
+                .then(function (response) {
+                    navigate("/profile")
+                })
+        }
+
+    }, [])
+
+
     return (
         <div className="elements">
+            <Modal modalType={modalType} setModalType={setModalType} />
             <div className="modal_auth transiton_show_hide" id="modal_auth">
                 <div className="modal_auth_inner">
                     <div className="back">
@@ -47,9 +65,15 @@ const EnterCode = (props) => {
                             Provide us e-mail of your account and we will send a code to your mailbox
                         </div>
                         <div className="code_input" id="code_input">
-                            <input type="number" className="code_input_element" placeholder="123456" onChange={codeChange} value={code} maxLength={6} />
+                            <input type="text" className="code_input_element" placeholder="123456" onChange={codeChange} value={code} maxLength={6} />
                         </div>
 
+
+                        <div className="errors">
+                            <div className="error">
+                                {printedError}
+                            </div>
+                        </div>
 
                         <button className="send_code_btn" id="send_a_code" onClick={sendCode}>
                             Recover password

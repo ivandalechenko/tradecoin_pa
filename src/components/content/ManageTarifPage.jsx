@@ -6,10 +6,10 @@ import Offers from './Offers';
 import CurrentTarif from './CurrentTarif';
 import Sidebar from '../sidebar/Sidebar';
 
-const ManageTarifPage = ({ setModalType }) => {
+const ManageTarifPage = () => {
     return (
         <div className="container">
-            <Sidebar setModalType={setModalType} />
+            <Sidebar />
             <div id='content'>
                 <div id="manage_tarif_page">
                     <CurrentTarif />

@@ -1,6 +1,12 @@
 import React from 'react';
 
-const Header = (props) => {
+const Header = ({ setSidebarOpen }) => {
+    const openSidebar = () => {
+        setSidebarOpen('sidebar_open')
+    }
+    const closeSidebar = () => {
+        setSidebarOpen('')
+    }
     return (
         <div className="header">
             <div className="logo">
@@ -17,10 +23,10 @@ const Header = (props) => {
                     </div>
                     <img width='18' height="10" src="img/pa/flags/arrow_down.png" alt="arrow_down" />
                 </div>
-                <div id="burger_opener">
+                <div id="burger_opener" onClick={openSidebar}>
                     <img width="20" height="20" alt="menu_opener" src="img/pa/burger.svg" />
                 </div>
-                <div id="burger_closer" className="dnone">
+                <div id="burger_closer" onClick={setSidebarOpen}>
                     <img width="20" height="20" alt="menu_closer" src="img/pa/cross.svg" />
                 </div>
             </div>

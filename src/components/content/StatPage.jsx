@@ -2,10 +2,10 @@ import React from 'react';
 import Sidebar from '../sidebar/Sidebar';
 import HorizontalLine from '../UI/HorizontalLine';
 
-const StatPage = ({ setModalType }) => {
+const StatPage = () => {
     return (
         <div className="container">
-            <Sidebar setModalType={setModalType} />
+            <Sidebar />
             <div id='content'>
                 <div id="ref_page">
                     <div className="section" id="ref">

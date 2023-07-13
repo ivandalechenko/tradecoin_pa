@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 const Input = ({ props }) => {
-    const [inputType, setInputType] = useState('password')
+    const [inputType, setInputType] = useState('text')
     const [eyeType, setEyeType] = useState('eye')
     return (
         <div className="input_block" id="email">
@@ -17,10 +17,10 @@ const Input = ({ props }) => {
                     props.password
                         ? <img className="eye" src={"img/login/" + eyeType + ".svg"} onClick={() => {
                             if (inputType == 'password') {
-                                setEyeType('eye_closed')
+                                setEyeType('eye')
                                 setInputType('text')
                             } else {
-                                setEyeType('eye')
+                                setEyeType('eye_closed')
                                 setInputType('password')
                             }
                         }} />

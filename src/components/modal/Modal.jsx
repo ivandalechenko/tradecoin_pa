@@ -9,18 +9,20 @@ const Modal = ({ modalType, setModalType }) => {
     }
 
     return (
-        <div className={rootClasses.join(' ')} onClick={() => setModalType("hidden")}>
-            <div onClick={(e) => e.stopPropagation()}>
-                {modalType == 'add_api'
-                    ? <ModalAddApi setModalType={setModalType} />
-                    : <></>
-                }
-                {modalType == 'loader'
-                    ? <ModalLoader />
-                    : <></>
-                }
-            </div>
-        </div>
+        <>
+            {modalType == 'loader'
+                ? <ModalLoader />
+                : <div className={rootClasses.join(' ')} onClick={() => setModalType("hidden")}>
+                    <div onClick={(e) => e.stopPropagation()}>
+                        {modalType == 'add_api'
+                            ? <ModalAddApi setModalType={setModalType} />
+                            : <></>
+                        }
+                    </div>
+                </div>
+            }
+
+        </>
     )
 }
 

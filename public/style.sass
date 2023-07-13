@@ -335,7 +335,7 @@ body
     right: 0px
     bottom: 0px
     display: none
-    z-index: 1
+    z-index: 10
     justify-content: center
     padding: 15px
     transition: opacity 500ms ease-in-out
@@ -365,7 +365,20 @@ body
                     margin: auto 0
 
     #inner_loader
-        background: red
+        .modal_inner
+            background: none
+        img
+            width: 100px
+            height: 100px
+            animation: loader 1s infinite cubic-bezier(0.5, 0, 0.5, 1)
+        @keyframes loader
+            0%
+                transform: rotate(0deg)
+            80%
+                transform: rotate(360deg)
+            100%
+                transform: rotate(360deg)
+
     #inner_pay
         max-width: 487px
         .input_block
@@ -685,7 +698,8 @@ body
         overflow: hidden
         .section
             background: none
-
+    #burger_closer
+        display: none
     .header
         display: flex
         justify-content: space-between
@@ -797,6 +811,12 @@ body
         margin-top: 200px
         @media (max-width: 1400px)
             display: none
+.sidebar_open
+    height: 570px !important
+    #burger_opener
+        display: none
+    #burger_closer
+        display: block !important
 #content
     width: 82%
     @media (max-width: 1400px)
@@ -1614,6 +1634,18 @@ body
     width: 100%
     overflow: hidden
     flex-wrap: wrap
+    .errors
+        display: flex
+        justify-content: center
+        flex-wrap: wrap
+        margin-top: 20px
+        row-gap: 10px
+        .error
+            width: 100%
+            text-align: center
+            color: #FF5F72
+            font-size: 16px
+            font-weight: 700
     .container
         row-gap: 0px
     .transiton_show_hide
@@ -1648,11 +1680,11 @@ body
             line-height: 20px
             overflow: hidden
 
-            a
+            a, button
+                padding: 0px 10px
                 background: none
                 color: #D9E44F
                 font-size: 14px
-                font-family: Inter Tight
                 font-style: normal
                 font-weight: 700
                 line-height: normal
@@ -1912,6 +1944,7 @@ body
             align-items: center
             margin-top: 20px
             column-gap: 8px
+            width: 100%
             .text
                 color: #B5B6B6
                 font-size: 13px
@@ -1922,18 +1955,7 @@ body
                 font-weight: 700
                 letter-spacing: -0.28px
                 color: #D9E44F
-        .errors
-            display: flex
-            justify-content: center
-            flex-wrap: wrap
-            margin-top: 20px
-            row-gap: 10px
-            .error
-                width: 100%
-                text-align: center
-                color: #FF5F72
-                font-size: 16px
-                font-weight: 700
+
     .right
         width: 50%
         min-height: 100vh
