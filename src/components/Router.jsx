@@ -9,7 +9,6 @@ import ForgotPassword from './auth/ForgotPassword';
 import EnterCode from './auth/EnterCode';
 import NewPassword from './auth/NewPassword';
 import StatPage from './content/StatPage';
-import api from "../api/api";
 import Modal from './modal/Modal';
 import ProtectedRoute from './ProtectedRoute';
 import HomePage from './content/HomePage';
@@ -20,10 +19,7 @@ import { checkAuthAction } from "../redux/userActions";
 const Router = (props) => {
     const [logged, setLogged] = useState(false)
     const data = useSelector(state => state.userReducer)
-
     const dispatch = useDispatch()
-    console.log(data)
-
     const token = localStorage.getItem('token') || ''
     const [isLoading, setIsLoading] = useState(token.length > 0)
 

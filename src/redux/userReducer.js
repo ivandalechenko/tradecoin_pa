@@ -11,7 +11,7 @@ const userReducer = (state = intialState, action) => {
                 user: action.payload.user,
                 isLoggedIn: action.payload.isLoggedIn
             }
-            case 'SET_USER':
+        case 'SET_USER':
             return {
                 ...state,
                 user: action.payload,

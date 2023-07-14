@@ -1,0 +1,2061 @@
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section
+    display: block
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video, button
+    margin: 0
+    padding: 0
+    border: 0
+    font-size: 100%
+    font: inherit
+    vertical-align: baseline
+    box-sizing: border-box
+    color: white
+    font-family: "Inter"
+a
+    text-decoration: none
+
+a,button
+    transition: opacity 300ms
+a:hover, button:hover
+    cursor: pointer
+    opacity: 0.7
+.secure
+    margin-top: 34px
+    display: flex
+    column-gap: 15px
+    &_medium15, &_img
+        margin: auto 0
+    &_medium15
+        color: #B5B6B6
+        padding-right: 15px
+        @media (max-width: 550px)
+            font-size: 12px
+            line-height: 15px
+.free_image
+    width: 0px
+    height: 0px
+    position: relative
+.accept_btn
+    border-radius: 65px
+    background: var(--primary, #3763FF)
+    padding: 20px
+    font-size: 16px
+    font-weight: 700
+    letter-spacing: -0.32px
+    width: 100%
+    @media (max-width: 550px)
+        font-size: 14px
+
+
+.btn
+    font-weight: 700
+    font-size: 16px
+    line-height: 19px
+    letter-spacing: -0.02em
+    @media(max-width: 550px)
+        font-size: 14px
+        line-height: 17px
+.small_btn
+    font-weight: 500
+    font-size: 14px
+    line-height: 17px
+    letter-spacing: -0.02em
+.body
+    font-weight: 300
+    font-size: 16px
+    line-height: 25px
+    @media (max-width: 550px)
+        font-size: 14px
+        line-height: 22px
+
+.colored_text
+    font-weight: 800
+    font-size: 16px
+    line-height: 19px
+    letter-spacing: 0.205em
+    text-transform: uppercase
+    @media (max-width: 550px)
+        font-size: 12px
+        line-height: 15px
+h1
+    font-weight: 700
+    font-size: 44px
+    line-height: 53px
+    letter-spacing: -0.02em
+    @media(max-width: 550px)
+        font-size: 26px
+        line-height: 31px
+h2
+    font-weight: 700
+    font-size: 36px
+    line-height: 44px
+    letter-spacing: -0.02em
+    @media(max-width: 550px)
+        font-size: 24px
+        line-height: 29px
+
+h3
+    font-weight: 700
+    font-size: 26px
+    line-height: 31px
+    letter-spacing: -0.02em
+    @media(max-width: 550px)
+        font-size: 18px
+        line-height: 22px
+h4
+    font-weight: 700
+    font-size: 24px
+    line-height: 29px
+    letter-spacing: -0.02em
+    @media(max-width: 550px)
+        font-size: 17px
+        line-height: 21px
+h5
+    font-weight: 700
+    font-size: 20px
+    line-height: 24px
+    letter-spacing: -0.02em
+    @media (max-width: 550px)
+        font-size: 14px
+        line-height: 21px
+h6
+    font-weight: 700
+    font-size: 18px
+    line-height: 22px
+    letter-spacing: -0.02em
+
+.h4
+    font-weight: 700
+    font-size: 24px
+    line-height: 29px
+    letter-spacing: -0.02em
+    @media(max-width: 550px)
+        font-size: 17px
+        line-height: 21px
+.h5
+    font-weight: 700
+    font-size: 20px
+    letter-spacing: -0.02em
+    @media (max-width: 550px)
+        font-size: 18px
+.h6
+    font-weight: 700
+    font-size: 18px
+    line-height: 22px
+    letter-spacing: -0.02em
+
+.light18
+    font-weight: 300
+    font-size: 18px
+    line-height: 22px
+    letter-spacing: -0.02em
+
+.medium15
+    font-weight: 500
+    font-size: 15px
+    line-height: 20px
+.bold15
+    font-weight: 700
+    font-size: 15px
+    line-height: 20px
+    letter-spacing: -0.025em
+.light14
+    font-weight: 300
+    font-size: 14px
+    line-height: 20px
+
+.regular14
+    font-weight: 400
+    font-size: 14px
+    line-height: 20px
+
+.medium14
+    font-weight: 500
+    font-size: 14px
+    line-height: 20px
+
+.medium12
+    font-weight: 500
+    font-size: 12px
+    line-height: 15px
+    letter-spacing: -0.02em
+
+.tight
+    letter-spacing: -0.04em
+
+.input_block
+    border-radius: 12px
+    width: 100%
+    padding: 12px 20px
+    border: 1px solid rgba(255, 255, 255, 0.25)
+    display: flex
+    column-gap: 16px
+    align-items: center
+    .label_and_input_and_eye
+        display: flex
+        justify-content: space-between
+        width: 100%
+        .label_and_input
+            padding-left: 16px
+            border-left: 1px solid rgba(255, 255, 255, 0.25)
+            display: flex
+            justify-content: space-between
+            flex-wrap: wrap
+            .label
+                padding-left: 2px
+                color: #B5B6B6
+                font-size: 12px
+                font-weight: 500
+                letter-spacing: -0.24px
+                width: 100%
+            input
+                background: none
+                border: none
+                color: white
+                outline: none
+                font-size: 15px
+                font-weight: 500
+                line-height: 20px
+                @media (max-width: 500px)
+                    font-size: 12px
+        .eye
+            transition: 300ms
+        .eye:hover
+            cursor: pointer
+            transform: rotate(10deg) scale(1.2)
+
+
+
+body
+    background: radial-gradient(63.04% 62.69% at 10.45% 12.57%, rgba(44, 39, 255, 0.26) 0%, rgba(39, 139, 255, 0.00) 100%), radial-gradient(50.96% 50.72% at 82.88% 61.38%, rgba(44, 39, 255, 0.20) 0%, rgba(44, 39, 255, 0.00) 100%), linear-gradient(180deg, #040B14 0%, #081934 100%)
+    min-height: 100vh
+.send_info_button
+    padding: 19px 44px
+    justify-content: center
+    align-items: center
+    gap: 8px
+    border-radius: 65px
+    background: var(--primary, #3763FF)
+    font-size: 16px
+    font-weight: 700
+    letter-spacing: -0.32px
+    width: 100%
+    max-width: 230px
+
+.section
+    border-radius: 14px
+    background: rgba(255, 255, 255, 0.05)
+    padding: 20px 26px 30px
+    width: 100%
+    .hr
+        margin-top: 24px
+        width: 100%
+        height: 1px
+        background: linear-gradient(270deg, rgba(255, 255, 255, 0.00) 0%, rgba(255, 255, 255, 0.50) 52.60%, rgba(255, 255, 255, 0.00) 100%)
+    .content
+        margin-top: 24px
+.buttons_balance
+    display: flex
+    column-gap: 12px
+    @media (max-width: 700px)
+        justify-content: center
+        width: 100%
+    .button
+        padding: 16px
+        border-radius: 20px
+        background: var(--5, rgba(255, 255, 255, 0.05))
+        padding-right: 100px
+        @media (max-width: 600px)
+            padding-right: 16px
+            width: 100%
+            padding: 10px
+
+        .name
+            margin-top: 12px
+            font-size: 18px
+            font-weight: 700
+            letter-spacing: -0.36px
+            @media (max-width: 500px)
+                font-size: 13px
+        .desc
+            margin-top: 6px
+            color: var(--secondary, #B5B6B6)
+            font-size: 15px
+            font-weight: 500
+            line-height: 20px
+            @media (max-width: 500px)
+                font-size: 12px
+.checkbox
+    display: flex
+    column-gap: 8px
+    .checkbox_wrapper, .text
+        margin: auto 0
+    .checkbox_wrapper:hover
+        border: 1px solid rgba(255, 255, 255, 0.5)
+        cursor: pointer
+    .checkbox_wrapper
+        border: 1px solid rgba(255, 255, 255, 0.25)
+        display: flex
+        justify-content: center
+        transition: border 200ms
+        border-radius: 7px
+        width: 24px
+        height: 24px
+        img
+            display: none
+    .checked
+        background: var(--primary, #3763FF)
+        border: none
+        img
+            display: block
+    .text
+        color: var(--secondary, #B5B6B6)
+        font-size: 14px
+        font-weight: 400
+        line-height: 20px
+
+.modal
+    background: linear-gradient(180deg, rgba(11, 13, 27, 0.87) 0%, rgba(0, 0, 0, 0.44) 100%)
+    backdrop-filter: blur(2px)
+    position: fixed
+    top: 0px
+    left: 0px
+    right: 0px
+    bottom: 0px
+    display: none
+    z-index: 10
+    justify-content: center
+    padding: 15px
+    transition: opacity 500ms ease-in-out
+    align-items: center
+    .modal_closer:hover
+        transform: rotate(10deg) scale(1.1)
+    .modal_closer
+        transition: transform 100ms
+        cursor: pointer
+    .modal_inner
+        width: 100%
+        height: auto
+        border-radius: 14px
+        border: 1px solid rgba(255, 255, 255, 0.10)
+        background: var(--5, rgba(255, 255, 255, 0.05))
+        backdrop-filter: blur(34px)
+        padding: 24px
+        .header
+            display: flex
+            justify-content: space-between
+            .name, img
+                margin: auto 0
+            .name
+                display: flex
+                column-gap: 16px
+                img, .text
+                    margin: auto 0
+
+    #inner_loader
+        .modal_inner
+            background: none
+        img
+            width: 100px
+            height: 100px
+            animation: loader 1s infinite cubic-bezier(0.5, 0, 0.5, 1)
+        @keyframes loader
+            0%
+                transform: rotate(0deg)
+            80%
+                transform: rotate(360deg)
+            100%
+                transform: rotate(360deg)
+
+    #inner_pay
+        max-width: 487px
+        .input_block
+            margin-top: 24px
+        .ccv_and_date
+            display: flex
+            margin-top: 12px
+            justify-content: space-between
+            @media (max-width: 550px)
+                flex-wrap: wrap
+                row-gap: 12px
+            .input_block
+                margin-top: 0px
+                width: 48%
+        .price
+            margin-top: 24px
+            border-radius: 12px
+            background: var(--5, rgba(255, 255, 255, 0.05))
+            padding: 23px
+            display: flex
+            justify-content: space-between
+            .name
+                font-size: 15px
+                font-weight: 500
+                line-height: 20px
+                color: var(--secondary, #B5B6B6)
+                @media (max-width: 550px)
+                    font-size: 14px
+            .new_old
+                display: flex
+                column-gap: 12px
+                margin-top: 8px
+                .new, .old
+                    margin: auto 0
+                .new
+                    font-size: 24px
+                    font-weight: 700
+                    letter-spacing: -0.48px
+                    @media (max-width: 550px)
+                        font-size: 17px
+                .old
+                    color: rgba(255, 255, 255, 0.50)
+                    font-size: 20px
+                    font-weight: 300
+                    letter-spacing: -0.4px
+                    text-decoration: line-through
+                    @media (max-width: 550px)
+                        font-size: 14px
+            .num, .percent
+                margin: auto 0
+            .percent
+                color: var(--frames, #1C1D1E)
+                font-size: 15px
+                font-weight: 500
+                line-height: 20px
+                border-radius: 6px
+                background: var(--accent, #ACE44F)
+                padding: 4px 12px
+                @media (max-width: 550px)
+                    font-size: 14px
+        .checkbox
+            margin-top: 24px
+            a
+                color: rgba(217, 228, 79, 1)
+                text-decoration: none
+        .accept_btn
+            margin-top: 24px
+    #inner_add_api
+        max-width: 678px
+        .content
+            .steps_and_notice
+                display: flex
+                justify-content: space-between
+                margin-top: 28px
+                padding-top: 20px
+                flex-wrap: wrap
+                border-top: 1px solid rgba(255, 255, 255, 0.25)
+                .notice
+                    width: 261px
+                    @media (max-width: 700px)
+                        width: 100%
+                        margin-top: 20px
+                    .wrapper
+                        border-radius: 11px
+                        background: var(--5, rgba(255, 255, 255, 0.05))
+                        padding: 14px
+                        .text
+                            margin-top: 16px
+                            .header
+                                font-size: 18px
+                                font-weight: 700
+                                letter-spacing: -0.36px
+                            .info
+                                margin-top: 8px
+                                color: var(--secondary, #B5B6B6)
+                                font-size: 15px
+                                font-weight: 500
+                                line-height: 20px
+                .steps_and_bg
+                    display: flex
+                    width: 360px
+                    @media (max-width: 700px)
+                        width: 100%
+                        flex-wrap: wrap
+                    .bg
+                        width: 58px
+                        border-radius: 67px
+                        background: linear-gradient(180deg, #287EFF 0%, #4200FF 34.90%, #AB1AFF 67.71%, rgba(188, 31, 255, 0.00) 100%)
+                        @media (max-width: 700px)
+                            width: 100%
+                            height: 62px
+                            background: linear-gradient(90deg, #287EFF 0%, #4200FF 34.90%, #AB1AFF 67.71%, rgba(188, 31, 255, 0.00) 100%)
+                    .steps
+                        width: 80%
+                        margin-top: 4px
+                        margin-left: -54px
+                        display: flex
+                        flex-wrap: wrap
+                        @media (max-width: 700px)
+                            width: 100%
+                            flex-wrap: nowrap
+                            margin: 0px
+                            margin-top: -56px
+
+                        .step:not(:first-child)
+                            margin-top: 50px
+                            @media (max-width: 700px)
+                                margin-top: 0px
+                        .step
+                            width: 290px
+                            column-gap: 23px
+                            display: flex
+                            @media (max-width: 700px)
+                                flex-wrap: wrap
+                                justify-content: center
+                            .num
+                                width: 50px
+                                height: 50px
+                                background: rgba(255, 255, 255, 0.20)
+                                border-radius: 50px
+                            .text
+                                @media (max-width: 700px)
+                                    width: 100%
+                                .head
+                                    font-size: 18px
+                                    font-weight: 700
+                                    letter-spacing: -0.36px
+                                    @media (max-width: 700px)
+                                        text-align: center
+                                        width: 100%
+                                        margin-top: 18px
+                                        font-size: 17px
+
+                                .info
+                                    color: var(--secondary, #B5B6B6)
+                                    font-size: 15px
+                                    font-weight: 500
+                                    line-height: 20px
+                                    margin-top: 8px
+                                    @media (max-width: 700px)
+                                        margin-top: 6px
+                                        text-align: center
+                                        font-size: 12px
+                            .num, .text
+                                margin: auto 0
+                                @media (max-width: 700px)
+                                    margin: 0
+                        .step:first-child
+                            @media (max-width: 700px)
+                                flex-wrap: wrap
+                                justify-content: left
+                                button
+                                    margin-left: 6px
+                        .step:last-child
+                            @media (max-width: 700px)
+                                flex-wrap: wrap
+                                justify-content: right
+                                button
+                                    margin-right: 6px
+
+            .button_and_check
+                margin-top: 28px
+                display: flex
+                column-gap: 24px
+                flex-wrap: wrap
+                row-gap: 12px
+                button, .checkbox
+                    margin: auto 0
+
+            .input_block
+                margin-top: 12px
+            .input_block_first
+                margin-top: 24px
+            .platforms
+                margin-top: 30px
+                padding-bottom: 12px
+                display: flex
+                justify-content: space-between
+                column-gap: 9px
+                @media (max-width: 600px)
+                    flex-wrap: wrap
+                    row-gap: 14px
+                .active
+                    border: 1px solid #3763FF
+                    background: rgba(109, 141, 255, 0.05)
+                    box-shadow: 0px 13px 24px 0px rgba(55, 99, 255, 0.23)
+                .platform:hover
+                    border: 1px solid #3763FF
+                    box-shadow: 0px 13px 24px 0px rgba(55, 99, 255, 0.23)
+                    cursor: pointer
+                .platform
+                    transition: border 200ms, box-shadow 400ms
+                    width: 100%
+                    padding: 16px
+                    border-radius: 8px
+                    border: 1px solid var(--5, rgba(255, 255, 255, 0.05))
+                    background: var(--5, rgba(255, 255, 255, 0.05))
+                    height: 138px
+                    @media (max-width: 600px)
+                        width: 100%
+                        height: auto
+                        display: flex
+                    .border, .img
+                        @media (max-width: 600px)
+                            margin: auto 0
+
+                    .border
+                        border-radius: 27px
+                        border: 1px solid var(--white-25, rgba(255, 255, 255, 0.25))
+                        width: 24px
+                        height: 24px
+                    .img
+                        margin-top: 14px
+                        display: flex
+                        justify-content: center
+                        width: 100%
+                        @media (max-width: 600px)
+                            margin-top: 0px
+
+                .selected
+                    border: 1px solid #3763FF
+                    background: rgba(109, 141, 255, 0.05)
+                    box-shadow: 0px 13px 24px 0px rgba(55, 99, 255, 0.23)
+                    .border
+                        border-radius: 27px
+                        border: 8px solid var(--primary, #3763FF)
+                        background: var(--white, #FFF)
+                        width: 24px
+                        height: 24px
+    #inner_renew_tarif
+        max-width: 487px
+        .header_desc
+            margin-top: 14px
+            color: var(--white-50, rgba(255, 255, 255, 0.50))
+            font-size: 15px
+            font-weight: 500
+            line-height: 20px
+        .info
+            margin-top: 24px
+            border-top: 1px solid rgba(255, 255, 255, 0.05)
+            padding-top: 24px
+            text-align: center
+        .sum
+            font-size: 36px
+            font-weight: 700
+            letter-spacing: -0.72px
+        .chain
+            margin-top: 10px
+            display: flex
+            width: 100%
+            justify-content: center
+            column-gap: 5px
+            .text
+                color: var(--secondary, #B5B6B6)
+                font-size: 16px
+                font-weight: 500
+                letter-spacing: -0.32px
+            .type
+                font-size: 16px
+                font-weight: 700
+                letter-spacing: -0.32px
+        .adress
+            margin-top: 24px
+            padding: 16px
+            display: flex
+            justify-content: space-between
+            border-radius: 12px
+            column-gap: 10px
+            background: var(--5, rgba(255, 255, 255, 0.05))
+            .text, img
+                margin: auto 0
+            .text
+                font-size: 16px
+                font-weight: 700
+                letter-spacing: -0.32px
+                overflow: auto
+        .accept_btn
+            margin-top: 24px
+.modal_show
+    display: flex
+.container
+    width: 100%
+    max-width: 1440px
+    padding: 15px
+    margin: 0 auto
+    display: flex
+    flex-wrap: wrap
+    row-gap: 20px
+    justify-content: space-between
+    @media (max-width: 600px)
+        padding: 10px
+#sidebar
+    width: 16.5%
+    @media (max-width: 1400px)
+        width: 100%
+        transition: height 400ms ease-in-out
+        height: 60px
+        overflow: hidden
+        .section
+            background: none
+    #burger_closer
+        display: none
+    .header
+        display: flex
+        justify-content: space-between
+        .logo
+            width: 100%
+            display: flex
+            column-gap: 16px
+            @media (max-width: 1400px)
+                column-gap: 14px
+                .text
+                    font-size: 16px
+                img
+                    height: 28px
+                    width: 28px
+            img, .text
+                margin: auto 0
+            .text
+                letter-spacing: -0.365px
+                font-size: 18px
+                font-weight: 700
+        .burger_and_lang, .logo
+            margin: auto 0
+        .burger_and_lang
+            display: none
+            @media (max-width: 1400px)
+                display: flex
+                column-gap: 20px
+
+            #burger_opener, #burger_closer, #lang:hover
+                cursor: pointer
+            #lang
+                display: flex
+                column-gap: 12px
+                .name, img
+                    margin: auto 0
+                .name
+                    font-size: 16px
+                    font-weight: 700
+                    letter-spacing: -0.3px
+                    @media (max-width: 350px)
+                        display: none
+    .section
+        position: sticky
+        top: 15px
+        padding: 14px
+        @media (max-width: 1400px)
+            position: relative
+        @media (max-width: 600px)
+            padding: 6px
+
+        .navigation
+            display: flex
+            flex-wrap: wrap
+            margin-top: 26px
+            .navigation_element, .navigation_element_no_act
+                width: 100%
+                padding: 12px
+                background: none
+                border-radius: 12px
+                display: flex
+                column-gap: 16px
+                transition: background 300ms, filter 100ms
+                filter: brightness(0.7)
+                .text
+                    font-size: 15px
+                    font-weight: 500
+                img, .text
+                    margin: auto 0
+            .navigation_element:hover, .navigation_element_no_act:hover
+                background: #3763FF
+                cursor: pointer
+                filter: brightness(1)
+            .active
+                filter: brightness(1)
+                background: #3763FF
+        #add_api_opener:hover
+            cursor: pointer
+        #add_api_opener
+            margin-top: 44px
+            background: #3763FF
+            border-radius: 45px
+            padding: 12px
+            width: 100%
+            display: flex
+            justify-content: center
+            column-gap: 12px
+            align-items: center
+            .text
+                font-size: 15px
+                font-weight: 500
+    .bottom_button
+        margin-top: 10px
+        background: rgba(255, 255, 255, 0.05)
+        border-radius: 12px
+        padding: 12px
+        display: flex
+        justify-content: left
+        column-gap: 16px
+        width: 100%
+        img, .text
+            margin: auto 0
+        .text
+            font-size: 15px
+            font-weight: 500
+            color: #B5B6B6
+    .background_transparent
+        background: transparent
+    .lang
+        margin-top: 200px
+        @media (max-width: 1400px)
+            display: none
+.sidebar_open
+    height: 570px !important
+    #burger_opener
+        display: none
+    #burger_closer
+        display: block !important
+#content
+    width: 82%
+    @media (max-width: 1400px)
+        width: 100%
+    .section:not(:first-child)
+        margin-top: 20px
+    #profile
+        background: linear-gradient(180deg, #3763FF 0%, rgba(55, 99, 255, 0.00) 60%), rgba(255, 255, 255, 0.05)
+        .hr
+            width: 60%
+        .content
+            display: flex
+            column-gap: 32px
+            flex-wrap: wrap
+            .img
+                width: 15%
+                min-width: 140px
+                @media (max-width: 550px)
+                    width: 100%
+                    display: flex
+                    justify-content: center
+            .info
+                .greetings
+                    font-size: 16px
+                    font-weight: 300
+                    @media (max-width: 550px)
+                        margin-top: 10px
+                .name
+                    margin-top: 10px
+                    font-size: 36px
+                    font-weight: 700
+                    letter-spacing: -0.72px
+                .form
+                    display: flex
+                    margin-top: 24px
+                    column-gap: 10px
+                    flex-wrap: wrap
+                    row-gap: 11px
+                    .input_block
+                        width: 300px
+                .send_info_button
+                    margin-top: 24px
+    #balance, #manage_tarifs
+        padding: 20px 26px 16px
+        @media (max-width: 500px)
+            padding: 20px 12px 16px
+
+        .content
+            display: flex
+            justify-content: space-between
+            flex-wrap: wrap
+            row-gap: 20px
+            @media (max-width: 1173px)
+                justify-content: center
+            .balance
+                width: 50%
+                display: flex
+                column-gap: 30px
+                @media (max-width: 1173px)
+                    width: 100%
+                    justify-content: center
+                @media (max-width: 500px)
+                    column-gap: 10px
+
+                .round, .info
+                    margin: auto 0
+                .round
+                    display: flex
+                    @media (max-width: 500px)
+                        img
+                            width: 114px
+                    img, .text
+                        margin: auto 0
+                    .text
+                        margin-left: -156px
+                        width: 156px
+                        text-align: center
+                        font-size: 14px
+                        font-weight: 700
+                        letter-spacing: -0.28px
+                        @media (max-width: 500px)
+                            margin-left: -114px
+                            width: 114px
+                .info
+                    .name
+                        display: flex
+                        column-gap: 12px
+                        .text
+                            font-size: 14px
+                            font-weight: 700
+                            letter-spacing: -0.28px
+                        img, .text
+                            margin: auto 0
+                    .count
+                        margin-top: 8px
+                        display: flex
+                        column-gap: 12px
+                        flex-wrap: wrap
+                        row-gap: 10px
+                        .num
+                            font-size: 36px
+                            font-weight: 700
+                            letter-spacing: -0.72px
+                            @media (max-width: 500px)
+                                font-size: 26px
+                        .percent
+                            padding: 4px 12px
+                            border-radius: 6px
+                            background: #2CBA65
+                            font-size: 15px
+                            font-weight: 500
+                            @media (max-width: 500px)
+                                font-size: 12px
+                        .percent, .num
+                            margin: auto 0
+                    .earned
+                        margin-top: 8px
+                        display: flex
+                        column-gap: 12px
+                        .num
+                            font-size: 18px
+                            font-weight: 700
+                            letter-spacing: -0.36px
+                        .text
+                            color: #B5B6B6
+                            font-size: 15px
+                            font-weight: 500
+                        .text, .num
+                            margin: auto 0
+    #password
+        .content
+            display: flex
+            column-gap: 32px
+            flex-wrap: wrap
+            .img
+                width: 15%
+                min-width: 140px
+                @media (max-width: 550px)
+                    width: 100%
+                    display: flex
+                    justify-content: center
+            .info
+                .btn
+                    margin-top: 24px
+                .form
+                    display: flex
+                    margin-top: 16px
+                    column-gap: 10px
+                    flex-wrap: wrap
+                    row-gap: 11px
+                    .input_block
+                        width: 300px
+                .send_info_button
+                    margin-top: 24px
+    #have_problems
+        padding: 40px
+        overflow: hidden
+        @media (max-width: 600px)
+            padding: 10px
+
+        .images
+            display: flex
+            justify-content: right
+            @media (max-width: 1000px)
+                justify-content: center
+            .fone_mail
+                top: -638px
+                left: -913px
+                z-index: -1
+                @media (max-width: 1000px)
+                    top: -647px
+                    left: -684px
+        .chance
+            font-size: 16px
+            font-weight: 800
+            letter-spacing: 3.28px
+            text-transform: uppercase
+            background: linear-gradient(90deg, #D4FFBF -6.86%, #C2D0FF 128.43%)
+            -webkit-background-clip: text
+            -webkit-text-fill-color: transparent
+            background-clip: text
+            text-fill-color: transparent
+            @media (max-width: 600px)
+                font-size: 12px
+        .header
+            margin-top: 12px
+            font-size: 36px
+            font-weight: 700
+            letter-spacing: -0.72px
+            @media (max-width: 600px)
+                font-size: 24px
+        p
+            margin-top: 12px
+            width: 100%
+            max-width: 338px
+            font-size: 16px
+            font-weight: 300
+            @media (max-width: 600px)
+                font-size: 14px
+        .contancts
+            margin-top: 26px
+            display: flex
+            column-gap: 12px
+            flex-wrap: wrap
+            row-gap: 12px
+            @media (max-width: 1000px)
+                padding-bottom: 260px
+            .contact
+                border-radius: 52px
+                background: linear-gradient(90deg, rgba(255, 255, 255, 0.16) 0%, rgba(255, 255, 255, 0.00) 100%)
+                padding: 8px
+                padding-right: 70px
+                display: flex
+                column-gap: 12px
+                @media (max-width: 800px)
+                    width: 100%
+                img, .text
+                    margin: auto 0
+    #manage_tarifs
+        padding: 20px 26px 20px
+        @media (max-width: 500px)
+            padding: 20px 12px 20px
+    #select_other_tarif
+        .offers
+            &_offers_list
+                margin-top: 24px
+                display: flex
+                justify-content: space-around
+                @media (max-width: 1000px)
+                    overflow: auto
+                    justify-content: left
+                    column-gap: 15px
+                    padding: 0px 15px
+                    margin: 24px -15px 0px
+
+                &_offer:hover
+                    border: 1px solid rgba(55, 99, 255, 1)
+                    box-shadow: 0px 16px 60px rgba(71, 145, 255, 0.29)
+                    background: rgba(79, 128, 255, 0.14)
+                &_offer
+                    width: 32%
+                    min-width: 302px
+                    background: rgba(255, 255, 255, 0.06)
+                    border: 1px solid rgba(55, 99, 255, 0)
+                    border-radius: 12px
+                    transition: border .5s, box-shadow .5s
+                    @media (max-width: 550px)
+                        width: 100%
+
+                    &_header, &_content
+                        padding: 24px
+                        @media (max-width: 550px)
+                            padding: 12px
+                    &_header
+                        &_name
+                            display: flex
+                            column-gap: 10px
+                            @media (max-width: 550px)
+                                column-gap: 16px
+                            &_h4, &_verified
+                                margin: auto 0
+                        &_light14
+                            margin-top: 5px
+                            color: rgba(255, 255, 255, 0.74)
+                            &_medium14
+                                color: #FFFFFF
+                                @media (max-width: 550px)
+                                    margin-top: 8px
+                        &_tags
+                            display: flex
+                            flex-wrap: wrap
+                            margin-top: 10px
+                            column-gap: 6px
+                            row-gap: 6px
+                            @media (max-width: 550px)
+                                margin-top: 12px
+                            &_tag
+                                padding: 4px 12px
+                                background: #3763FF
+                                border-radius: 6px
+                            &_medium15
+                                @media (max-width: 550px)
+                                    font-size: 12px
+                                    line-height: 15px
+                                    letter-spacing: -0.02em
+                    &_chart
+                        padding-top: 20px
+                        height: 140px
+                        @media (max-width: 550px)
+                            padding-top: 30px
+                        &_img
+                            margin-top: -10px
+                            width: 100%
+                            height: auto
+                        &_price_wrapper
+                            display: flex
+                            justify-content: center
+                            margin-top: -6px
+                            &_price
+                                padding: 4px 12px
+                                background: rgba(79, 128, 255, 0.14)
+                                border-radius: 6px
+                    &_content
+                        margin-top: -20px
+                        &_info, &_pnl
+                            border-bottom: 1px solid rgba(79, 128, 255, 0.14)
+                            padding-bottom: 20px
+                        &_pnl
+                            &_medium15
+                                color: #B5B6B6
+                                @media (max-width: 550px)
+                                    font-size: 12px
+                                    line-height: 15px
+                            &_num
+                                margin-top: 6px
+                                display: flex
+                                justify-content: space-between
+                                &_h4 &_percent
+                                    margin: auto 0
+                                &_percent
+                                    color: #1C1D1E
+                                    padding: 4px 12px
+                                    background: #ACE44F
+                                    border-radius: 6px
+                                    @media (max-width: 550px)
+                                        font-size: 15px
+                                        line-height: 21px
+                        &_info
+                            &_info_element
+                                margin-top: 18px
+                                display: flex
+                                justify-content: space-between
+                                @media (max-width: 550px)
+                                    margin-top: 12px
+                                &_name, &_value
+                                    margin: auto 0
+                                &_name
+                                    color: #B5B6B6
+                                &_value
+                                    padding: 2px 8px
+                                    background: rgba(55, 99, 255, 0.1)
+                                    border-radius: 11px
+                                    letter-spacing: -0.02em
+
+                                &_regular14, &_medium14
+                                    @media (max-width: 550px)
+                                        font-size: 12px
+                                        line-height: 16px
+                        &_price
+                            margin-top: 18px
+                            &_medium15
+                                color: #B5B6B6
+                                @media (max-width: 550px)
+                                    font-size: 12px
+                                    line-height: 16px
+                            &_price_value
+                                margin-top: 6px
+                                display: flex
+                                column-gap: 8px
+                                &_add_info_type_1, &_add_info_type_2, &_h6
+                                    margin: auto 0
+                                &_add_info_type_2
+                                    background: rgba(149, 248, 164, 0.11)
+                                    border-radius: 11px
+                                    padding: 6px 12px
+                                    font-weight: 500
+                                    font-size: 14px
+                                    line-height: 17px
+                                    letter-spacing: -0.02em
+                                    color: #FFFFFF
+                                &_add_info_type_1
+                                    padding: 4px 12px
+                                    background: #ADFC06
+                                    border-radius: 7px
+                                    font-weight: 600
+                                    font-size: 14px
+                                    line-height: 17px
+                                    letter-spacing: -0.02em
+                                    color: #000000
+                                &_h6
+                                    @media (max-width: 550px)
+                                        font-size: 18px
+                                        line-height: 22px
+
+                                    &_s
+                                        padding-left: 6px
+                                        color: rgba(255, 255, 255, 0.5)
+                                        @media (max-width: 550px)
+                                            font-size: 16px
+                                            line-height: 19px
+                        &_buttons
+                            margin-top: 20px
+                            display: flex
+                            justify-content: space-between
+                            flex-wrap: wrap
+                            row-gap: 8px
+                            @media (max-width: 550px)
+                                margin-top: 16px
+                            &_button
+                                width: 48%
+                                height: 57px
+                                background: none
+                                border-radius: 65px
+                                @media (max-width: 550px)
+                                    width: 100%
+                            &_button:first-child
+                                background: #3763FF
+                            &_button:last-child
+                                border: 1px solid rgba(255, 255, 255, 0.25)
+                            &_button_selected
+                                width: 100%
+                                height: 57px
+                                background: none
+                                border-radius: 65px
+                                border: 1px solid rgba(255, 255, 255, 0.25)
+                                color: rgba(255, 255, 255, 0.5)
+    #previous_payments
+        padding: 20px
+        @media (max-width: 900px)
+            padding: 20px 10px
+        .table
+            display: flex
+            flex-wrap: wrap
+            justify-content: center
+            .send_info_button
+                display: none
+                @media (max-width: 900px)
+                    display: block
+                    margin-top: 16px
+            .element:first-child
+                background: none
+                margin-top: 20px
+                @media (max-width: 900px)
+                    display: none
+                .num, .type, .date, .status, .sum
+                    font-size: 14px
+                    font-weight: 400
+                    opacity: 0.7
+            .element
+                margin-top: 6px
+                display: flex
+                justify-content: space-between
+                width: 100%
+                border-radius: 12px
+                background: rgba(255, 255, 255, 0.03)
+                padding: 12px 25px
+                flex-wrap: wrap
+                @media (max-width: 900px)
+                    margin-top: 12px
+                    padding: 20px
+                .name
+                    display: none
+                    @media (max-width: 900px)
+                        display: block
+                        opacity: 0.7
+                        font-size: 14px
+                        font-weight: 400
+                        line-height: 20px
+                        margin: auto 0
+                        color: white
+                .success
+                    background: #2CBA65
+                .error
+                    background: #FF5F72
+
+                .num
+                    width: 5.5%
+                    font-size: 16px
+                    font-weight: 700
+                    letter-spacing: -0.32px
+                    color: rgba(255,255,255,0.5)
+                .type
+                    width: 28.3%
+                    display: flex
+                    column-gap: 12px
+                    .text, img
+                        margin: auto 0
+                    .text
+                        font-size: 15px
+                        font-weight: 500
+                        @media (max-width: 900px)
+                            text-align: right
+                    img
+                        @media (max-width: 900px)
+                            display: none
+                .date
+                    width: 13.6%
+                    font-size: 15px
+                    font-weight: 500
+                    color: rgba(255,255,255,0.7)
+                .status
+                    width: 33.9%
+                    .success, .error
+                        font-size: 15px
+                        font-weight: 500
+                        line-height: 20px
+                        padding: 8px 16px
+                        border-radius: 24px
+                .sum
+                    width: 12.8%
+                    .text
+                        column-gap: 16px
+                        display: flex
+
+                        .count, .percent
+                            margin: auto 0
+                        .count
+                            font-size: 15px
+                            font-weight: 700
+                            letter-spacing: -0.375px
+                        .percent
+                            border-radius: 31px
+                            font-size: 15px
+                            font-weight: 500
+                            line-height: 20px
+                            padding: 4px 12px
+                .num, .type, .date, .status, .sum
+                    margin: auto 0
+                    @media (max-width: 900px)
+                        display: flex
+                        justify-content: space-between
+                        width: 100%
+                        padding: 8px 0px
+                        border-bottom: 1px solid rgba(255, 255, 255, 0.05)
+        .security_and_pages
+            display: flex
+            justify-content: space-between
+            margin-top: 23px
+            column-gap: 100px
+            @media (max-width: 900px)
+                display: none
+            .pages, .secure
+                margin: auto 0
+            .pages
+                display: flex
+                column-gap: 8px
+                button
+                    width: 48px
+                    height: 48px
+                    background: rgba(255, 255, 255, 0.05)
+                    border-radius: 12px
+                    font-style: normal
+                    font-weight: 500
+                    font-size: 15px
+                    line-height: 20px
+                .active
+                    background: #3763FF
+    #ref
+        padding: 20px 26px 16px
+        @media (max-width: 500px)
+            padding: 20px 12px 16px
+        .content
+            display: flex
+            justify-content: space-between
+            flex-wrap: wrap
+            row-gap: 20px
+            @media (max-width: 1173px)
+                justify-content: center
+            .balance
+                width: 50%
+                display: flex
+                column-gap: 30px
+                @media (max-width: 1173px)
+                    width: 100%
+                    justify-content: center
+                @media (max-width: 500px)
+                    column-gap: 10px
+                .info, img
+                    margin: auto 0
+                .info
+                    .name
+                        display: flex
+                        column-gap: 12px
+                        .text
+                            font-size: 14px
+                            font-weight: 700
+                            letter-spacing: -0.28px
+                        img, .text
+                            margin: auto 0
+                    .count
+                        margin-top: 8px
+                        display: flex
+                        column-gap: 12px
+                        flex-wrap: wrap
+                        row-gap: 10px
+                        .num
+                            font-size: 36px
+                            font-weight: 700
+                            letter-spacing: -0.72px
+                            @media (max-width: 500px)
+                                font-size: 26px
+                        .percent
+                            padding: 4px 12px
+                            border-radius: 6px
+                            background: #2CBA65
+                            font-size: 15px
+                            font-weight: 500
+                            @media (max-width: 500px)
+                                font-size: 12px
+                        .percent, .num
+                            margin: auto 0
+                    .earned
+                        margin-top: 8px
+                        display: flex
+                        column-gap: 12px
+                        .num
+                            font-size: 18px
+                            font-weight: 700
+                            letter-spacing: -0.36px
+                        .text
+                            color: #B5B6B6
+                            font-size: 15px
+                            font-weight: 500
+                        .text, .num
+                            margin: auto 0
+            .invite_link
+                width: 50%
+                border-radius: 20px
+                background: var(--5, rgba(255, 255, 255, 0.05))
+                padding: 14px
+                @media (max-width: 1173px)
+                    width: 100%
+                .header
+                    display: flex
+                    column-gap: 11px
+                    img, .text
+                        margin: auto 0
+                    .text
+                        font-size: 18px
+                        font-weight: 700
+                        letter-spacing: -0.36px
+                .link_with_button
+                    margin-top: 20px
+                    background: var(--5, rgba(255, 255, 255, 0.05))
+                    border-radius: 12px
+                    padding: 8px
+                    padding-left: 16px
+                    display: flex
+                    justify-content: space-between
+                    column-gap: 10px
+                    .link, button
+                        margin: auto 0
+                    .link
+                        font-size: 16px
+                        font-weight: 700
+                        letter-spacing: -0.32px
+                        overflow: auto
+                    button
+                        display: flex
+                        column-gap: 8px
+                        padding: 8px
+                        border-radius: 11px
+                        background: var(--primary, #3763FF)
+                        .text, img
+                            margin: auto 0
+                        .text
+                            font-size: 18px
+                            font-weight: 700
+                            letter-spacing: -0.36px
+        .referals
+            .table
+                display: flex
+                flex-wrap: wrap
+                justify-content: center
+                .send_info_button
+                    display: none
+                    @media (max-width: 900px)
+                        display: block
+                        margin-top: 16px
+                .element:first-child
+                    background: none
+                    margin-top: 20px
+                    @media (max-width: 900px)
+                        display: none
+                    .num, .type, .date, .earned, .sum
+                        font-size: 14px
+                        font-weight: 400
+                        opacity: 0.7
+                .element
+                    margin-top: 6px
+                    display: flex
+                    justify-content: space-between
+                    width: 100%
+                    border-radius: 12px
+                    background: rgba(255, 255, 255, 0.03)
+                    padding: 12px 25px
+                    flex-wrap: wrap
+                    @media (max-width: 900px)
+                        margin-top: 12px
+                        padding: 20px
+                    .name
+                        display: none
+                        @media (max-width: 900px)
+                            display: block
+                            opacity: 0.7
+                            font-size: 14px
+                            font-weight: 400
+                            line-height: 20px
+                            margin: auto 0
+                            color: white
+                    .success
+                        background: #2CBA65
+                    .error
+                        background: #FF5F72
+
+                    .num
+                        width: 5.5%
+                        font-size: 16px
+                        font-weight: 700
+                        letter-spacing: -0.32px
+                        color: rgba(255,255,255,0.5)
+                    .type
+                        width: 28.3%
+                        display: flex
+                        column-gap: 12px
+                        .text, img
+                            margin: auto 0
+                        .text
+                            font-size: 15px
+                            font-weight: 500
+                            @media (max-width: 900px)
+                                text-align: right
+                        img
+                            @media (max-width: 900px)
+                                display: none
+                    .date
+                        width: 13.6%
+                        font-size: 15px
+                        font-weight: 500
+                        color: rgba(255,255,255,0.7)
+                    .earned
+                        width: 33.9%
+                        span
+                            font-size: 15px
+                            font-weight: 500
+                            line-height: 20px
+                    .sum
+                        width: 12.8%
+                        .text
+                            column-gap: 16px
+                            display: flex
+
+                            .count, .percent
+                                margin: auto 0
+                            .count
+                                font-size: 15px
+                                font-weight: 700
+                                letter-spacing: -0.375px
+                            .percent
+                                border-radius: 31px
+                                font-size: 15px
+                                font-weight: 500
+                                line-height: 20px
+                                padding: 4px 12px
+                    .num, .type, .date, .earned, .sum
+                        margin: auto 0
+                        @media (max-width: 900px)
+                            display: flex
+                            justify-content: space-between
+                            width: 100%
+                            padding: 8px 0px
+                            border-bottom: 1px solid rgba(255, 255, 255, 0.05)
+            .security_and_pages
+                display: flex
+                justify-content: space-between
+                margin-top: 23px
+                column-gap: 100px
+                @media (max-width: 900px)
+                    display: none
+                .pages, .secure
+                    margin: auto 0
+                .pages
+                    display: flex
+                    column-gap: 8px
+                    button
+                        width: 48px
+                        height: 48px
+                        background: rgba(255, 255, 255, 0.05)
+                        border-radius: 12px
+                        font-style: normal
+                        font-weight: 500
+                        font-size: 15px
+                        line-height: 20px
+                    .active
+                        background: #3763FF
+.page
+    transition: opacity 500ms ease-in-out
+    opacity: 1
+.dnone
+    display: none
+.onone
+    opacity: 0
+
+
+
+// NIZE NACINAETSYA LOGIN
+// NIZE NACINAETSYA LOGIN
+// NIZE NACINAETSYA LOGIN
+// NIZE NACINAETSYA LOGIN
+// NIZE NACINAETSYA LOGIN
+// NIZE NACINAETSYA LOGIN
+// NIZE NACINAETSYA LOGIN
+// NIZE NACINAETSYA LOGIN
+// NIZE NACINAETSYA LOGIN
+// NIZE NACINAETSYA LOGIN
+// NIZE NACINAETSYA LOGIN
+// NIZE NACINAETSYA LOGIN
+// NIZE NACINAETSYA LOGIN
+// NIZE NACINAETSYA LOGIN
+// NIZE NACINAETSYA LOGIN
+// NIZE NACINAETSYA LOGIN
+// NIZE NACINAETSYA LOGIN
+// NIZE NACINAETSYA LOGIN
+// NIZE NACINAETSYA LOGIN
+// NIZE NACINAETSYA LOGIN
+// NIZE NACINAETSYA LOGIN
+
+
+.elements
+    display: flex
+    justify-content: space-between
+    width: 100%
+    overflow: hidden
+    flex-wrap: wrap
+    .errors
+        display: flex
+        justify-content: center
+        flex-wrap: wrap
+        margin-top: 20px
+        row-gap: 10px
+        .error
+            width: 100%
+            text-align: center
+            color: #FF5F72
+            font-size: 16px
+            font-weight: 700
+    .container
+        row-gap: 0px
+    .transiton_show_hide
+        transition: width 100ms ease-out, opacity 200ms ease-out
+    .modal_auth
+        overflow: hidden
+        width: 100%
+        display: flex
+        justify-content: center
+        flex-wrap: wrap
+        padding: 0px 10px
+        background: black
+        min-height: 100vh
+        .fone
+            width: 0px
+            height: 0px
+            position: relative
+            top: -291px
+            left: -668px
+            z-index: 0
+            img
+                transform: rotate(294deg)
+        .text_with_a
+            margin-top: 26px
+            width: 100%
+            text-align: center
+            color: #B5B6B6
+            font-size: 14px
+            font-family: Inter
+            font-style: normal
+            font-weight: 400
+            line-height: 20px
+            overflow: hidden
+
+            a, button
+                padding: 0px 10px
+                background: none
+                color: #D9E44F
+                font-size: 14px
+                font-style: normal
+                font-weight: 700
+                line-height: normal
+                letter-spacing: -0.28px
+
+        .back
+            a
+                background: none
+                color: rgba(255, 255, 255, 0.50)
+                font-size: 14px
+                font-family: Inter Tight
+                font-style: normal
+                font-weight: 700
+                line-height: normal
+                letter-spacing: -0.28px
+                width: 100%
+                img
+                    padding-right: 10px
+
+        .modal_auth_inner
+            width: 100%
+            max-width: 450px
+            position: relative
+            z-index: 2
+            // @media (max-width: 500px)
+            .back
+                text-align: center
+                padding: 100px 0px 40px
+            .form
+                width: 100%
+                background: rgba(255, 255, 255, 0.02)
+                backdrop-filter: blur(150px)
+                border-radius: 17px
+                padding: 30px
+                @media (max-width:800px)
+                    padding: 30px 15px
+                .code_input
+                    margin-top: 24px
+                    overflow: hidden
+                    display: flex
+                    justify-content: space-between
+                    input:focus
+                        border: 1px solid #3763FF
+                        background: rgba(255, 255, 255, 0.05)
+
+                    input
+                        color: white
+                        outline: none
+                        width: 100%
+                        height: 86px
+                        text-align: center
+                        font-size: 30px
+                        font-family: Inter Tight
+                        font-style: normal
+                        font-weight: 700
+                        line-height: normal
+                        letter-spacing: 15px
+                        background: none
+                        border-radius: 11px
+                        border: 1px solid #272829
+                        transition: border 200ms, background 200ms
+
+                h2
+                    font-size: 36px
+                    font-family: Inter Tight
+                    font-style: normal
+                    font-weight: 700
+                    line-height: normal
+                    letter-spacing: -0.72px
+                    @media (max-width:800px)
+                        font-size: 24px
+                        letter-spacing: -0.48px
+                .body
+                    font-size: 16px
+                    font-family: Inter
+                    font-style: normal
+                    font-weight: 300
+                    line-height: 25px
+                    margin-top: 20px
+                    color: #B5B6B6
+                    @media (max-width:800px)
+                        margin-top: 10px
+                        font-size: 14px
+                // .input_block
+                //     margin-top: 20px
+                //     border-radius: 11px
+                //     width: 100%
+                //     padding: 13px 20px
+                //     border: 1px solid rgba(27,28,29,1)
+                //     display: flex
+                //     column-gap: 16px
+                //     overflow: hidden
+                //     transition: height 300ms, padding 200ms, border 1000ms
+                //     img, .label_and_input
+                //         margin: auto 0
+                //     .label_and_input
+                //         padding-left: 16px
+                //         border-left: 1px solid rgba(27,28,29,1)
+                //         display: flex
+                //         justify-content: space-between
+                //         flex-wrap: wrap
+                //         .inp, .eye
+                //             margin: auto 0
+                //         .eye:hover
+                //             cursor: pointer
+                //         .eye
+                //             padding-top: 6px
+                //         .inp
+                //             display: flex
+                //             justify-content: left
+                //             flex-wrap: wrap
+                //             row-gap: 4px
+                //             width: 70%
+                //         .label
+                //             color: #B5B6B6
+                //             font-size: 12px
+                //             font-family: "Inter"
+                //             font-weight: 500
+                //             letter-spacing: -0.24px
+                //             width: 100%
+                //         input
+                //             background: none
+                //             border: none
+                //             color: white
+                //             outline: none
+                //             font-size: 15px
+                //             font-family: "Inter"
+                //             font-weight: 500
+                //             line-height: 20px
+                //             @media (max-width: 500px)
+                //                 font-size: 12px
+                .send_code_btn
+                    padding: 19px 44px
+                    width: 100%
+                    margin-top: 20px
+                    background: #3763FF
+                    border-radius: 65px
+                    font-size: 16px
+                    font-family: Inter Tight
+                    font-style: normal
+                    font-weight: 700
+                    line-height: normal
+                    letter-spacing: -0.32px
+
+    .left
+        overflow: hidden
+        background: black
+        width: 50%
+        display: flex
+        align-items: center
+        @media (max-width: 800px)
+            width: 100%
+            display: block
+        #create_password_label
+            font-size: 14px
+            font-family: Inter Tight
+            font-weight: 700
+            letter-spacing: -0.28px
+            margin-top: 10px
+            width: 100%
+            overflow: hidden
+            max-width: 360px
+
+        .container
+            width: 505px
+            margin: 0 auto
+            padding-left: 140px
+            display: flex
+            justify-content: center
+            flex-wrap: wrap
+            @media (max-width: 1150px)
+                padding-left: 0px
+                width: 100%
+                padding: 0px 15px
+            @media (max-width: 800px)
+                max-width: 500px
+                padding-top: 15px
+
+        .logo
+            width: 100%
+            display: flex
+            justify-content: center
+            column-gap: 16px
+            .text, img
+                margin: auto 0
+            .text
+                color: white
+                font-size: 18.264px
+                font-family: Inter Tight
+                font-weight: 700
+                letter-spacing: -0.365px
+        h1
+            font-size: 36px
+            color: #ffff
+            font-family: 'Inter Tight'
+            font-weight: 700
+            margin-top: 22px
+            letter-spacing: -0.72px
+            width: 100%
+            text-align: center
+            @media (max-width: 800px)
+                margin-top: 32px
+                font-size: 24px
+                letter-spacing: -0.48px
+        h2
+            color: #B5B6B6
+            font-size: 16px
+            font-family: "Inter"
+            margin-top: 16px
+            font-weight: 300
+            width: 100%
+            text-align: center
+            @media (max-width: 800px)
+                margin-top: 6px
+                font-size: 14px
+        .log_reg_switcher_buttons
+            display: flex
+            justify-content: center
+            background-color: rgba(255, 255, 255, 0.05)
+            border-radius: 12px
+            margin-top: 20px
+            padding: 4px
+            column-gap: 8px
+            @media (max-width: 800px)
+                margin-top: 16px
+            a
+                display: flex
+                justify-content: center
+                align-items: center
+                background-color: transparent
+                width: 176px
+                height: 47px
+                font-size: 16px
+                font-family: Inter Tight
+                font-weight: 700
+                letter-spacing: -0.32px
+                border-radius: 12px
+                @media (max-width: 800px)
+                    width: 160px
+                    height: 44px
+                @media (max-width: 400px)
+                    width: 130px
+                    height: 40px
+            .active
+                background-color: rgba(255, 255, 255, 0.1)
+            button:hover
+                background-color: rgba(255, 255, 255, 0.15)
+                opacity: 1
+        .input_block
+            margin-top: 10px
+
+        .accept_btn
+            margin-top: 20px
+        .forgot_password
+            display: flex
+            justify-content: center
+            align-items: center
+            margin-top: 20px
+            column-gap: 8px
+            width: 100%
+            .text
+                color: #B5B6B6
+                font-size: 13px
+                line-height: 20px
+            a
+                font-size: 14px
+                line-height: 20px
+                font-weight: 700
+                letter-spacing: -0.28px
+                color: #D9E44F
+
+    .right
+        width: 50%
+        min-height: 100vh
+        background: black linear-gradient(180deg, rgba(18, 70, 255, 0.68) 0%, rgba(18, 47, 147, 0.00) 100%)
+        overflow: hidden
+
+        @media (max-width: 800px)
+            width: 100%
+            background: black linear-gradient(0deg, rgba(18, 70, 255, 0.68) 0%, rgba(18, 47, 147, 0.00) 100%)
+            min-height: auto
+            height: 500px
+            display: flex
+            justify-content: center
+        .line
+            left: -34px
+            top: -39px
+            @media (max-width: 1050px)
+                left: -100px
+            @media (max-width: 800px)
+                left: -365px
+                top: -25px
+                img
+                    width: 600px
+        .shadow
+            left: -44px
+            top: 535px
+            animation: shadow_anim 12s infinite alternate ease-in-out
+            @media (max-width: 1050px)
+                left: -140px
+            @media (max-width: 800px)
+                left: -259px
+                top: 313px
+            @keyframes shadow_anim
+                0%
+                    transform: translate(0px, 0px)
+                100%
+                    transform: translate(90px, 10px)
+        .safe
+            left: 80px
+            top: 333px
+            animation: safe_anim 12s infinite alternate ease-in-out
+            @media (max-width: 1050px)
+                left: -40px
+            @media (max-width: 800px)
+                left: -150px
+                top: 157px
+                img
+                    width: 300px
+            @keyframes safe_anim
+                0%
+                    transform: translate(0px, 0px) rotate(0deg)
+                100%
+                    transform: translate(90px, 10px) rotate(10deg)
+        .rotate
+            animation: rotate_anim 500ms cubic-bezier(0.8,-0.3, 0.2, 1.3) alternate
+            @keyframes rotate_anim
+                0%
+                    transform: rotate(0deg)
+                100%
+                    transform: rotate(1080deg)
+
+        .eth
+            left: 297px
+            top: 255px
+            animation: eth_anim 14s infinite alternate ease-in-out
+            @media (max-width: 1050px)
+                left: 200px
+            @media (max-width: 800px)
+                left: 9px
+                top: 111px
+                img
+                    width: 130px
+            @keyframes eth_anim
+                0%
+                    transform: translate(0px, 0px) rotate(0deg)
+                100%
+                    transform: translate(100px, -100px) rotate(-5deg)
+
+        .btc
+            left: 57px
+            top: -22px
+            animation: btc_anim 20s infinite alternate ease-in-out
+            @media (max-width: 1050px)
+                left: -50px
+            @media (max-width: 800px)
+                left: -219px
+                top: 20px
+                img
+                    width: 210px
+            @keyframes btc_anim
+                0%
+                    transform: translate(0px, 0px) rotate(0deg)
+                100%
+                    transform: translate(-20px, 90px) rotate(8deg)
+
