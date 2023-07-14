@@ -1,6 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
+import Input from '../UI/Input';
 
 const ModalAddApi = ({ setModalType }) => {
+
+
+    const [api, setApi] = useState('')
+    const [secret, setSecret] = useState('')
+    const emailChange = (event) => { setEmail(event.target.value); };
     return (
         <div id="inner_add_api" className="modal_inner">
             <div className="header">
@@ -36,24 +42,22 @@ const ModalAddApi = ({ setModalType }) => {
                         </div>
                     </div>
                 </div>
-                <div className="input_block input_block_first" id="email">
-                    <img src="img/pa/modal/form_key.svg" alt="key" />
-                    <div className="label_and_input">
-                        <div className="label">
-                            API key
-                        </div>
-                        <input type="text" placeholder="Enter API key" />
-                    </div>
-                </div>
-                <div className="input_block" id="email">
-                    <img src="img/pa/modal/form_lock.svg" alt="lock" />
-                    <div className="label_and_input">
-                        <div className="label">
-                            Secret key
-                        </div>
-                        <input type="text" placeholder="Enter secret key" />
-                    </div>
-                </div>
+                <Input props={{
+                    imageName: 'key.svg',
+                    label: 'API key',
+                    placeholder: 'Enter API key',
+                    onChange: emailChange,
+                    value: email,
+                }} />
+                <Input props={{
+                    imageName: 'lock.svg',
+                    label: 'Secret key',
+                    placeholder: 'Enter Secret key',
+                    onChange: emailChange,
+                    value: email,
+                }} />
+
+
                 <div className="button_and_check">
                     <button className="send_info_button input_block_first">
                         Add API key
