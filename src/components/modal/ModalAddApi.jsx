@@ -1,12 +1,100 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Input from '../UI/Input';
+import { updateTokensAction } from "../../redux/userActions";
+import { useDispatch, useSelector } from "react-redux";
 
 const ModalAddApi = ({ setModalType }) => {
+    const dispatch = useDispatch()
+    const { user } = useSelector(state => state.userReducer)
+    const [activeExchange, setActiveExchange] = useState('bybit')
+    const [activeExchangeStyle, setActiveExchangeStyle] = useState(
+        {
+            bybit: 'selected',
+            bitget: '',
+            binance: '',
+        }
+    )
 
+    useEffect(() => {
+        if (activeExchange == 'binance') {
+            setApi(user.binance.apiKey)
+            setSecret(user.binance.secret)
+            setActiveExchangeStyle({
+                bybit: '',
+                bitget: '',
+                binance: 'selected',
+            })
+        }
+        if (activeExchange == 'bybit') {
+            setApi(user.bybit.apiKey)
+            setSecret(user.bybit.secret)
+            setActiveExchangeStyle({
+                bybit: 'selected',
+                bitget: '',
+                binance: '',
+            })
+        }
+        if (activeExchange == 'bitget') {
+            setApi(user.bitget.apiKey)
+            setSecret(user.bitget.secret)
+            setActiveExchangeStyle({
+                bybit: '',
+                bitget: 'selected',
+                binance: '',
+            })
+        }
+    }, [activeExchange]);
+
+    const handleUpdate = (e) => {
+        e.preventDefault()
+        if (activeExchange == 'binance') {
+            const binance = {
+                apiKey: api,
+                secret: secret
+            }
+            dispatch(updateTokensAction({ binance })).then(() => {
+                setModalType("hidden")
+            }).catch((err) => {
+                console.log(err)
+            })
+        }
+        if (activeExchange == 'bybit') {
+            const bybit = {
+                apiKey: api,
+                secret: secret
+            }
+            dispatch(updateTokensAction({ bybit })).then(() => {
+                setModalType("hidden")
+            }).catch((err) => {
+                console.log(err)
+            })
+        }
+        if (activeExchange == 'bitget') {
+            const bitget = {
+                apiKey: api,
+                secret: secret
+            }
+            dispatch(updateTokensAction({ bitget })).then(() => {
+                setModalType("hidden")
+            }).catch((err) => {
+                console.log(err)
+            })
+        }
+
+    }
 
     const [api, setApi] = useState('')
     const [secret, setSecret] = useState('')
-    const emailChange = (event) => { setEmail(event.target.value); };
+
+    useEffect(() => {
+        setApi(user.bybit.apiKey)
+        setSecret(user.bybit.secret)
+    }, []);
+
+
+
+
+
     return (
         <div id="inner_add_api" className="modal_inner">
             <div className="header">
@@ -20,21 +108,21 @@ const ModalAddApi = ({ setModalType }) => {
             </div>
             <div className="content">
                 <div className="platforms">
-                    <div className="platform">
+                    <div className={"platform " + activeExchangeStyle.binance} onClick={() => setActiveExchange('binance')}>
                         <div className="border">
                         </div>
                         <div className="img">
                             <img src="img/pa/modal/platforms/binance.svg" alt="binance" />
                         </div>
                     </div>
-                    <div className="platform selected">
+                    <div className={"platform " + activeExchangeStyle.bybit} onClick={() => setActiveExchange('bybit')}>
                         <div className="border">
                         </div>
                         <div className="img">
                             <img src="img/pa/modal/platforms/bybit.svg" alt="bybit" />
                         </div>
                     </div>
-                    <div className="platform">
+                    <div className={"platform " + activeExchangeStyle.bitget} onClick={() => setActiveExchange('bitget')}>
                         <div className="border">
                         </div>
                         <div className="img">
@@ -46,28 +134,28 @@ const ModalAddApi = ({ setModalType }) => {
                     imageName: 'key.svg',
                     label: 'API key',
                     placeholder: 'Enter API key',
-                    onChange: emailChange,
-                    value: email,
+                    onChange: (e) => setApi(e.target.value),
+                    value: api,
                 }} />
                 <Input props={{
                     imageName: 'lock.svg',
                     label: 'Secret key',
                     placeholder: 'Enter Secret key',
-                    onChange: emailChange,
-                    value: email,
+                    onChange: (e) => setSecret(e.target.value),
+                    value: secret,
                 }} />
 
 
                 <div className="button_and_check">
-                    <button className="send_info_button input_block_first">
+                    <button className="send_info_button input_block_first" onClick={handleUpdate}>
                         Add API key
-                    </button>
+                    </button >
                     <div className="checkbox">
                         <div className="checkbox_wrapper checked">
                             <img src="img/pa/check.svg" alt="check" />
                         </div>
                         <div className="text">
-                            I understang how to use API keys
+                            I understand how to use API keys
                         </div>
                     </div>
                 </div>

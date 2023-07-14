@@ -4,37 +4,39 @@ import Input from '../UI/Input';
 import Images from './Images';
 import Modal from '../modal/Modal';
 import api from "../../api/api";
+import {useDispatch, useSelector} from "react-redux";
+import {loginAction} from "../../redux/userActions";
 
 
-const LoginPage = ({ setLogged, logged }) => {
+const LoginPage = () => {
 
     const [modalType, setModalType] = useState('hidden')
 
+    const {isLoggedIn} = useSelector(state => state.userReducer)
+
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+
+    const dispatch = useDispatch()
 
     const emailChange = (event) => { setEmail(event.target.value); };
     const passwordChange = (event) => { setPassword(event.target.value); };
 
 
     const [printedError, setPrintedError] = useState('')
-    const [token, setToken] = useState(localStorage.getItem('token'));
-    useEffect(() => {
-        localStorage.setItem('token', token)
-    }, [token])
+
+
 
     const navigate = useNavigate()
     const login = () => {
         setModalType('loader')
-        api.post('https://apisite.tradecoinai.com/api/users/login',
-            {
-                email: email,
-                password: password,
-            })
-            .then(function (response) {
+
+        const data = {
+            email: email,
+            password: password,
+        }
+        dispatch(loginAction(data)).then(() => {
                 setModalType('hidden')
-                setToken(response.data.token);
-                setLogged(true)
                 navigate("/profile")
             })
             .catch(function (error) {
@@ -42,7 +44,7 @@ const LoginPage = ({ setLogged, logged }) => {
                 setPrintedError(error.response.data.message)
             });
     }
-    if (logged) return <Navigate to="/profile" replace />
+    if (isLoggedIn) return <Navigate to="/profile" replace />
 
     return (
         <div className="elements">

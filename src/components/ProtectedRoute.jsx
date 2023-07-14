@@ -1,9 +1,12 @@
 import React from 'react';
 import { Navigate, Outlet } from "react-router-dom";
+import {useSelector} from "react-redux";
 
 const ProtectedRoute = ({ logged }) => {
-    console.log(logged)
-    if (!logged) return <Navigate to="/login" replace />
+
+    const {isLoggedIn} = useSelector(state => state.userReducer)
+
+    if (!isLoggedIn) return <Navigate to="/login" replace />
 
     return <Outlet />
 };

@@ -13,27 +13,25 @@ import api from "../api/api";
 import Modal from './modal/Modal';
 import ProtectedRoute from './ProtectedRoute';
 import HomePage from './content/HomePage';
+import { useDispatch, useSelector } from "react-redux";
+import { checkAuthAction } from "../redux/userActions";
 
 
 const Router = (props) => {
     const [logged, setLogged] = useState(false)
+    const data = useSelector(state => state.userReducer)
+
+    const dispatch = useDispatch()
+    console.log(data)
 
     const token = localStorage.getItem('token') || ''
     const [isLoading, setIsLoading] = useState(token.length > 0)
 
     useEffect(() => {
         if (token) {
-            api.get('/users/checkAuth')
-                .then(function (response) {
-                    setLogged(true)
-                    setIsLoading(false)
-                })
-                .catch(function (error) {
-                    setLogged(false)
-                    setIsLoading(false)
-                });
-        } else {
-            setLogged(false)
+            dispatch(checkAuthAction()).then(() => {
+                setIsLoading(false)
+            })
         }
     }, [])
 
@@ -48,7 +46,7 @@ const Router = (props) => {
                 <Route element={<ForgotPassword logged={logged} />} path="/forgot_password" />
                 <Route element={<EnterCode setLogged={setLogged} logged={logged} />} path="/enter_code" />
                 <Route element={<NewPassword />} path="/new_password" />
-                <Route path='/' element={<ProtectedRoute logged={logged} />}>
+                <Route path='/' element={<ProtectedRoute />}>
                     <Route element={<ProfilePage setLogged={setLogged} />} path="profile" />
                     <Route element={<RefPage setLogged={setLogged} />} path="referal" />
                     <Route element={<ManageTarifPage setLogged={setLogged} />} path="manage_tarif" />

@@ -5,6 +5,7 @@ import Modal from '../modal/Modal';
 
 const Sidebar = ({ setLogged }) => {
     const [modalType, setModalType] = useState('hidden')
+    // const [modalType, setModalType] = useState('add_api')
 
     const [sidebarOpen, setSidebarOpen] = useState('')
     return (

@@ -5,6 +5,7 @@ import Input from '../UI/Input';
 import Images from './Images';
 import Modal from '../modal/Modal';
 import api from "../../api/api";
+import { useDispatch } from 'react-redux';
 
 
 const RegistrationPage = ({ logged }) => {
@@ -20,6 +21,7 @@ const RegistrationPage = ({ logged }) => {
     const passwordChange = (event) => { setPassword(event.target.value); };
     const repeatPasswordChange = (event) => { setRepeatPassword(event.target.value); };
 
+    const dispatch = useDispatch()
 
 
     const [printedError, setPrintedError] = useState('')

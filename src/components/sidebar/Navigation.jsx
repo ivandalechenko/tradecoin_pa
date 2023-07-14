@@ -1,11 +1,14 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 
 const Navigation = ({ setModalType, setLogged }) => {
     const navigate = useNavigate()
+    const dispatch = useDispatch()
     const logout = () => {
         localStorage.removeItem('token')
         setLogged(false)
+        dispatch({ type: 'LOGOUT' })
         navigate("/login")
     }
 

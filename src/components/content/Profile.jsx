@@ -1,9 +1,23 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import Input from '../UI/Input';
 import Button from '../UI/Button';
 import HorizontalLine from '../UI/HorizontalLine';
+import {useSelector} from "react-redux";
 
 const Profile = (props) => {
+
+    const {user} = useSelector(state => state.userReducer)
+    const [email, setEmail] = useState('')
+    const [nickname, setNickname] = useState('')
+
+    useEffect(() => {
+        setEmail(user.email)
+        setNickname(user.username)
+    }, []);
+
+
+
+
     return (
         <div className="section" id="profile">
             <div className="section_header h5">
@@ -19,18 +33,22 @@ const Profile = (props) => {
                         Welcome back!
                     </div>
                     <div className="name">
-                        @trader_best
+                        @{user.username}
                     </div>
                     <div className="form">
                         <Input props={{
                             imageName: 'mail.svg',
                             label: "Your e-mail",
-                            placeholder: "Enter your e-mail"
+                            placeholder: "Enter your e-mail",
+                            value: email,
+                            onChange: (e) => setEmail(e.target.value)
                         }} />
                         <Input props={{
                             imageName: 'user.svg',
                             label: "Your nickname",
-                            placeholder: "Enter your nickname"
+                            placeholder: "Enter your nickname",
+                            value: nickname,
+                            onChange: (e) => setNickname(e.target.value)
                         }} />
                     </div>
                     <Button props={{ text: 'Save changes' }} />

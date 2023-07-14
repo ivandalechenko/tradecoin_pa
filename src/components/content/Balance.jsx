@@ -14,7 +14,7 @@ const Balance = (props) => {
                     <div className="round">
                         <img src="img/pa/balance_round.svg" alt='balance round' />
                         <div className="text">
-                            +38,39%
+                            +0%
                         </div>
                     </div>
                     <div className="info">
@@ -26,10 +26,10 @@ const Balance = (props) => {
                         </div>
                         <div className="count">
                             <div className="num">
-                                $12 940
+                                $0
                             </div>
                             <div className="percent">
-                                +38,39%
+                                +0%
                             </div>
                         </div>
                         <div className="earned">
@@ -37,7 +37,7 @@ const Balance = (props) => {
                                 Earned
                             </div>
                             <div className="num">
-                                $990.33
+                                $0
                             </div>
                         </div>
                     </div>
