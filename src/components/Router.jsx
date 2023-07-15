@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { BrowserRouter, Routes, Route, useNavigate, redirect } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import RefPage from './content/RefPage';
 import ProfilePage from './content/ProfilePage';
 import ManageTarifPage from './content/ManageTarifPage';
@@ -17,15 +17,18 @@ import { checkAuthAction } from "../redux/userActions";
 
 
 const Router = (props) => {
-    const [logged, setLogged] = useState(false)
-    const data = useSelector(state => state.userReducer)
     const dispatch = useDispatch()
     const token = localStorage.getItem('token') || ''
     const [isLoading, setIsLoading] = useState(token.length > 0)
 
+
     useEffect(() => {
         if (token) {
             dispatch(checkAuthAction()).then(() => {
+                setIsLoading(false)
+            }).catch(() => {
+                localStorage.removeItem('token')
+                dispatch({ type: 'LOGOUT' })
                 setIsLoading(false)
             })
         }
@@ -36,17 +39,17 @@ const Router = (props) => {
     return (
         < BrowserRouter >
             <Routes>
-                <Route element={<HomePage logged={logged} />} path="" />
-                <Route element={<LoginPage setLogged={setLogged} logged={logged} />} path="/login" />
-                <Route element={<RegistrationPage logged={logged} />} path="/signup" />
-                <Route element={<ForgotPassword logged={logged} />} path="/forgot_password" />
-                <Route element={<EnterCode setLogged={setLogged} logged={logged} />} path="/enter_code" />
+                <Route element={<HomePage />} path="" />
+                <Route element={<LoginPage />} path="/login" />
+                <Route element={<RegistrationPage />} path="/signup" />
+                <Route element={<ForgotPassword />} path="/forgot_password" />
+                <Route element={<EnterCode />} path="/enter_code" />
                 <Route element={<NewPassword />} path="/new_password" />
                 <Route path='/' element={<ProtectedRoute />}>
-                    <Route element={<ProfilePage setLogged={setLogged} />} path="profile" />
-                    <Route element={<RefPage setLogged={setLogged} />} path="referal" />
-                    <Route element={<ManageTarifPage setLogged={setLogged} />} path="manage_tarif" />
-                    <Route element={<StatPage setLogged={setLogged} />} path="statistic" />
+                    <Route element={<ProfilePage />} path="profile" />
+                    <Route element={<RefPage />} path="referal" />
+                    <Route element={<ManageTarifPage />} path="manage_tarif" />
+                    <Route element={<StatPage />} path="statistic" />
                 </Route>
             </Routes>
         </BrowserRouter >

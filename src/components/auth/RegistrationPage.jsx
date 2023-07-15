@@ -1,14 +1,13 @@
-import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Link, Navigate, useNavigate } from 'react-router-dom';
 import Input from '../UI/Input';
 import Images from './Images';
 import Modal from '../modal/Modal';
-import api from "../../api/api";
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { registrationAction } from '../../redux/userActions';
 
 
-const RegistrationPage = ({ logged }) => {
+const RegistrationPage = () => {
     const [modalType, setModalType] = useState('hidden')
 
     const [email, setEmail] = useState('')
@@ -21,27 +20,20 @@ const RegistrationPage = ({ logged }) => {
     const passwordChange = (event) => { setPassword(event.target.value); };
     const repeatPasswordChange = (event) => { setRepeatPassword(event.target.value); };
 
-    const dispatch = useDispatch()
-
 
     const [printedError, setPrintedError] = useState('')
-    const [token, setToken] = useState(localStorage.getItem('token'));
-    useEffect(() => {
-        localStorage.setItem('token', token)
-    }, [token])
-
+    const dispatch = useDispatch()
     const navigate = useNavigate()
     const registration = () => {
         setModalType('loader')
-        api.post('/users/signup',
-            {
-                username: username,
-                email: email,
-                password: password,
-            })
-            .then(function (response) {
+        const data = {
+            username: username,
+            email: email,
+            password: password,
+        }
+        dispatch(registrationAction(data))
+            .then(() => {
                 setModalType('hidden')
-                setToken(response.data.token);
                 navigate("/enter_code")
             })
             .catch(function (error) {
@@ -51,7 +43,8 @@ const RegistrationPage = ({ logged }) => {
 
     }
 
-    if (logged) return <Navigate to="/profile" replace />
+    const { isLoggedIn } = useSelector(state => state.userReducer)
+    if (isLoggedIn) return <Navigate to="/profile" replace />
 
     return (
         <div className="elements">

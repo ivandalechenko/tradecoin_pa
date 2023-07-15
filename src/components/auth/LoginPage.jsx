@@ -1,41 +1,30 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Link, Navigate, useNavigate } from 'react-router-dom';
 import Input from '../UI/Input';
 import Images from './Images';
 import Modal from '../modal/Modal';
-import api from "../../api/api";
-import {useDispatch, useSelector} from "react-redux";
-import {loginAction} from "../../redux/userActions";
+import { useDispatch, useSelector } from "react-redux";
+import { loginAction } from "../../redux/userActions";
 
 
 const LoginPage = () => {
-
     const [modalType, setModalType] = useState('hidden')
-
-    const {isLoggedIn} = useSelector(state => state.userReducer)
-
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-
-    const dispatch = useDispatch()
-
     const emailChange = (event) => { setEmail(event.target.value); };
     const passwordChange = (event) => { setPassword(event.target.value); };
 
-
     const [printedError, setPrintedError] = useState('')
-
-
-
     const navigate = useNavigate()
+    const dispatch = useDispatch()
     const login = () => {
         setModalType('loader')
-
         const data = {
             email: email,
             password: password,
         }
-        dispatch(loginAction(data)).then(() => {
+        dispatch(loginAction(data))
+            .then(() => {
                 setModalType('hidden')
                 navigate("/profile")
             })
@@ -44,6 +33,8 @@ const LoginPage = () => {
                 setPrintedError(error.response.data.message)
             });
     }
+
+    const { isLoggedIn } = useSelector(state => state.userReducer)
     if (isLoggedIn) return <Navigate to="/profile" replace />
 
     return (

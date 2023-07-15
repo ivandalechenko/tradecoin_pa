@@ -42,7 +42,7 @@ const Balance = (props) => {
                         </div>
                     </div>
                 </div>
-                <ChangeTarifCheckStatus />
+                <ChangeTarifCheckStatus type={'profile'} />
             </div>
         </div>
     )

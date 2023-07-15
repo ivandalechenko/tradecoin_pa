@@ -16,13 +16,13 @@ const Header = ({ setSidebarOpen }) => {
                 </div>
             </div>
             <div className="burger_and_lang">
-                <div id="lang">
+                {/* <div id="lang">
                     <img src="img/pa/flags/usa.png" alt="flag_usa" />
                     <div className="name">
                         English
                     </div>
                     <img width='18' height="10" src="img/pa/flags/arrow_down.png" alt="arrow_down" />
-                </div>
+                </div> */}
                 <div id="burger_opener" onClick={openSidebar}>
                     <img width="20" height="20" alt="menu_opener" src="img/pa/burger.svg" />
                 </div>

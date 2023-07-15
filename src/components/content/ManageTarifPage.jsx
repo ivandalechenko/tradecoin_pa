@@ -6,10 +6,10 @@ import Offers from './Offers';
 import CurrentTarif from './CurrentTarif';
 import Sidebar from '../sidebar/Sidebar';
 
-const ManageTarifPage = ({ setLogged }) => {
+const ManageTarifPage = () => {
     return (
         <div className="container">
-            <Sidebar setLogged={setLogged} />
+            <Sidebar />
             <div id='content'>
                 <div id="manage_tarif_page">
                     <CurrentTarif />
@@ -19,7 +19,7 @@ const ManageTarifPage = ({ setLogged }) => {
                         </div>
                         <Offers />
                     </div>
-                    <div className="section" id="previous_payments">
+                    {/* <div className="section" id="previous_payments">
                         <div className="header h5">
                             Previous payments
                         </div>
@@ -28,7 +28,7 @@ const ManageTarifPage = ({ setLogged }) => {
                             <Secure />
                             <Pagination />
                         </div>
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </div>

@@ -13,6 +13,31 @@ export const loginAction = (loginData) => async dispatch => {
     }
 }
 
+export const registrationAction = (registrationData) => async dispatch => {
+    try {
+        const { data } = await api.post('/users/signup', registrationData)
+
+        localStorage.setItem('registrationToken', data.token)
+
+    } catch (e) {
+        throw new Error(e.response.data.message)
+    }
+}
+
+export const enterCodeAction = (enterCodeData) => async dispatch => {
+    try {
+        const { data } = await api.post('/users/enterCode', enterCodeData)
+
+        dispatch({ type: 'LOGIN', payload: { user: data.user, isLoggedIn: true } })
+
+        localStorage.removeItem('registrationToken')
+        localStorage.setItem('token', data.token)
+
+    } catch (e) {
+        throw new Error(e.response.data.message)
+    }
+}
+
 export const checkAuthAction = () => async dispatch => {
     try {
         const { data } = await api.get('/users/checkAuth')

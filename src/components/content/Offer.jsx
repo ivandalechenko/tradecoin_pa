@@ -10,11 +10,14 @@ const Offer = ({ offer }) => {
         e.preventDefault()
         console.log(offer.tariff)
 
-
-        api.post('/payment/create-invoice', { tariff: offer.tariff }).then((res) => {
-            console.log(res.data.response.result.url)
-            window.open(res.data.response.result.url, '_blank');
-        })
+        if (offer.tariff == 'ai_premium') {
+            alert("You can't use this tarif")
+        } else {
+            api.post('/payment/create-invoice', { tariff: offer.tariff }).then((res) => {
+                console.log(res.data.response.result.url)
+                window.open(res.data.response.result.url, '_blank');
+            })
+        }
     }
 
 
@@ -140,9 +143,7 @@ const Offer = ({ offer }) => {
                             <button className="btn offers_offers_list_offer_content_buttons_button" onClick={handleClick}>
                                 Connecting
                             </button>
-                            <button className="btn offers_offers_list_offer_content_buttons_button">
-                                Details
-                            </button>
+
                         </>
                     )}
 

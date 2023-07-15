@@ -1,42 +1,40 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Link, Navigate, useNavigate } from 'react-router-dom';
 import Modal from '../modal/Modal';
-import api from "../../api/api";
+import { useDispatch, useSelector } from 'react-redux';
+import { enterCodeAction } from '../../redux/userActions';
 
-const EnterCode = ({ setLogged, logged }) => {
+const EnterCode = () => {
     const [modalType, setModalType] = useState('hidden')
 
     const [code, setCode] = useState()
     const codeChange = (event) => {
         setCode(event.target.value);
     };
+    const dispatch = useDispatch()
     const navigate = useNavigate()
     const [printedError, setPrintedError] = useState('')
-    const [token, setToken] = useState(localStorage.getItem('token'));
-    useEffect(() => {
-        localStorage.setItem('token', token)
-    }, [token])
+
     const sendCode = () => {
         setModalType('loader')
-        api.post('/users/enterCode', {
+        const data = {
             code: code,
-        })
-            .then(function (response) {
+        }
+        dispatch(enterCodeAction(data))
+            .then(() => {
                 setModalType('hidden')
-                setToken(response.data.token);
-                setLogged(true)
                 navigate("/profile")
             })
             .catch(function (error) {
                 setModalType('hidden')
-                console.log(error);
                 setPrintedError(error.response.data.message)
             });
+
     }
 
 
-
-    if (logged) return <Navigate to="/profile" replace />
+    const { isLoggedIn } = useSelector(state => state.userReducer)
+    if (isLoggedIn) return <Navigate to="/profile" replace />
 
     return (
         <div className="elements">

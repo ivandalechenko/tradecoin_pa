@@ -11,7 +11,11 @@ const Input = ({ props }) => {
                     <div className="label">
                         {props.label}
                     </div>
-                    <input type={inputType} placeholder={props.placeholder} onChange={props.onChange} value={props.value} />
+                    {props.readonly
+                        ? <div className='input'>
+                            {props.value}
+                        </div>
+                        : <><input type={inputType} placeholder={props.placeholder} onChange={props.onChange} value={props.value} /></>}
                 </div>
                 {
                     props.password

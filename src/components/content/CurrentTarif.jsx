@@ -1,10 +1,17 @@
 import React from 'react';
 import HorizontalLine from '../UI/HorizontalLine';
 import ChangeTarifCheckStatus from '../UI/ChangeTarifCheckStatus';
+import { useSelector } from 'react-redux';
 
 
 
 const CurrentTarif = (props) => {
+    String.prototype.firstLetterToUppercase = function () {
+        return this[0].toUpperCase() + this.slice(1);
+    }
+
+    const { user } = useSelector(state => state.userReducer)
+
     return (
         <div className="section" id="manage_tarifs">
             <div className="header h5">
@@ -22,7 +29,11 @@ const CurrentTarif = (props) => {
                         </div>
                         <div className="count">
                             <div className="num">
-                                F22 - RAPTOR
+                                {
+                                    user.tariff == ""
+                                        ? <>Isn't chosen</>
+                                        : <>{user.tariff.firstLetterToUppercase()}</>
+                                }
                             </div>
                         </div>
                         <div className="earned">
@@ -30,12 +41,12 @@ const CurrentTarif = (props) => {
                                 Earned
                             </div>
                             <div className="num">
-                                $990.33
+                                $0
                             </div>
                         </div>
                     </div>
                 </div>
-                <ChangeTarifCheckStatus />
+                <ChangeTarifCheckStatus type={'manage_tarifs'} />
             </div>
         </div>
     )

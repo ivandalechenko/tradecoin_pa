@@ -9,6 +9,10 @@ api.interceptors.request.use((config) => {
     if (token) {
         config.headers['Authorization'] = token;
     }
+    const registrationToken = localStorage.getItem('registrationToken');
+    if (registrationToken) {
+        config.headers['Authorization'] = registrationToken;
+    }
 
     return config;
 })

@@ -7,12 +7,16 @@ import RefTable from './RefTable';
 import Balance from '../UI/Balance';
 import InviteLink from '../UI/InviteLink';
 import Sidebar from '../sidebar/Sidebar';
+import { useSelector } from 'react-redux';
+import { Navigate } from 'react-router-dom';
 
 
-const RefPage = ({ setLogged }) => {
+const RefPage = () => {
+    const { user } = useSelector(state => state.userReducer)
+    if (!user.referralEnabled) return <Navigate to="/profile" replace />
     return (
         <div className="container">
-            <Sidebar setLogged={setLogged} />
+            <Sidebar />
             <div id='content'>
                 <div id="ref_page">
                     <div className="section" id="ref">
@@ -27,14 +31,14 @@ const RefPage = ({ setLogged }) => {
                             </div>
                             <InviteLink />
                         </div>
-                        <HorizontalLine />
+                        {/* <HorizontalLine />
                         <div className="referals">
                             <RefTable />
                             <div className="security_and_pages">
                                 <Secure />
                                 <Pagination />
                             </div>
-                        </div>
+                        </div> */}
                     </div>
                     <HaveProblems />
                 </div>

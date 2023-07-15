@@ -1,8 +1,11 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { Link, Navigate } from 'react-router-dom';
 
-const NewPassword = ({ logged }) => {
-    if (logged) return <Navigate to="/profile" replace />
+const NewPassword = () => {
+    const { isLoggedIn } = useSelector(state => state.userReducer)
+    if (isLoggedIn) return <Navigate to="/profile" replace />
+
     return (
         <div className="elements">
             <div className="modal_auth transiton_show_hide" id="modal_auth">

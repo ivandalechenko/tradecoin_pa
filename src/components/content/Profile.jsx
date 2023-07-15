@@ -1,16 +1,17 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import Input from '../UI/Input';
 import Button from '../UI/Button';
 import HorizontalLine from '../UI/HorizontalLine';
-import {useSelector} from "react-redux";
+import { useSelector } from "react-redux";
 
 const Profile = (props) => {
 
-    const {user} = useSelector(state => state.userReducer)
+    const { user } = useSelector(state => state.userReducer)
     const [email, setEmail] = useState('')
     const [nickname, setNickname] = useState('')
 
     useEffect(() => {
+        console.log(user)
         setEmail(user.email)
         setNickname(user.username)
     }, []);
@@ -41,7 +42,8 @@ const Profile = (props) => {
                             label: "Your e-mail",
                             placeholder: "Enter your e-mail",
                             value: email,
-                            onChange: (e) => setEmail(e.target.value)
+                            onChange: (e) => setEmail(e.target.value),
+                            readonly: true
                         }} />
                         <Input props={{
                             imageName: 'user.svg',

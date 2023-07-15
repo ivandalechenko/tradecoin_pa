@@ -33,7 +33,7 @@ const Offers = (props) => {
         },
         {
             title: 'AI Premium',
-            tariff: 'ai_pro',
+            tariff: 'ai_premium',
             budget: '$7000+',
             medium_profit: '$2378.34',
             percent_profit: '+12%',
