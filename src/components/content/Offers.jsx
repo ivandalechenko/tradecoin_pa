@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Secure from './Secure';
 import Offer from './Offer';
+import Modal from '../modal/Modal';
 
 const Offers = (props) => {
     const offers = [
@@ -47,8 +48,10 @@ const Offers = (props) => {
         }
     ]
 
+
     return (
         <div className="offers">
+
             <div className="offers_container ">
                 <div className="offers_offers_list">
                     {offers.map((offer, index) => {

@@ -9,18 +9,19 @@ export const loginAction = (loginData) => async dispatch => {
         localStorage.setItem('token', data.token)
 
     } catch (e) {
-        throw new Error(e.response.data.message)
+        // throw new Error(e.response.data.message)
+        throw (e.response.data.message)
     }
 }
 
 export const registrationAction = (registrationData) => async dispatch => {
     try {
-        const { data } = await api.post('/users/signup', registrationData)
+        const { data } = await api.post('/users/updatePassword', registrationData)
 
         localStorage.setItem('registrationToken', data.token)
 
     } catch (e) {
-        throw new Error(e.response.data.message)
+        throw (e.response.data.message)
     }
 }
 
@@ -34,7 +35,7 @@ export const enterCodeAction = (enterCodeData) => async dispatch => {
         localStorage.setItem('token', data.token)
 
     } catch (e) {
-        throw new Error(e.response.data.message)
+        throw (e.response.data.message)
     }
 }
 
@@ -45,7 +46,7 @@ export const checkAuthAction = () => async dispatch => {
         dispatch({ type: 'LOGIN', payload: { user: data.user, isLoggedIn: true } })
 
     } catch (e) {
-        throw new Error(e.response.data.message)
+        throw (e.response.data.message)
     }
 }
 
@@ -56,6 +57,16 @@ export const updateTokensAction = (tokenData) => async dispatch => {
         dispatch({ type: 'SET_USER', payload: data.user })
 
     } catch (e) {
-        throw new Error(e.response.data.message)
+        throw (e.response.data.message)
+    }
+}
+
+
+export const changePasswordAction = (changePasswordData) => async dispatch => {
+    try {
+        const { } = await api.post('/users/signup', changePasswordData)
+
+    } catch (e) {
+        throw (e.response.data.message)
     }
 }

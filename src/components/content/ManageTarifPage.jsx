@@ -1,15 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Secure from './Secure';
 import Pagination from './Pagination';
 import PreviousPaymentsTable from './PreviousPaymentsTable';
 import Offers from './Offers';
 import CurrentTarif from './CurrentTarif';
 import Sidebar from '../sidebar/Sidebar';
+import Modal from '../modal/Modal';
 
 const ManageTarifPage = () => {
+    const [modalType, setModalType] = useState('hidden')
     return (
         <div className="container">
             <Sidebar />
+            <Modal modalType={modalType} setModalType={setModalType} />
             <div id='content'>
                 <div id="manage_tarif_page">
                     <CurrentTarif />

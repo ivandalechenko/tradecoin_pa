@@ -332,6 +332,36 @@ body
         font-weight: 400
         line-height: 20px
 
+.notification
+    width: 100%
+    max-width: 500px
+    position: fixed
+    right: 0px
+    top: 0px
+    padding: 15px
+    .inner
+        border-radius: 14px
+        border: 1px solid rgba(255, 255, 255, 0.10)
+        background: var(--5, rgba(255, 255, 255, 0.05))
+        backdrop-filter: blur(20px)
+        padding: 24px
+        display: flex
+        justify-content: space-between
+        column-gap: 50px
+        .info
+            display: flex
+            column-gap: 16px
+            align-items: center
+            .text
+                font-size: 18px
+                font-weight: 700
+                letter-spacing: -0.36px
+        .closer:hover
+            transform: rotate(10deg) scale(1.1)
+        .closer
+            transition: transform 100ms
+            cursor: pointer
+
 .modal
     background: linear-gradient(180deg, rgba(11, 13, 27, 0.87) 0%, rgba(0, 0, 0, 0.44) 100%)
     backdrop-filter: blur(2px)
@@ -362,6 +392,7 @@ body
         .header
             display: flex
             justify-content: space-between
+            column-gap: 50px
             .name, img
                 margin: auto 0
             .name
@@ -369,7 +400,69 @@ body
                 column-gap: 16px
                 img, .text
                     margin: auto 0
+                .text
+                    font-size: 26px
+                    font-weight: 700
+                    letter-spacing: -0.52px
+    #inner_select_your_wallet
+        width: 500px
+        @media (max-width: 550px)
+            width: 100%
 
+        .content
+            .description
+                color: rgba(255, 255, 255, 0.50)
+                font-size: 15px
+                font-weight: 500
+                margin-top: 10px
+            .wallet_type
+                margin-top: 8px
+                display: flex
+                column-gap: 18px
+                align-items: center
+                transition: border 200ms
+                width: 100%
+                padding: 16px
+                border-radius: 12px
+                border: 1px solid var(--5, rgba(255, 255, 255, 0.05))
+                background: var(--5, rgba(255, 255, 255, 0.05))
+                height: 56px
+                @media (max-width: 350px)
+                    padding: 10px
+                    column-gap: 10px
+
+                .border, .img
+                    @media (max-width: 600px)
+                        margin: auto 0
+                .border
+                    border-radius: 27px
+                    border: 1px solid var(--white-25, rgba(255, 255, 255, 0.25))
+                    width: 24px
+                    height: 24px
+            .wallet_type:hover
+                border: 1px solid #3763FF
+                cursor: pointer
+            .wallet_type_first
+                margin-top: 24px
+            .selected
+                background: rgba(109, 141, 255, 0.05)
+                .border
+                    border-radius: 27px
+                    border: 8px solid var(--primary, #3763FF)
+                    background: var(--white, #FFF)
+                    width: 24px
+                    height: 24px
+            .or
+                display: flex
+                margin-top: 24px
+                column-gap: 26px
+                align-items: center
+                .line
+                    height: 1px
+                    width: 100%
+                    background: rgba(255, 255, 255, 0.25)
+            .accept_btn
+                margin-top: 24px
     #inner_loader
         .modal_inner
             background: none
@@ -607,6 +700,8 @@ body
                         width: 100%
                         height: auto
                         display: flex
+
+
                     .border, .img
                         @media (max-width: 600px)
                             margin: auto 0
@@ -979,7 +1074,7 @@ body
                     flex-wrap: wrap
                     row-gap: 11px
                     .input_block
-                        width: 300px
+                        width: 49%
                 .send_info_button
                     margin-top: 24px
     #have_problems
@@ -1644,7 +1739,18 @@ body
 // NIZE NACINAETSYA LOGIN
 // NIZE NACINAETSYA LOGIN
 // NIZE NACINAETSYA LOGIN
-
+.errors
+    display: flex
+    justify-content: center
+    flex-wrap: wrap
+    margin-top: 20px
+    row-gap: 10px
+    .error
+        width: 100%
+        text-align: center
+        color: #FF5F72
+        font-size: 16px
+        font-weight: 700
 
 .elements
     display: flex
@@ -1652,18 +1758,7 @@ body
     width: 100%
     overflow: hidden
     flex-wrap: wrap
-    .errors
-        display: flex
-        justify-content: center
-        flex-wrap: wrap
-        margin-top: 20px
-        row-gap: 10px
-        .error
-            width: 100%
-            text-align: center
-            color: #FF5F72
-            font-size: 16px
-            font-weight: 700
+
     .container
         row-gap: 0px
     .transiton_show_hide

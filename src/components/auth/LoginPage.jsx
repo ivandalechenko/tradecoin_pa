@@ -30,7 +30,7 @@ const LoginPage = () => {
             })
             .catch(function (error) {
                 setModalType('hidden')
-                setPrintedError(error.response.data.message)
+                setPrintedError(error)
             });
     }
 

@@ -3,12 +3,15 @@ import Input from '../UI/Input';
 import Button from '../UI/Button';
 import HorizontalLine from '../UI/HorizontalLine';
 import { useSelector } from "react-redux";
+import Notification from '../modal/Notification';
 
 const Profile = (props) => {
 
     const { user } = useSelector(state => state.userReducer)
     const [email, setEmail] = useState('')
     const [nickname, setNickname] = useState('')
+    const [notificationShow, setNotificationShow] = useState(true)
+
 
     useEffect(() => {
         console.log(user)
@@ -21,6 +24,7 @@ const Profile = (props) => {
 
     return (
         <div className="section" id="profile">
+            <Notification notificationShow={notificationShow} setNotificationShow={setNotificationShow} />
             <div className="section_header h5">
                 Profile
             </div>
@@ -53,7 +57,9 @@ const Profile = (props) => {
                             onChange: (e) => setNickname(e.target.value)
                         }} />
                     </div>
-                    <Button props={{ text: 'Save changes' }} />
+                    <button className="send_info_button">
+                        Save changes
+                    </button>
                 </div>
             </div>
         </div>

@@ -108,9 +108,11 @@ const ModalAddApi = ({ setModalType }) => {
             </div>
             <div className="content">
                 <div className="platforms">
-                    <div className={"platform " + activeExchangeStyle.binance} onClick={() => setActiveExchange('binance')}>
-                        <div className="border">
-                        </div>
+                    {/* <div className={"platform " + activeExchangeStyle.binance} onClick={() => setActiveExchange('binance')}> */}
+                    <div className={"platform " + activeExchangeStyle.binance}>
+                        {/* <div className="border"> */}
+                        {/* </div> */}
+                        <img src="img/pa/modal/platforms/lock.svg" alt="bybit" />
                         <div className="img">
                             <img src="img/pa/modal/platforms/binance.svg" alt="binance" />
                         </div>
@@ -118,13 +120,16 @@ const ModalAddApi = ({ setModalType }) => {
                     <div className={"platform " + activeExchangeStyle.bybit} onClick={() => setActiveExchange('bybit')}>
                         <div className="border">
                         </div>
+
                         <div className="img">
                             <img src="img/pa/modal/platforms/bybit.svg" alt="bybit" />
                         </div>
                     </div>
-                    <div className={"platform " + activeExchangeStyle.bitget} onClick={() => setActiveExchange('bitget')}>
-                        <div className="border">
-                        </div>
+                    {/* <div className={"platform " + activeExchangeStyle.bitget} onClick={() => setActiveExchange('bitget')}> */}
+                    <div className={"platform " + activeExchangeStyle.bitget}>
+                        {/* <div className="border"> */}
+                        {/* </div> */}
+                        <img src="img/pa/modal/platforms/lock.svg" alt="bybit" />
                         <div className="img">
                             <img src="img/pa/modal/platforms/bitget.png" alt="bitget" />
                         </div>

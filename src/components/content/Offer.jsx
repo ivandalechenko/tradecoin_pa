@@ -1,28 +1,35 @@
-import React from 'react';
+import React, { useState } from 'react';
 import api from "../../api/api";
 import { useSelector } from "react-redux";
+import Modal from '../modal/Modal';
+import Notification from '../modal/Notification';
 
 const Offer = ({ offer }) => {
 
     const { user } = useSelector(state => state.userReducer)
-
+    const [modalType, setModalType] = useState('hidden')
+    const [notificationShow, setNotificationShow] = useState(false)
     const handleClick = (e) => {
         e.preventDefault()
-        console.log(offer.tariff)
+        // console.log(offer.tariff)
 
         if (offer.tariff == 'ai_premium') {
-            alert("You can't use this tarif")
+            setNotificationShow(true)
         } else {
-            api.post('/payment/create-invoice', { tariff: offer.tariff }).then((res) => {
-                console.log(res.data.response.result.url)
-                window.open(res.data.response.result.url, '_blank');
-            })
+            setModalType('select_your_wallet')
+
+            // api.post('/payment/create-invoice', { tariff: offer.tariff }).then((res) => {
+            //     // console.log(res.data.response.result.url)
+            //     window.open(res.data.response.result.url, '_blank');
+            // })
         }
     }
 
 
     return (
         <div className="offers_offers_list_offer">
+            <Modal modalType={modalType} setModalType={setModalType} props={{ tariff: offer.tariff }} />
+            <Notification notificationShow={notificationShow} setNotificationShow={setNotificationShow} message={'Temporarily unavailable'} />
             <div className="offers_offers_list_offer_header">
                 <div className="offers_offers_list_offer_header_name">
                     <div className="offers_offers_list_offer_header_name_h4 h4">
