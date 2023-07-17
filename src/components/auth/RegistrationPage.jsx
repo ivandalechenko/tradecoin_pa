@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, Navigate, useNavigate } from 'react-router-dom';
 import Input from '../UI/Input';
 import Images from './Images';
@@ -42,6 +42,9 @@ const RegistrationPage = () => {
             });
 
     }
+    useEffect(() => {
+        document.title = "Sign up - TradeCoinAI";
+    }, []);
 
     const { isLoggedIn } = useSelector(state => state.userReducer)
     if (isLoggedIn) return <Navigate to="/profile" replace />

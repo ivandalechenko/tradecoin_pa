@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, Navigate, useNavigate } from 'react-router-dom';
 import Input from '../UI/Input';
 import Images from './Images';
@@ -33,9 +33,16 @@ const LoginPage = () => {
                 setPrintedError(error)
             });
     }
+    useEffect(() => {
+        document.title = "Login - TradeCoinAI";
+    }, []);
+
 
     const { isLoggedIn } = useSelector(state => state.userReducer)
     if (isLoggedIn) return <Navigate to="/profile" replace />
+
+
+
 
     return (
         <div className="elements">
@@ -81,12 +88,12 @@ const LoginPage = () => {
                         </div>
                     </div>
                     <button className="accept_btn" onClick={login}>Log in</button>
-                    <div className="forgot_password" id="forgot_password">
+                    {/* <div className="forgot_password" id="forgot_password">
                         <div className="text">
                             Forgot your password
                         </div>
                         <Link to={"/forgot_password"} id="recovery_password">Recovery password</Link>
-                    </div>
+                    </div> */}
                 </div>
             </div>
             <Images />

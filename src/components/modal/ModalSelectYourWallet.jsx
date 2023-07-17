@@ -73,9 +73,11 @@ const ModalSelectYourWallet = ({ setModalType, props }) => {
                     <div className="line">
                     </div>
                 </div>
-                <div className={activePayType === 'card' ? "wallet_type wallet_type_first selected" : "wallet_type wallet_type_first "} onClick={() => setActivePayType('card')}>
-                    <div className="border">
-                    </div>
+                {/* <div className={activePayType === 'card' ? "wallet_type wallet_type_first selected" : "wallet_type wallet_type_first "} onClick={() => setActivePayType('card')}> */}
+                <div className="wallet_type wallet_type_first selected">
+                    {/* <div className="border"> */}
+                    {/* </div> */}
+                    <img src="img/pa/modal/platforms/lock.svg" />
                     <img src="img/pa/modal/platforms/wallet.svg" alt="" />
                     <div className="text">
                         Pay by card

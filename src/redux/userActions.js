@@ -16,7 +16,7 @@ export const loginAction = (loginData) => async dispatch => {
 
 export const registrationAction = (registrationData) => async dispatch => {
     try {
-        const { data } = await api.post('/users/updatePassword', registrationData)
+        const { data } = await api.post('/users/signup', registrationData)
 
         localStorage.setItem('registrationToken', data.token)
 
@@ -64,7 +64,7 @@ export const updateTokensAction = (tokenData) => async dispatch => {
 
 export const changePasswordAction = (changePasswordData) => async dispatch => {
     try {
-        const { } = await api.post('/users/signup', changePasswordData)
+        const { data } = await api.post('/users/updatePassword', changePasswordData)
 
     } catch (e) {
         throw (e.response.data.message)

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, Navigate, useNavigate } from 'react-router-dom';
 import Modal from '../modal/Modal';
 import { useDispatch, useSelector } from 'react-redux';
@@ -33,6 +33,9 @@ const EnterCode = () => {
     }
 
 
+    useEffect(() => {
+        document.title = "Enter code - TradeCoinAI";
+    }, []);
     const { isLoggedIn } = useSelector(state => state.userReducer)
     if (isLoggedIn) return <Navigate to="/profile" replace />
 

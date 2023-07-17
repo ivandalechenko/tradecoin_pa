@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Sidebar from '../sidebar/Sidebar';
 import HorizontalLine from '../UI/HorizontalLine';
 
 const StatPage = () => {
+    useEffect(() => {
+        document.title = "Statistics - TradeCoinAI";
+    }, []);
     return (
         <div className="container">
             <Sidebar />

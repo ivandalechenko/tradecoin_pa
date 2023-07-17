@@ -1,8 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { Link, Navigate } from 'react-router-dom';
 
 const ForgotPassword = () => {
+
+    useEffect(() => {
+        document.title = "Forgot password - TradeCoinAI";
+    }, []);
     const { isLoggedIn } = useSelector(state => state.userReducer)
     if (isLoggedIn) return <Navigate to="/profile" replace />
     return (

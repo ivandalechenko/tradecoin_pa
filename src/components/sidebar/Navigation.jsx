@@ -34,18 +34,24 @@ const Navigation = ({ setModalType }) => {
                         Manage tarifs
                     </div>
                 </NavLink>
-                <div id="pay_opener" className="navigation_element_no_act">
+                {/* <div id="pay_opener" className="navigation_element_no_act">
                     <img src="img/pa/navigation/wallet.svg" alt="pay now menu img" />
                     <div className="text">
                         Pay now
                     </div>
-                </div>
-                <div id="renew_tarif_opener" className="navigation_element_no_act">
-                    <img src="img/pa/navigation/renew.svg" alt="renew tarif menu img" />
-                    <div className="text">
-                        Renew tarif
-                    </div>
-                </div>
+                </div> */}
+                {
+                    user.tariff
+                        ?
+                        <div id="renew_tarif_opener" className="navigation_element_no_act">
+                            <img src="img/pa/navigation/renew.svg" alt="renew tarif menu img" />
+                            <div className="text">
+                                Renew tarif
+                            </div>
+                        </div>
+                        : <></>
+                }
+
                 {
                     user.referralEnabled
                         ?
@@ -56,7 +62,6 @@ const Navigation = ({ setModalType }) => {
                             </div>
                         </NavLink>
                         : <></>
-
                 }
 
             </div>

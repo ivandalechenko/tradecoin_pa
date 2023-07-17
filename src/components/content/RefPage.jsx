@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import HorizontalLine from '../UI/HorizontalLine';
 import HaveProblems from './HaveProblems';
 import Secure from './Secure';
@@ -12,6 +12,10 @@ import { Navigate } from 'react-router-dom';
 
 
 const RefPage = () => {
+
+    useEffect(() => {
+        document.title = "Refferal - TradeCoinAI";
+    }, []);
     const { user } = useSelector(state => state.userReducer)
     if (!user.referralEnabled) return <Navigate to="/profile" replace />
     return (

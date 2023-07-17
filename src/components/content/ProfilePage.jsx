@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import HaveProblems from './HaveProblems';
 import ChangePassword from './ChangePassword';
 import Balance from './Balance';
@@ -6,6 +6,10 @@ import Profile from './Profile';
 import Sidebar from '../sidebar/Sidebar';
 
 const ProfilePage = () => {
+
+    useEffect(() => {
+        document.title = "Profile - TradeCoinAI";
+    }, []);
     return (
         <div className="container">
             <Sidebar />

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Secure from './Secure';
 import Pagination from './Pagination';
 import PreviousPaymentsTable from './PreviousPaymentsTable';
@@ -8,6 +8,9 @@ import Sidebar from '../sidebar/Sidebar';
 import Modal from '../modal/Modal';
 
 const ManageTarifPage = () => {
+    useEffect(() => {
+        document.title = "Manage tarifs - TradeCoinAI";
+    }, []);
     const [modalType, setModalType] = useState('hidden')
     return (
         <div className="container">

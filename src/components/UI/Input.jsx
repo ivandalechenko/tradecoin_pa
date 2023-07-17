@@ -1,8 +1,14 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 const Input = ({ props }) => {
     const [inputType, setInputType] = useState('text')
     const [eyeType, setEyeType] = useState('eye')
+    useEffect(() => {
+        if (props.password) {
+            setInputType('password')
+            setEyeType('eye_closed')
+        }
+    }, [])
     return (
         <div className="input_block" id="email">
             <img src={"img/pa/login/" + props.imageName} alt="decor" />

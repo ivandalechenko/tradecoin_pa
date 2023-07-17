@@ -400,7 +400,69 @@ body
                 column-gap: 16px
                 img, .text
                     margin: auto 0
+                .text
+                    font-size: 26px
+                    font-weight: 700
+                    letter-spacing: -0.52px
+    #inner_select_your_wallet
+        width: 500px
+        @media (max-width: 550px)
+            width: 100%
 
+        .content
+            .description
+                color: rgba(255, 255, 255, 0.50)
+                font-size: 15px
+                font-weight: 500
+                margin-top: 10px
+            .wallet_type
+                margin-top: 8px
+                display: flex
+                column-gap: 18px
+                align-items: center
+                transition: border 200ms
+                width: 100%
+                padding: 16px
+                border-radius: 12px
+                border: 1px solid var(--5, rgba(255, 255, 255, 0.05))
+                background: var(--5, rgba(255, 255, 255, 0.05))
+                height: 56px
+                @media (max-width: 350px)
+                    padding: 10px
+                    column-gap: 10px
+
+                .border, .img
+                    @media (max-width: 600px)
+                        margin: auto 0
+                .border
+                    border-radius: 27px
+                    border: 1px solid var(--white-25, rgba(255, 255, 255, 0.25))
+                    width: 24px
+                    height: 24px
+            .wallet_type:hover
+                border: 1px solid #3763FF
+                cursor: pointer
+            .wallet_type_first
+                margin-top: 24px
+            .selected
+                background: rgba(109, 141, 255, 0.05)
+                .border
+                    border-radius: 27px
+                    border: 8px solid var(--primary, #3763FF)
+                    background: var(--white, #FFF)
+                    width: 24px
+                    height: 24px
+            .or
+                display: flex
+                margin-top: 24px
+                column-gap: 26px
+                align-items: center
+                .line
+                    height: 1px
+                    width: 100%
+                    background: rgba(255, 255, 255, 0.25)
+            .accept_btn
+                margin-top: 24px
     #inner_loader
         .modal_inner
             background: none
@@ -638,6 +700,8 @@ body
                         width: 100%
                         height: auto
                         display: flex
+
+
                     .border, .img
                         @media (max-width: 600px)
                             margin: auto 0

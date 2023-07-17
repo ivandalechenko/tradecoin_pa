@@ -12,7 +12,6 @@ const Profile = (props) => {
     const [nickname, setNickname] = useState('')
     const [notificationShow, setNotificationShow] = useState(true)
 
-
     useEffect(() => {
         console.log(user)
         setEmail(user.email)
@@ -24,7 +23,7 @@ const Profile = (props) => {
 
     return (
         <div className="section" id="profile">
-            <Notification notificationShow={notificationShow} setNotificationShow={setNotificationShow} />
+            {/* <Notification notificationShow={notificationShow} setNotificationShow={setNotificationShow} /> */}
             <div className="section_header h5">
                 Profile
             </div>
