@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import Secure from './Secure';
-import Pagination from './Pagination';
+import Secure from '../Secure';
+import Pagination from '../../UI/Pagination';
 import PreviousPaymentsTable from './PreviousPaymentsTable';
 import Offers from './Offers';
 import CurrentTarif from './CurrentTarif';
-import Sidebar from '../sidebar/Sidebar';
-import Modal from '../modal/Modal';
+import Sidebar from '../../sidebar/Sidebar';
+import Modal from '../../modal/Modal';
 
 const ManageTarifPage = () => {
     useEffect(() => {

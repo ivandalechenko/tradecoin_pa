@@ -1,16 +1,46 @@
-import React, { useEffect } from 'react';
-import { useSelector } from 'react-redux';
-import { Link, Navigate } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
+import Input from '../UI/Input/Input';
+import Modal from '../modal/Modal';
+import { forgotPasswordSendCodeAction } from '../../redux/userActions';
+import useInput from '../../validation/useInput';
 
 const ForgotPassword = () => {
-
     useEffect(() => {
         document.title = "Forgot password - TradeCoinAI";
     }, []);
-    const { isLoggedIn } = useSelector(state => state.userReducer)
-    if (isLoggedIn) return <Navigate to="/profile" replace />
+    const [modalType, setModalType] = useState('hidden')
+    const email = useInput('', { isEmpty: true, isEmail: true })
+    const [serverError, setServerError] = useState('')
+    useEffect(() => {
+        setServerError('')
+    }, [email.value])
+
+
+    const navigate = useNavigate()
+    const dispatch = useDispatch()
+    const sendRestoreCode = () => {
+        setModalType('loader')
+        const data = {
+            email: email.value,
+        }
+        dispatch(forgotPasswordSendCodeAction(data))
+            .then(() => {
+                setModalType('hidden')
+                navigate("/enter_code_forgot_password")
+            })
+            .catch(function (error) {
+                setModalType('hidden')
+                setServerError(error)
+            });
+    }
+
+    // const { isLoggedIn } = useSelector(state => state.userReducer)
+    // if (isLoggedIn) return <Navigate to="/profile" replace />
     return (
         <div className="elements">
+            <Modal modalType={modalType} setModalType={setModalType} />
             <div className="modal_auth transiton_show_hide" id="modal_auth">
                 <div className="modal_auth_inner">
                     <div className="back">
@@ -23,27 +53,34 @@ const ForgotPassword = () => {
                         <h2 id="modal_h2">
                             Forget password?<br /> Not a problem
                         </h2>
-                        <div className="input_block" id="modal_email">
-                            <img src="img/login/mail.svg" />
-                            <div className="label_and_input">
-                                <div className="inp">
-                                    <div className="label">
-                                        Your email
-                                    </div>
-                                    <input type="text" placeholder="Enter your emal" />
-                                </div>
-                            </div>
-                        </div>
-                        <button className="send_code_btn" id="send_a_code">
-                            Send a code
-                        </button>
-                        <button className="send_code_btn dnone" id="reset_password_button">
-                            Recover password
-                        </button>
-                        <button className="send_code_btn dnone" id="change_password">
-                            Change password
-                        </button>
+                        <Input props={{
+                            imageName: 'mail.svg',
+                            label: 'Your e-mail',
+                            placeholder: 'Enter your e-mail',
+                            value: email.value,
+                            onChange: email.onChange,
+                            onBlur: email.onBlur,
+                        }} />
+                        <button className={email.isValid ? "accept_btn_form accept_btn_valid" : "accept_btn_form"} onClick={sendRestoreCode}>Send a code</button>
 
+                        <div className="errors">
+
+                            {
+                                serverError
+                                    ? <div className='error'>{serverError}</div>
+                                    : <></>
+                            }
+                            {
+                                email.isDirty
+                                    ?
+                                    <>
+                                        {email.isEmpty ? <div className='error'>Enter Email</div> : <>
+                                            {!email.isEmail ? <div className='error'>Please enter a valid Email</div> : <></>}
+                                        </>}
+                                    </>
+                                    : <></>
+                            }
+                        </div>
                     </div>
                     <div className="text_with_a" id="dont_have_account">
                         You don't have account yet?
@@ -56,7 +93,7 @@ const ForgotPassword = () => {
                     <img src="img/login/line.png" />
                 </div>
             </div>
-        </div>
+        </div >
     )
 }
 

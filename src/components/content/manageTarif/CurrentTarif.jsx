@@ -1,6 +1,6 @@
 import React from 'react';
-import HorizontalLine from '../UI/HorizontalLine';
-import ChangeTarifCheckStatus from '../UI/ChangeTarifCheckStatus';
+import HorizontalLine from '../../UI/HorizontalLine';
+import ChangeTarifCheckStatus from '../../UI/ChangeTarifCheckStatus';
 import { useSelector } from 'react-redux';
 
 

@@ -80,7 +80,7 @@ const Navigation = ({ setModalType }) => {
                 Change language
                 </div>
             </button> */}
-            <Link to="https://ivandalechenko.github.io/crypto_layout/" className="bottom_button mt200">
+            <Link to="https://tradecoinai.com/" className="bottom_button mt200">
                 <img src="img/pa/back_arrow.svg" alt="arrow back to main" />
                 <div className="text">
                     Back to website

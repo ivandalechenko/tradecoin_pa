@@ -9,6 +9,8 @@ const Input = ({ props }) => {
             setEyeType('eye_closed')
         }
     }, [])
+
+
     return (
         <div className="input_block" id="email">
             <img src={"img/pa/login/" + props.imageName} alt="decor" />
@@ -21,7 +23,14 @@ const Input = ({ props }) => {
                         ? <div className='input'>
                             {props.value}
                         </div>
-                        : <><input type={inputType} placeholder={props.placeholder} onChange={props.onChange} value={props.value} /></>}
+                        : <>{
+                            props.username
+                                ? <div className='dog_and_input'><div className="dog">@</div><input type={inputType} placeholder={props.placeholder} onChange={props.onChange} value={props.value} onBlur={props.onBlur} /></div>
+                                : <><input type={inputType} placeholder={props.placeholder} onChange={props.onChange} value={props.value} onBlur={props.onBlur} /></>
+                        }</>
+
+
+                    }
                 </div>
                 {
                     props.password
@@ -37,7 +46,6 @@ const Input = ({ props }) => {
                         : <></>
                 }
             </div>
-
         </div>
 
     )

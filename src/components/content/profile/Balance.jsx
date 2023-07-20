@@ -1,5 +1,5 @@
 import React from 'react';
-import ChangeTarifCheckStatus from '../UI/ChangeTarifCheckStatus';
+import ChangeTarifCheckStatus from '../../UI/ChangeTarifCheckStatus';
 
 const Balance = (props) => {
     return (

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import Secure from './Secure';
+import Secure from '../Secure';
 import Offer from './Offer';
-import Modal from '../modal/Modal';
+import Modal from '../../modal/Modal';
 
 const Offers = (props) => {
     const offers = [
@@ -44,7 +44,7 @@ const Offers = (props) => {
             subscribers: '74/99 users',
             price: '30% ',
             price_old: '40%',
-
+            individual: true
         }
     ]
 

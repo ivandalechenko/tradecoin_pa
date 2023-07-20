@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import Input from '../UI/Input';
+import Input from '../UI/Input/Input';
 import { updateTokensAction } from "../../redux/userActions";
 import { useDispatch, useSelector } from "react-redux";
+import Checkbox from '../UI/Checkbox';
 
 const ModalAddApi = ({ setModalType }) => {
     const dispatch = useDispatch()
@@ -14,11 +15,10 @@ const ModalAddApi = ({ setModalType }) => {
             binance: '',
         }
     )
-
+    const [checked, setChecked] = useState(false)
+    const [canAddApi, setCanAddApi] = useState(false)
     useEffect(() => {
         if (activeExchange == 'binance') {
-            setApi(user.binance.apiKey)
-            setSecret(user.binance.secret)
             setActiveExchangeStyle({
                 bybit: '',
                 bitget: '',
@@ -26,8 +26,6 @@ const ModalAddApi = ({ setModalType }) => {
             })
         }
         if (activeExchange == 'bybit') {
-            setApi(user.bybit.apiKey)
-            setSecret(user.bybit.secret)
             setActiveExchangeStyle({
                 bybit: 'selected',
                 bitget: '',
@@ -35,8 +33,6 @@ const ModalAddApi = ({ setModalType }) => {
             })
         }
         if (activeExchange == 'bitget') {
-            setApi(user.bitget.apiKey)
-            setSecret(user.bitget.secret)
             setActiveExchangeStyle({
                 bybit: '',
                 bitget: 'selected',
@@ -46,54 +42,68 @@ const ModalAddApi = ({ setModalType }) => {
     }, [activeExchange]);
 
     const handleUpdate = (e) => {
-        e.preventDefault()
-        if (activeExchange == 'binance') {
-            const binance = {
-                apiKey: api,
-                secret: secret
+        if (canAddApi) {
+            e.preventDefault()
+            if (activeExchange == 'binance') {
+                const binance = {
+                    apiKey: api,
+                    secret: secret
+                }
+                dispatch(updateTokensAction({ binance })).then(() => {
+                    setModalType("hidden")
+                }).catch((err) => {
+                    console.log(err)
+                })
             }
-            dispatch(updateTokensAction({ binance })).then(() => {
-                setModalType("hidden")
-            }).catch((err) => {
-                console.log(err)
-            })
-        }
-        if (activeExchange == 'bybit') {
-            const bybit = {
-                apiKey: api,
-                secret: secret
+            if (activeExchange == 'bybit') {
+                const bybit = {
+                    apiKey: api,
+                    secret: secret
+                }
+                dispatch(updateTokensAction({ bybit })).then(() => {
+                    setModalType("hidden")
+                }).catch((err) => {
+                    console.log(err)
+                })
             }
-            dispatch(updateTokensAction({ bybit })).then(() => {
-                setModalType("hidden")
-            }).catch((err) => {
-                console.log(err)
-            })
-        }
-        if (activeExchange == 'bitget') {
-            const bitget = {
-                apiKey: api,
-                secret: secret
+            if (activeExchange == 'bitget') {
+                const bitget = {
+                    apiKey: api,
+                    secret: secret
+                }
+                dispatch(updateTokensAction({ bitget })).then(() => {
+                    setModalType("hidden")
+                }).catch((err) => {
+                    console.log(err)
+                })
             }
-            dispatch(updateTokensAction({ bitget })).then(() => {
-                setModalType("hidden")
-            }).catch((err) => {
-                console.log(err)
-            })
         }
-
     }
 
     const [api, setApi] = useState('')
     const [secret, setSecret] = useState('')
 
+    const [printedError, setPrintedError] = useState('')
+
     useEffect(() => {
-        setApi(user.bybit.apiKey)
-        setSecret(user.bybit.secret)
-    }, []);
+        validateKeySecret()
+    }, [checked]);
 
-
-
-
+    const validateKeySecret = () => {
+        if (api.length != 18) {
+            setPrintedError('API key length must be 18 characters')
+            setCanAddApi(false)
+        } else if (secret.length != 36) {
+            setPrintedError('The length of the private key must be 36 characters')
+            setCanAddApi(false)
+        } else if (!checked) {
+            setPrintedError('Please check the box that you understand how to use API keys')
+            setCanAddApi(false)
+        } else {
+            setPrintedError('')
+            setCanAddApi(true)
+        }
+    }
 
     return (
         <div id="inner_add_api" className="modal_inner">
@@ -135,34 +145,56 @@ const ModalAddApi = ({ setModalType }) => {
                         </div>
                     </div>
                 </div>
-                <Input props={{
-                    imageName: 'key.svg',
-                    label: 'API key',
-                    placeholder: 'Enter API key',
-                    onChange: (e) => setApi(e.target.value),
-                    value: api,
-                }} />
-                <Input props={{
-                    imageName: 'lock.svg',
-                    label: 'Secret key',
-                    placeholder: 'Enter Secret key',
-                    onChange: (e) => setSecret(e.target.value),
-                    value: secret,
-                }} />
+                {user.bybit.apiKey
+                    ? <Input props={{
+                        imageName: 'key.svg',
+                        label: 'API key',
+                        placeholder: user.bybit.apiKey,
+                        onChange: (e) => setApi(e.target.value),
+                        value: api,
+                        onBlur: validateKeySecret
+                    }} />
+                    : <Input props={{
+                        imageName: 'key.svg',
+                        label: 'API key',
+                        placeholder: 'Enter API key',
+                        onChange: (e) => setApi(e.target.value),
+                        value: api,
+                        onBlur: validateKeySecret
 
+                    }} />
+                }
+                {user.bybit.secret
+                    ? <Input props={{
+                        imageName: 'lock.svg',
+                        label: 'Secret key',
+                        placeholder: user.bybit.secret,
+                        onChange: (e) => setSecret(e.target.value),
+                        value: secret,
+                        onBlur: validateKeySecret
 
-                <div className="button_and_check">
-                    <button className="send_info_button input_block_first" onClick={handleUpdate}>
-                        Add API key
-                    </button >
-                    <div className="checkbox">
-                        <div className="checkbox_wrapper checked">
-                            <img src="img/pa/check.svg" alt="check" />
-                        </div>
-                        <div className="text">
-                            I understand how to use API keys
-                        </div>
+                    }} />
+                    : <Input props={{
+                        imageName: 'lock.svg',
+                        label: 'Secret key',
+                        placeholder: 'Enter Secret key',
+                        onChange: (e) => setSecret(e.target.value),
+                        value: secret,
+                        onBlur: validateKeySecret
+
+                    }} />
+                }
+
+                <div className="errors">
+                    <div className="error">
+                        {printedError}
                     </div>
+                </div>
+                <div className="button_and_check">
+                    <button className={canAddApi ? "send_info_button input_block_first" : "send_info_button input_block_first accept_btn_inactive"} onClick={handleUpdate}>Add API key</button>
+
+                    <Checkbox checked={checked} setChecked={setChecked} label={'I understand how to use API keys'} />
+
                 </div>
                 <div className="steps_and_notice">
                     <div className="steps_and_bg">

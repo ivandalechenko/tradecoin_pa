@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import api from "../../api/api";
 import { useSelector } from "react-redux";
-import Modal from '../modal/Modal';
-import Notification from '../modal/Notification';
+import Modal from '../../modal/Modal';
+import Notification from '../../modal/Notification';
 
 const Offer = ({ offer }) => {
 
@@ -134,10 +133,14 @@ const Offer = ({ offer }) => {
                                 className="offers_offers_list_offer_content_price_price_value_h6_s light18">
                                 {offer.price_old}</s>
                         </div>
-                        <div
-                            className="offers_offers_list_offer_content_price_price_value_add_info_type_2">
-                            Individual 🔥
-                        </div>
+                        {
+                            offer.individual
+                                ? <div
+                                    className="offers_offers_list_offer_content_price_price_value_add_info_type_2">
+                                    Individual 🔥
+                                </div>
+                                : <></>
+                        }
                     </div>
                 </div>
                 <div className="offers_offers_list_offer_content_buttons">

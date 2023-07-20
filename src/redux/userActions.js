@@ -70,3 +70,37 @@ export const changePasswordAction = (changePasswordData) => async dispatch => {
         throw (e.response.data.message)
     }
 }
+
+
+export const updateUsernameAction = (updateUsernameData) => async dispatch => {
+    try {
+        const { data } = await api.post('/users/updateUsername', updateUsernameData)
+        dispatch({ type: 'SET_USER', payload: data.user })
+
+    } catch (e) {
+        throw (e.response.data.message)
+    }
+}
+
+
+export const forgotPasswordSendCodeAction = (forgotPasswordSendCodeData) => async dispatch => {
+    try {
+        const { data } = await api.post('/users/forgotPasswordSendCode', forgotPasswordSendCodeData)
+        localStorage.setItem('registrationToken', data.token)
+        localStorage.setItem('email', forgotPasswordSendCodeData.email)
+    } catch (e) {
+        throw (e.response.data.message)
+    }
+}
+
+
+export const updatePasswordFromEmailAction = (updatePasswordFromEmailData) => async dispatch => {
+    try {
+        const { data } = await api.post('/users/updatePasswordFromEmail', updatePasswordFromEmailData)
+        localStorage.setItem('registrationToken', data.token)
+        dispatch({ type: 'LOGIN', payload: { user: data.user, isLoggedIn: true } })
+
+    } catch (e) {
+        throw (e.response.data.message)
+    }
+}

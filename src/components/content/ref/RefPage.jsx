@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react';
-import HorizontalLine from '../UI/HorizontalLine';
-import HaveProblems from './HaveProblems';
-import Secure from './Secure';
-import Pagination from './Pagination';
+import HorizontalLine from '../../UI/HorizontalLine';
+import HaveProblems from '../HaveProblems';
+import Secure from '../Secure';
+import Pagination from '../../UI/Pagination';
 import RefTable from './RefTable';
-import Balance from '../UI/Balance';
-import InviteLink from '../UI/InviteLink';
-import Sidebar from '../sidebar/Sidebar';
+import Balance from '../../UI/Balance';
+import InviteLink from '../../UI/InviteLink';
+import Sidebar from '../../sidebar/Sidebar';
 import { useSelector } from 'react-redux';
 import { Navigate } from 'react-router-dom';
 

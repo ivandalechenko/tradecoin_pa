@@ -49,15 +49,33 @@ a:hover, button:hover
     position: relative
 .accept_btn
     border-radius: 65px
-    background: var(--primary, #3763FF)
+    background: rgba(55, 99, 255, 1)
     padding: 20px
     font-size: 16px
     font-weight: 700
     letter-spacing: -0.32px
     width: 100%
+    box-shadow: 0px 0px 0px black
+    transition: box-shadow 200ms, opacity 200ms, background 200ms
+    opacity: 1
     @media (max-width: 550px)
         font-size: 14px
-
+.accept_btn_form
+    border-radius: 65px
+    background: rgba(55, 99, 255, 1)
+    padding: 20px
+    font-size: 16px
+    font-weight: 700
+    letter-spacing: -0.32px
+    width: 100%
+    box-shadow: 0px 0px 0px black
+    transition: box-shadow 200ms, opacity 200ms, background 200ms
+    opacity: 1
+    @media (max-width: 550px)
+        font-size: 14px
+.accept_btn_form:hover
+    cursor: default
+    opacity: 1
 
 .btn
     font-weight: 700
@@ -230,13 +248,43 @@ h6
                 font-size: 15px
                 font-weight: 500
                 line-height: 20px
+                overflow: auto
+                padding-bottom: 3px
                 @media (max-width: 500px)
                     font-size: 12px
+            input:-internal-autofill-selected
+                background-color: none !important
+                color: white !important
+                font-size: 15px !important
+                font-weight: 500 !important
+                @media (max-width: 500px)
+                    font-size: 12px !important
+            input:-webkit-autofill,
+            input:-webkit-autofill:focus
+                transition: background-color 600000s 0s, color 600000s 0s
+            input::-webkit-scrollbar-track, .input::-webkit-scrollbar-track
+                background-color: rgba(255,255,255,0.1)
+                border-radius: 12px
+            input::-webkit-scrollbar-thumb , .input::-webkit-scrollbar-thumb
+                background-color: rgba(255,255,255,0.3)
+                border-radius: 12px
+            input::-webkit-scrollbar, .input::-webkit-scrollbar
+                height: 6px
+            .dog_and_input
+                display: flex
+                align-items: center
+                .dog
+                    font-size: 15px
+                    font-weight: 500
+                    line-height: 20px
+                input
+                    padding-top: 6px
         .eye
             transition: 300ms
         .eye:hover
             cursor: pointer
             transform: rotate(10deg) scale(1.2)
+
 
 
 
@@ -255,7 +303,7 @@ body
     letter-spacing: -0.32px
     width: 100%
     max-width: 230px
-
+    transition: background 200ms, color 200ms
 .section
     border-radius: 14px
     background: rgba(255, 255, 255, 0.05)
@@ -328,11 +376,19 @@ body
         border: none
         img
             display: block
+            user-select: none
     .text
         color: var(--secondary, #B5B6B6)
         font-size: 14px
         font-weight: 400
         line-height: 20px
+        a
+            font-size: 14px
+            line-height: 20px
+            font-weight: 700
+            letter-spacing: -0.28px
+            color: #d9e44f
+
 
 .notification
     width: 100%
@@ -935,6 +991,9 @@ body
         background: linear-gradient(180deg, #3763FF 0%, rgba(55, 99, 255, 0.00) 60%), rgba(255, 255, 255, 0.05)
         .hr
             width: 60%
+        .accept_btn_form
+            width: 300px
+            margin-top: 20px
         .content
             display: flex
             column-gap: 32px
@@ -957,6 +1016,10 @@ body
                     font-size: 36px
                     font-weight: 700
                     letter-spacing: -0.72px
+                    @media (max-width: 350px)
+                        font-size: 26px
+                    @media (max-width: 400px)
+                        font-size: 30px
                 .form
                     display: flex
                     margin-top: 24px
@@ -965,8 +1028,14 @@ body
                     row-gap: 11px
                     .input_block
                         width: 300px
+                        @media (max-width: 700px)
+                            width: 100%
+
                 .send_info_button
                     margin-top: 24px
+                    @media (max-width: 700px)
+                        width: 100%
+
     #balance, #manage_tarifs
         padding: 20px 26px 16px
         @media (max-width: 500px)
@@ -1077,6 +1146,8 @@ body
                     row-gap: 11px
                     .input_block
                         width: 49%
+                        @media (max-width: 700px)
+                            width: 100%
                 .send_info_button
                     margin-top: 24px
     #have_problems
@@ -1745,22 +1816,22 @@ body
     display: flex
     justify-content: center
     flex-wrap: wrap
-    margin-top: 20px
-    row-gap: 10px
+    width: 100%
     .error
         width: 100%
         text-align: center
         color: #FF5F72
         font-size: 16px
         font-weight: 700
-
+        margin-top: 10px
 .elements
     display: flex
     justify-content: space-between
     width: 100%
     overflow: hidden
     flex-wrap: wrap
-
+    .errors
+        min-height: 100px
     .container
         row-gap: 0px
     .transiton_show_hide
@@ -1774,6 +1845,10 @@ body
         padding: 0px 10px
         background: black
         min-height: 100vh
+        .accept_btn_form
+            margin-top: 15px
+        .errors
+            min-height: 0px
         .fone
             width: 0px
             height: 0px
@@ -1883,8 +1958,8 @@ body
                     @media (max-width:800px)
                         margin-top: 10px
                         font-size: 14px
-                // .input_block
-                //     margin-top: 20px
+                .input_block
+                    margin-top: 20px
                 //     border-radius: 11px
                 //     width: 100%
                 //     padding: 13px 20px
@@ -2051,7 +2126,7 @@ body
         .input_block
             margin-top: 10px
 
-        .accept_btn
+        .accept_btn_form
             margin-top: 20px
         .forgot_password
             display: flex
@@ -2166,3 +2241,14 @@ body
                 100%
                     transform: translate(-20px, 90px) rotate(8deg)
 
+
+.accept_btn_valid
+    box-shadow: 0px 0px 20px #3763FF
+    cursor: pointer
+.accept_btn_valid:hover
+    background: rgba(55, 99, 255, 0.8)
+    box-shadow: 0px 0px 10px #3763FF
+    cursor: pointer
+
+
+// STATISTIC
