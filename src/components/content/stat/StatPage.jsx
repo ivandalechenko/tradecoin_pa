@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import Sidebar from '../../sidebar/Sidebar';
 import HorizontalLine from '../../UI/HorizontalLine';
 import Balance from './Balance';
+import Chart from './Chart';
 
 const StatPage = () => {
     useEffect(() => {
@@ -12,14 +13,9 @@ const StatPage = () => {
             <Sidebar />
             <div id='content'>
                 <div id="ref_page">
-                    {/* <div className="section" id="ref">
-                        <div className="header h5">
-                            Coming soon :)
-                        </div>
-                        <HorizontalLine />
-                    </div> */}
-                    <Balance />
 
+                    <Balance />
+                    <Chart />
                 </div>
             </div>
         </div>
