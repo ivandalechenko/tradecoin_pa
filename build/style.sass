@@ -287,6 +287,7 @@ h6
 
 
 
+
 body
     background: radial-gradient(63.04% 62.69% at 10.45% 12.57%, rgba(44, 39, 255, 0.26) 0%, rgba(39, 139, 255, 0.00) 100%), radial-gradient(50.96% 50.72% at 82.88% 61.38%, rgba(44, 39, 255, 0.20) 0%, rgba(44, 39, 255, 0.00) 100%), linear-gradient(180deg, #040B14 0%, #081934 100%)
     min-height: 100vh
@@ -1039,21 +1040,63 @@ body
         padding: 20px 26px 16px
         @media (max-width: 500px)
             padding: 20px 12px 16px
-
+        .header
+            display: flex
+            justify-content: space-between
+            align-items: center
+            flex-wrap: wrap
+            row-gap: 12px
+            .period
+                display: flex
+                align-items: center
+                column-gap: 14px
+                @media (max-width: 800px)
+                    width: 100%
+                    flex-wrap: wrap
+                .text
+                    color: var(--secondary, #B5B6B6)
+                    font-size: 15px
+                    font-weight: 500
+                    width: 136px
+                .elements
+                    padding: 4px
+                    border-radius: 12px
+                    background: var(--5, rgba(255, 255, 255, 0.05))
+                    @media (max-width: 800px)
+                        width: 100%
+                        margin-top: 8px
+                    .active
+                        background: rgba(255, 255, 255, 0.10)
+                    .element
+                        border-radius: 12px
+                        font-size: 16px
+                        font-weight: 700
+                        letter-spacing: -0.32px
+                        width: 50px
+                        height: 40px
+                        display: flex
+                        justify-content: center
+                        align-items: center
+                        transition: background 200ms
+                        @media (max-width: 500px)
+                            width: 33px
+                    .element:hover
+                        cursor: pointer
+                        background: rgba(255, 255, 255, 0.15)
         .content
             display: flex
             justify-content: space-between
             flex-wrap: wrap
             row-gap: 20px
             @media (max-width: 1173px)
-                justify-content: center
+                justify-content: left
             .balance
                 width: 50%
                 display: flex
                 column-gap: 30px
                 @media (max-width: 1173px)
                     width: 100%
-                    justify-content: center
+                    justify-content: left
                 @media (max-width: 500px)
                     column-gap: 10px
 
@@ -1816,14 +1859,13 @@ body
     justify-content: center
     flex-wrap: wrap
     width: 100%
-    padding: 15px 0px
     .error
         width: 100%
         text-align: center
         color: #FF5F72
         font-size: 16px
         font-weight: 700
-
+        margin-top: 10px
 .elements
     display: flex
     justify-content: space-between
@@ -1845,6 +1887,10 @@ body
         padding: 0px 10px
         background: black
         min-height: 100vh
+        .accept_btn_form
+            margin-top: 15px
+        .errors
+            min-height: 0px
         .fone
             width: 0px
             height: 0px
@@ -2245,3 +2291,54 @@ body
     background: rgba(55, 99, 255, 0.8)
     box-shadow: 0px 0px 10px #3763FF
     cursor: pointer
+
+
+// STATISTIC
+
+#chart
+    padding: 20px
+    .header
+        font-size: 20px
+        font-weight: 700
+        letter-spacing: -0.4px
+    .lines_and_prices
+        display: flex
+        flex-wrap: wrap
+        row-gap: 32px
+        margin-top: 32px
+        .line_and_price
+            display: flex
+            column-gap: 20px
+            align-items: center
+            width: 100%
+            .price
+                color: var(--secondary, #B5B6B6)
+                font-size: 14px
+                font-weight: 400
+                width: 75px
+            .line
+                width: 100%
+                height: 1px
+                border-bottom: 2px dashed rgba(255,255,255,.13)
+    .times_and_zero
+        margin-top: 32px
+        display: flex
+        .zero
+            width: 75px
+        .times
+            width: 100%
+            display: flex
+            justify-content: space-between
+            @media (max-width: 800px)
+                display: none
+
+        .time, .zero
+            font-size: 14px
+            font-weight: 400
+            color: var(--secondary, #B5B6B6)
+    .chart
+        padding-left: 90px
+        margin-top: -319px
+        padding-bottom: 8px
+        svg
+            width: 100%

@@ -1,90 +1,19 @@
 import React from 'react';
 
-const Chart = (props) => {
+const Chart = ({ prices, dots }) => {
     return (
-        <div className="section" id="chart">
-            <div className="header">
-                Detailed statistics
-            </div>
-            <div className="lines_and_prices">
-                <div className="line_and_price">
-                    <div className="price">
-                        $12000
-                    </div>
-                    <div className="line"></div>
-                </div>
-                <div className="line_and_price">
-                    <div className="price">
-                        $10000
-                    </div>
-                    <div className="line"></div>
-                </div>
-                <div className="line_and_price">
-                    <div className="price">
-                        $5000
-                    </div>
-                    <div className="line"></div>
-                </div>
-                <div className="line_and_price">
-                    <div className="price">
-                        $2500
-                    </div>
-                    <div className="line"></div>
-                </div>
-                <div className="line_and_price">
-                    <div className="price">
-                        $1000
-                    </div>
-                    <div className="line"></div>
-                </div>
-                <div className="line_and_price">
-                    <div className="price">
-                        $500
-                    </div>
-                    <div className="line"></div>
-                </div>
-                <div className="line_and_price">
-                    <div className="price">
-                        $200
-                    </div>
-                    <div className="line"></div>
-                </div>
-            </div>
-            <div className="chart">
-                <svg width="1067" height="306" viewBox="0 0 1067 306" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M0 240.408H60.7002C62.3003 240.408 63.8714 240.835 65.2517 241.644L102.406 263.425C105.217 265.073 108.699 265.073 111.509 263.425L146.22 243.077C149.031 241.429 152.513 241.429 155.323 243.077L202.966 271.006C206.979 273.358 212.123 272.265 214.833 268.485L269.699 191.936C272.408 188.155 277.553 187.062 281.565 189.415L325.342 215.078C328.153 216.725 331.635 216.725 334.445 215.078L403.816 174.411C405.196 173.602 406.767 173.176 408.367 173.176H477.83C481.161 173.176 484.219 171.336 485.78 168.395L510.455 121.901C514.008 115.205 523.742 115.633 526.694 122.615L554.372 188.077C555.781 191.408 559.046 193.572 562.662 193.572H600.273C602.879 193.572 605.357 192.443 607.067 190.476L632.423 161.297C635.925 157.268 642.229 157.421 645.531 161.615V161.615C649.58 166.757 657.676 165.595 660.113 159.521L683.452 101.374C686.876 92.8453 699.375 94.3271 700.709 103.42L705.05 132.999C705.698 137.417 709.489 140.692 713.955 140.692H783.582C786.001 140.692 788.317 139.719 790.01 137.991L813.384 114.14C817.693 109.743 825.046 110.873 827.835 116.362L838.334 137.024C839.518 139.353 841.656 141.053 844.192 141.682L857.775 145.049C862.167 146.137 866.685 143.795 868.327 139.578L910.983 30.0199C914.288 21.5334 926.662 22.7608 928.235 31.731L936.773 80.4299C937.96 87.2013 945.994 90.1953 951.323 85.8524L957.56 80.7704C959.165 79.4618 961.173 78.7472 963.245 78.7472H1067" stroke="#2CBA65" stroke-width="2" />
-                    <path d="M60.7002 240.408H0V297C0 301.971 4.02947 306 9.00003 306H1058C1062.97 306 1067 301.971 1067 297V87.7472C1067 82.7766 1062.97 78.7472 1058 78.7472H963.245C961.173 78.7472 959.165 79.4618 957.56 80.7704L951.323 85.8524C945.994 90.1953 937.96 87.2013 936.773 80.4299L928.235 31.731C926.662 22.7608 914.288 21.5334 910.983 30.0198L868.327 139.578C866.685 143.795 862.167 146.137 857.775 145.049L844.192 141.682C841.656 141.053 839.518 139.353 838.334 137.024L827.835 116.362C825.046 110.873 817.693 109.743 813.384 114.14L790.01 137.991C788.317 139.719 786.001 140.692 783.582 140.692H713.955C709.489 140.692 705.698 137.417 705.05 132.999L700.709 103.42C699.375 94.3271 686.876 92.8453 683.452 101.374L660.113 159.521C657.676 165.595 649.58 166.757 645.531 161.615C642.229 157.421 635.925 157.268 632.423 161.297L607.067 190.476C605.357 192.443 602.879 193.572 600.273 193.572H562.662C559.046 193.572 555.781 191.408 554.372 188.077L526.694 122.615C523.742 115.633 514.008 115.205 510.455 121.901L485.78 168.395C484.219 171.336 481.161 173.176 477.83 173.176H408.367C406.767 173.176 405.196 173.602 403.816 174.411L334.445 215.077C331.635 216.725 328.153 216.725 325.342 215.077L281.565 189.415C277.553 187.062 272.408 188.155 269.699 191.936L214.833 268.485C212.123 272.265 206.979 273.358 202.966 271.006L155.323 243.077C152.513 241.429 149.031 241.429 146.22 243.077L111.509 263.425C108.699 265.072 105.217 265.072 102.406 263.425L65.2517 241.644C63.8714 240.835 62.3003 240.408 60.7002 240.408Z" fill="url(#paint0_linear_610_5751)" />
-                    <defs>
-                        <linearGradient id="paint0_linear_610_5751" x1="533.5" y1="0" x2="533.5" y2="306" gradientUnits="userSpaceOnUse">
-                            <stop stop-color="#2DBA65" stop-opacity="0.31" />
-                            <stop offset="1" stop-color="#A7EC61" stop-opacity="0" />
-                        </linearGradient>
-                    </defs>
-                </svg>
-            </div>
+        <svg width="1600" height="700" viewBox="0 0 1600 700" fill="none" xmlns="http://www.w3.org/2000/svg"
+            preserveAspectRatio="none">
+            <path d="M0 200,L100 200,L200 500,L300 100,L400 300" stroke="#2CBA65" stroke-width="3" />
+            <path d="M0 700,L0 200,  L100 200,L200 500,L300 100,L400 300 L1600 700Z" fill="url(#fone)" />
+            <defs>
+                <linearGradient id="fone" x1="533.5" y1="0" x2="533.5" y2="700" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#2DBA65" stop-opacity="0.31" />
+                    <stop offset="1" stop-color="#A7EC61" stop-opacity="0" />
+                </linearGradient>
+            </defs>
+        </svg>
 
-            <div className="times_and_zero">
-                <div className="zero">0</div>
-                <div className="times">
-                    <div className="time">00:00</div>
-                    <div className="time">01:00</div>
-                    <div className="time">02:00</div>
-                    <div className="time">03:00</div>
-                    <div className="time">04:00</div>
-                    <div className="time">05:00</div>
-                    <div className="time">06:00</div>
-                    <div className="time">07:00</div>
-                    <div className="time">08:00</div>
-                    <div className="time">09:00</div>
-                    <div className="time">10:00</div>
-                    <div className="time">11:00</div>
-                    <div className="time">12:00</div>
-                    <div className="time">13:00</div>
-                    <div className="time">14:00</div>
-                    <div className="time">15:00</div>
-                </div>
-            </div>
-        </div>
     )
 }
 

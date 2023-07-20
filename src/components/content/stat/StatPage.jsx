@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import Sidebar from '../../sidebar/Sidebar';
 import HorizontalLine from '../../UI/HorizontalLine';
 import Balance from './Balance';
-import Chart from './Chart';
+import ChartBlock from './ChartBlock';
 
 const StatPage = () => {
     useEffect(() => {
@@ -13,9 +13,8 @@ const StatPage = () => {
             <Sidebar />
             <div id='content'>
                 <div id="ref_page">
-
                     <Balance />
-                    <Chart />
+                    <ChartBlock />
                 </div>
             </div>
         </div>
