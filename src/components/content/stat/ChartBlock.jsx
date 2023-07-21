@@ -10,10 +10,10 @@ const ChartBlock = (props) => {
             </div>
             <div className="chart_wrapper">
                 <div className="chart">
-                    <Chart />
+                    <Chart prices={{ maxPrice: 100, minPrice: 0, prices: [20, 30, 4, 33, 78, 22, 34, 98, 23, 0, 99] }} />
                 </div>
             </div>
-            <Prices prices={{ maxPrice: 10000, minPrice: 0, steps: 7 }} />
+            <Prices prices={{ maxPrice: 5000, minPrice: 0, steps: 7 }} />
             <div className="times_and_zero">
                 <div className="zero"></div>
                 <div className="times">
