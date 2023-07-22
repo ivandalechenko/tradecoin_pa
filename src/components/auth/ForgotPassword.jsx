@@ -28,7 +28,8 @@ const ForgotPassword = () => {
         dispatch(forgotPasswordSendCodeAction(data))
             .then(() => {
                 setModalType('hidden')
-                navigate("/enter_code_forgot_password")
+                localStorage.setItem('email', email.value)
+                navigate("/enter_code_reset_password")
             })
             .catch(function (error) {
                 setModalType('hidden')

@@ -1,13 +1,15 @@
 import React from 'react';
 
-const RefTableElement = (props) => {
+const RefTableElement = ({ props }) => {
+    var date = new Date(Date.parse(props.date));
+    var dateFormat = date.getHours() + ":" + date.getMinutes() + ", " + date.toDateString();
     return (
         <div className="element">
             <div className="num">
                 <div className="name">
                     #
                 </div>
-                2334
+                {props.id}
             </div>
             <div className="type">
                 <div className="name">
@@ -15,21 +17,22 @@ const RefTableElement = (props) => {
                 </div>
                 <img src="img/pa/people_green.svg" alt='people' />
                 <div className="text">
-                    @amazing_trade
+                    @{props.user}
+
                 </div>
             </div>
             <div className="date">
                 <div className="name">
                     Date
                 </div>
-                14 June, 2023
+                {dateFormat}
             </div>
             <div className="earned">
                 <div className="name">
                     Earned
                 </div>
                 <span>
-                    $349,43
+                    {props.fullPrice}$
                 </span>
             </div>
             <div className="sum">
@@ -38,10 +41,10 @@ const RefTableElement = (props) => {
                 </div>
                 <div className="text">
                     <div className="count">
-                        69$
+                        {props.earned}$
                     </div>
                     <div className="percent success">
-                        3%
+                        {props.percent}%
                     </div>
                 </div>
             </div>

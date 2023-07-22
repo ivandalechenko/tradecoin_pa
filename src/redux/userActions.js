@@ -87,7 +87,6 @@ export const forgotPasswordSendCodeAction = (forgotPasswordSendCodeData) => asyn
     try {
         const { data } = await api.post('/users/forgotPasswordSendCode', forgotPasswordSendCodeData)
         localStorage.setItem('registrationToken', data.token)
-        localStorage.setItem('email', forgotPasswordSendCodeData.email)
     } catch (e) {
         throw (e.response.data.message)
     }
@@ -97,9 +96,27 @@ export const forgotPasswordSendCodeAction = (forgotPasswordSendCodeData) => asyn
 export const updatePasswordFromEmailAction = (updatePasswordFromEmailData) => async dispatch => {
     try {
         const { data } = await api.post('/users/updatePasswordFromEmail', updatePasswordFromEmailData)
-        localStorage.setItem('registrationToken', data.token)
-        dispatch({ type: 'LOGIN', payload: { user: data.user, isLoggedIn: true } })
 
+    } catch (e) {
+        throw (e.response.data.message)
+    }
+}
+
+export const updateRefCodeAction = (updateRefCodeData) => async dispatch => {
+    try {
+        const { data } = await api.post('/users/updateRefCode', updateRefCodeData)
+        dispatch({ type: 'SET_USER', payload: data.user })
+
+    } catch (e) {
+        throw (e.response.data.message)
+    }
+}
+
+
+export const getPaymentsAction = (getPaymentsData) => async dispatch => {
+    try {
+        const { data } = await api.get('/users/payments?limit=' + getPaymentsData.limit + '&page=' + getPaymentsData.page)
+        return data
     } catch (e) {
         throw (e.response.data.message)
     }

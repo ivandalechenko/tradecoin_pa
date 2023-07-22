@@ -13,8 +13,11 @@ const StatPage = () => {
             <Sidebar />
             <div id='content'>
                 <div id="ref_page">
-                    <Balance />
-                    <ChartBlock />
+                    {/* <Balance />
+                    <ChartBlock /> */}
+                    <div className='section'>
+                        Coming soon :)
+                    </div>
                 </div>
             </div>
         </div>

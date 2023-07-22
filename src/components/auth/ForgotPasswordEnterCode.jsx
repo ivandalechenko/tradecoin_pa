@@ -83,23 +83,6 @@ const ForgotPasswordEnterCode = () => {
                         </div>
 
 
-                        <div className="errors">
-                            {
-                                serverError
-                                    ? <div className='error'>{serverError}</div>
-                                    : <></>
-                            }
-                            {
-                                code.isDirty
-                                    ?
-                                    <>
-                                        {code.isEmpty ? <div className='error'>Enter code</div> : <>
-                                            {!code.length ? <div className='error'>Code length must be 6 characters</div> : <></>}
-                                        </>}
-                                    </>
-                                    : <></>
-                            }
-                        </div>
 
                         <button className="send_code_btn" id="send_a_code" onClick={sendCode}>
                             Recover password

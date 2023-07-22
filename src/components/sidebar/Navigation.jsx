@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, Link, useNavigate } from 'react-router-dom';
 
-const Navigation = ({ setModalType }) => {
+const Navigation = ({ setModalType, setModalProps }) => {
 
     const { user } = useSelector(state => state.userReducer)
     const navigate = useNavigate()
@@ -43,7 +43,10 @@ const Navigation = ({ setModalType }) => {
                 {
                     user.tariff
                         ?
-                        <div id="renew_tarif_opener" className="navigation_element_no_act">
+                        <div id="renew_tarif_opener" className="navigation_element_no_act" onClick={() => {
+                            setModalType('select_your_wallet')
+                            setModalProps({ tariff: user.tariff })
+                        }}>
                             <img src="img/pa/navigation/renew.svg" alt="renew tarif menu img" />
                             <div className="text">
                                 Renew tarif

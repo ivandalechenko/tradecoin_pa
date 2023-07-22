@@ -1,22 +1,35 @@
 import React from 'react';
 
-const Prices = ({ prices }) => {
-    var priceArray = []
-    priceArray.push(prices.maxPrice)
+const Prices = ({ props }) => {
+    function getMaxOfArray(numArray) {
+        return Math.max.apply(null, numArray);
+    }
+    function getMinOfArray(numArray) {
+        return Math.min.apply(null, numArray);
+    }
+    var prices = props.prices.slice(0)
+    var steps = props.steps
+    var maxPrice = getMaxOfArray(prices)
+    var minPrice = getMinOfArray(prices)
+    console.log(prices)
 
-    for (let i = 1; i < prices.steps - 1; i++) {
-        var price = prices.maxPrice - ((prices.maxPrice - prices.minPrice) / (prices.steps - 1)) * i
+    var priceArray = []
+    priceArray.push(maxPrice)
+
+    for (let i = 1; i < steps - 1; i++) {
+        var price = maxPrice - ((maxPrice - minPrice) / (steps - 1)) * i
         for (let j = -5; j < 5; j++) {
-            if (price >= Math.pow(10, j + 2)) {
+            if (Math.abs(price) >= Math.pow(10, j + 2)) {
                 price = Math.round(price / Math.pow(10, j)) * Math.pow(10, j)
                 if (j < 0) {
                     price = Math.round(price * Math.pow(10, Math.abs(j))) / Math.pow(10, Math.abs(j))
                 }
+
             }
         }
         priceArray.push(price)
     }
-    priceArray.push(prices.minPrice)
+    priceArray.push(minPrice)
     return (
         <div className="lines_and_prices">
             {

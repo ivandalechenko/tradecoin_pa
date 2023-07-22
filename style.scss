@@ -124,7 +124,7 @@ button:hover {
   margin-top: 34px;
   display: flex;
   column-gap: 15px;
-
+  max-width: 420px;
   &_medium15,
   &_img {
     margin: auto 0;
@@ -2668,26 +2668,38 @@ body {
           display: flex;
           justify-content: space-between;
           column-gap: 10px;
-
+          min-height: 56px;
           .link,
           button {
             margin: auto 0;
           }
 
           .link {
-            font-size: 16px;
-            font-weight: 700;
-            letter-spacing: -0.32px;
-            overflow: auto;
+            input {
+              background: none;
+              border: none;
+              outline: none;
+              font-size: 16px;
+              font-weight: 700;
+              letter-spacing: -0.32px;
+              overflow: auto;
+              color: white;
+              width: 380px;
+            }
           }
 
+          .copy{
+            background: var(--primary, #3763FF);
+          }
+          .save{
+            background: var(--primary, #2cba65);            
+          }
           button {
             display: flex;
             column-gap: 8px;
             padding: 8px;
             border-radius: 11px;
-            background: var(--primary, #3763FF);
-
+            transition: background 200ms, opacity 200ms;
             .text,
             img {
               margin: auto 0;
@@ -2704,11 +2716,37 @@ body {
     }
 
     .referals {
+      .no_transactions{
+        padding: 10px;
+        margin-top: 10px;
+        font-weight: 700;
+      }
+      .loader{
+        min-height: 475px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        img {
+          animation: loader_svg 1s infinite cubic-bezier(0.5, 0, 0.5, 1);
+          overflow: auto;
+        }
+        @keyframes loader_svg {
+          0% {
+            transform: rotate(0deg);
+          }
+          80% {
+            transform: rotate(360deg);
+          }
+          100% {
+            transform: rotate(360deg);
+          }
+        }
+      }
       .table {
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
-
         .send_info_button {
           display: none;
 
@@ -2746,7 +2784,7 @@ body {
           background: rgba(255, 255, 255, 0.03);
           padding: 12px 25px;
           flex-wrap: wrap;
-
+          align-items: center;
           @media (max-width: 900px) {
             margin-top: 12px;
             padding: 20px;
@@ -2809,14 +2847,14 @@ body {
           }
 
           .date {
-            width: 13.6%;
+            width: 16.6%;
             font-size: 15px;
             font-weight: 500;
             color: rgba(255, 255, 255, 0.7);
           }
 
           .earned {
-            width: 33.9%;
+            width: 30.9%;
 
             span {
               font-size: 15px;
@@ -2858,8 +2896,6 @@ body {
           .date,
           .earned,
           .sum {
-            margin: auto 0;
-
             @media (max-width: 900px) {
               display: flex;
               justify-content: space-between;
@@ -3623,7 +3659,6 @@ body {
       padding-left: 88px;
       svg {
         width: 100%;
-        height: 300px;
       }
     }
   }

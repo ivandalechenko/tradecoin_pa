@@ -31,14 +31,18 @@ const RegistrationPage = () => {
     const registration = () => {
         if (email.isValid && username.isValid && password.isValid && repeatPassword.isValid && !serverError && checked) {
             setModalType('loader')
-            const data = {
+            var data = {
                 username: username.value,
                 email: email.value,
                 password: password.value,
             }
+            if (localStorage.getItem('refCode')) {
+                data = { ...data, refCode: localStorage.getItem('refCode') }
+            }
             dispatch(registrationAction(data))
                 .then(() => {
                     setModalType('hidden')
+                    localStorage.setItem('email', email.value)
                     navigate("/enter_code")
                 })
                 .catch(function (error) {
@@ -114,9 +118,9 @@ const RegistrationPage = () => {
                             checked={checked}
                             setChecked={setChecked}
                             label={<>
-                                <a href="#"> Terms & Condition </a>
+                                <Link to="https://tradecoinai.com/terms.html"> Terms & Condition </Link>
                                 and
-                                <a href="#"> Privacy Policy </a>
+                                <Link to="https://tradecoinai.com/policy.html"> Privacy Policy </Link>
                             </>}
                         />
                     </div>

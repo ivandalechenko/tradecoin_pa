@@ -13,8 +13,10 @@ const LoginPage = () => {
     useEffect(() => { document.title = "Login - TradeCoinAI"; }, []);
     const [modalType, setModalType] = useState('hidden')
 
-    const email = useInput('', { isEmpty: true, isEmail: true })
-    const password = useInput('', { isEmpty: true, minLength: 6, maxLength: 32 })
+    // const email = useInput('', { isEmpty: true, isEmail: true })
+    // const password = useInput('', { isEmpty: true, minLength: 6, maxLength: 32 })
+    const email = useInput('gepijeg766@mahmul.com', { isEmpty: true, isEmail: true })
+    const password = useInput('Ananasik95', { isEmpty: true, minLength: 6, maxLength: 32 })
     const [serverError, setServerError] = useState('')
     useEffect(() => {
         setServerError('')

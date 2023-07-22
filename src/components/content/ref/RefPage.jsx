@@ -35,14 +35,12 @@ const RefPage = () => {
                             </div>
                             <InviteLink />
                         </div>
-                        {/* <HorizontalLine />
+
+                        <HorizontalLine />
                         <div className="referals">
                             <RefTable />
-                            <div className="security_and_pages">
-                                <Secure />
-                                <Pagination />
-                            </div>
-                        </div> */}
+
+                        </div>
                     </div>
                     <HaveProblems />
                 </div>

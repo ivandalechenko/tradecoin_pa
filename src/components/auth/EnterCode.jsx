@@ -2,46 +2,73 @@ import React, { useEffect, useState } from 'react';
 import { Link, Navigate, useNavigate } from 'react-router-dom';
 import Modal from '../modal/Modal';
 import { useDispatch, useSelector } from 'react-redux';
-import { enterCodeAction } from '../../redux/userActions';
+import { enterCodeAction, forgotPasswordSendCodeAction } from '../../redux/userActions';
+import useInput from '../../validation/useInput';
+import Notification from '../modal/Notification';
 
-const EnterCode = () => {
+const EnterCode = ({ action }) => {
     const [modalType, setModalType] = useState('hidden')
+    const [notificationShow, setNotificationShow] = useState(false)
 
-    const [code, setCode] = useState()
-    const codeChange = (event) => {
-        setCode(event.target.value);
-    };
     const dispatch = useDispatch()
     const navigate = useNavigate()
-    const [printedError, setPrintedError] = useState('')
+
+    const code = useInput('', { isEmpty: true, length: 6 })
+
+
+    const [serverError, setServerError] = useState('')
+    useEffect(() => {
+        setServerError('')
+    }, [code.value])
 
     const sendCode = () => {
         setModalType('loader')
         const data = {
-            code: code,
+            code: code.value,
         }
         dispatch(enterCodeAction(data))
             .then(() => {
                 setModalType('hidden')
-                navigate("/profile")
+                if (action == 'registration') {
+                    navigate("/profile")
+                }
+                if (action == 'restore_password') {
+                    navigate("/new_password")
+                }
             })
             .catch(function (error) {
                 setModalType('hidden')
-                setPrintedError(error.response.data.message)
+                setServerError(error)
             });
 
+    }
+
+    const resendCode = () => {
+        setModalType('loader')
+        const data = {
+            email: localStorage.getItem('email')
+        }
+        dispatch(forgotPasswordSendCodeAction(data))
+            .then(() => {
+                setModalType('hidden')
+                setNotificationShow(true)
+            })
+            .catch(function (error) {
+                setModalType('hidden')
+                setServerError(error)
+            });
     }
 
 
     useEffect(() => {
         document.title = "Enter code - TradeCoinAI";
     }, []);
-    const { isLoggedIn } = useSelector(state => state.userReducer)
-    if (isLoggedIn) return <Navigate to="/profile" replace />
 
     return (
         <div className="elements">
             <Modal modalType={modalType} setModalType={setModalType} />
+            <Notification notificationShow={notificationShow} setNotificationShow={setNotificationShow} message={'Code resent'} />
+
             <div className="modal_auth transiton_show_hide" id="modal_auth">
                 <div className="modal_auth_inner">
                     <div className="back">
@@ -58,14 +85,26 @@ const EnterCode = () => {
                             Provide us e-mail of your account and we will send a code to your mailbox
                         </div>
                         <div className="code_input" id="code_input">
-                            <input type="text" className="code_input_element" placeholder="123456" onChange={codeChange} value={code} maxLength={6} />
+                            <input type="text" className="code_input_element" placeholder="123456" onChange={code.onChange} value={code.value} onBlur={code.onBlur} />
                         </div>
 
 
                         <div className="errors">
-                            <div className="error">
-                                {printedError}
-                            </div>
+                            {
+                                serverError
+                                    ? <div className='error'>{serverError}</div>
+                                    : <></>
+                            }
+                            {
+                                code.isDirty
+                                    ?
+                                    <>
+                                        {code.isEmpty ? <div className='error'>Enter code</div> : <>
+                                            {!code.length ? <div className='error'>Code length must be 6 characters</div> : <></>}
+                                        </>}
+                                    </>
+                                    : <></>
+                            }
                         </div>
 
                         <button className="send_code_btn" id="send_a_code" onClick={sendCode}>
@@ -75,7 +114,7 @@ const EnterCode = () => {
 
                         <div className="text_with_a" id="didnt_recieve_the_code">
                             I didn't receive the code?
-                            <button>
+                            <button onClick={resendCode}>
                                 Send again
                             </button>
                         </div>

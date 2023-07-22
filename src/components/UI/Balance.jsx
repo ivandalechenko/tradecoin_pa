@@ -11,10 +11,10 @@ const Balance = (props) => {
             </div>
             <div className="count">
                 <div className="num">
-                    $110,3
+                    $0
                 </div>
                 <div className="percent">
-                    +1,39%
+                    +0%
                 </div>
             </div>
             <div className="earned">
@@ -22,7 +22,7 @@ const Balance = (props) => {
                     Earned
                 </div>
                 <div className="num">
-                    $990.33
+                    $0
                 </div>
             </div>
         </div>

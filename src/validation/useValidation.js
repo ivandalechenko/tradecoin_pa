@@ -75,8 +75,6 @@ const useValidation = (value, validations, setIsValid) => {
                         setLength(true)
                     }
                     break
-
-
             }
         }
     }, [value])

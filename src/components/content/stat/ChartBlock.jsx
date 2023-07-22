@@ -1,19 +1,24 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import Chart from './Chart';
 import Prices from './Prices';
 
 const ChartBlock = (props) => {
+
+
+    var prices = [20, 30, 4, 33, 78, 22, 34, 98, 23, 25, -2, 120, 33]
+    var steps = 7
+
     return (
         <div className="section" id="chart">
             <div className="header">
                 Detailed statistics
             </div>
             <div className="chart_wrapper">
-                <div className="chart">
-                    <Chart prices={{ maxPrice: 100, minPrice: 0, prices: [20, 30, 4, 33, 78, 22, 34, 98, 23, 0, 99] }} />
+                <div className="chart" >
+                    <Chart props={{ prices: prices, steps: steps }} />
                 </div>
             </div>
-            <Prices prices={{ maxPrice: 5000, minPrice: 0, steps: 7 }} />
+            <Prices props={{ prices: prices, steps: steps }} />
             <div className="times_and_zero">
                 <div className="zero"></div>
                 <div className="times">

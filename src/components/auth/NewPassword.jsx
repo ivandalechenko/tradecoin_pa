@@ -4,6 +4,7 @@ import { Link, Navigate, useNavigate } from 'react-router-dom';
 import Input from '../UI/Input/Input';
 import Modal from '../modal/Modal';
 import { updatePasswordFromEmailAction } from '../../redux/userActions';
+import useInput from '../../validation/useInput';
 
 const NewPassword = () => {
     useEffect(() => {
@@ -11,31 +12,10 @@ const NewPassword = () => {
     }, []);
 
 
-    const [printedError, setPrintedError] = useState('')
-    const [password, setPassword] = useState('')
-    const [repeatPassword, setRepeatPassword] = useState('')
-    const passwordChange = (event) => { setPassword(event.target.value); };
-    const repeatPasswordChange = (event) => { setRepeatPassword(event.target.value); };
-    const [canChange, setCanChange] = useState(false)
+    const [serverError, setServerError] = useState('')
+    const password = useInput('', { isEmpty: true, minLength: 6, maxLength: 32 })
+    const repeatPassword = useInput('', { isEmpty: true, isEquals: password.value })
 
-    const validatePasswords = () => {
-        if (password.length == 0) {
-            setPrintedError('Please enter password')
-            setCanChange(false)
-        } else if (repeatPassword.length == 0) {
-            setPrintedError('Please repeat password')
-            setCanChange(false)
-        } else if (password.length < 6) {
-            setPrintedError('Password length must be more than 5 characters')
-            setCanChange(false)
-        } else if (password == repeatPassword) {
-            setPrintedError('Passwords must mutch')
-            setCanChange(false)
-        } else {
-            setPrintedError('')
-            setCanChange(true)
-        }
-    }
 
     const [modalType, setModalType] = useState('hidden')
 
@@ -45,7 +25,7 @@ const NewPassword = () => {
     const updatePassword = () => {
         setModalType('loader')
         const data = {
-            password: password,
+            newPassword: password.value,
         }
         dispatch(updatePasswordFromEmailAction(data))
             .then(() => {
@@ -54,7 +34,7 @@ const NewPassword = () => {
             })
             .catch(function (error) {
                 setModalType('hidden')
-                setPrintedError(error)
+                setServerError(error)
             });
     }
 
@@ -81,9 +61,9 @@ const NewPassword = () => {
                             label: "Your password",
                             placeholder: "Enter your password",
                             password: true,
-                            value: password,
-                            onChange: setPassword,
-                            onBlur: validatePasswords
+                            value: password.value,
+                            onChange: password.onChange,
+                            onBlur: password.onBlur
 
                         }} />
 
@@ -92,18 +72,41 @@ const NewPassword = () => {
                             label: "Repeat password",
                             placeholder: "Repeat your password",
                             password: true,
-                            value: repeatPassword,
-                            onChange: setRepeatPassword,
-                            onBlur: validatePasswords
+                            value: repeatPassword.value,
+                            onChange: repeatPassword.onChange,
+                            onBlur: repeatPassword.onBlur
                         }} />
-                        <div className="errors">
-                            <div className="error">
-                                {printedError}
-                            </div>
-                        </div>
+
+
                         <button className="send_code_btn" id="send_a_code" onClick={updatePassword}>
                             Change password
                         </button>
+                        <div className="errors">
+                            {
+                                serverError
+                                    ? <div className='error'>{serverError}</div>
+                                    : <></>
+                            }
+                            {
+                                password.isDirty
+                                    ?
+                                    <>
+                                        {password.isEmpty ? <div className='error'>Enter password</div> : <>
+                                            {password.maxLength ? <div className='error'>Password length must be no more than 32 characters</div> : <></>}
+                                            {password.minLength ? <div className='error'>Password length must be at least 6 characters</div> : <></>}
+                                        </>}
+                                    </>
+                                    : <></>
+                            }
+                            {
+                                repeatPassword.isDirty
+                                    ?
+                                    <>
+                                        {!repeatPassword.isEquals ? <div className='error'>Passwords must match</div> : <></>}
+                                    </>
+                                    : <></>
+                            }
+                        </div>
                     </div>
                 </div>
                 <div className="fone">
