@@ -9,7 +9,7 @@ import Checkbox from '../UI/Checkbox';
 import useInput from '../../validation/useInput';
 
 
-const RegistrationPage = () => {
+const RegistrationPage = ({ setAuthType }) => {
     const [modalType, setModalType] = useState('hidden')
     useEffect(() => {
         document.title = "Sign up - TradeCoinAI";
@@ -56,12 +56,13 @@ const RegistrationPage = () => {
     if (isLoggedIn) return <Navigate to="/profile" replace />
 
     return (
-        <div className="elements">
+        // <div className="elements">
+        <>
             <Modal modalType={modalType} setModalType={setModalType} />
             <div className="left transiton_show_hide" id="left">
                 <div className="container" id="left_container">
                     <div className="logo">
-                        <img src="img/login/logo.svg" />
+                        <img src="/img/login/logo.svg" />
                         <div className="text">
                             TradeCoinAi
                         </div>
@@ -73,8 +74,8 @@ const RegistrationPage = () => {
                         Please,login or sign up to your account
                     </h2>
                     <div className="log_reg_switcher_buttons">
-                        <Link to={"/login"} id="login_switcher">Log in</Link>
-                        <Link to={"/signup"} className="active">Sign up</Link >
+                        <button onClick={() => setAuthType('login')}>Log in</button>
+                        <button className="active">Sign up</button >
                     </div>
 
                     <Input props={{
@@ -174,8 +175,9 @@ const RegistrationPage = () => {
                     </div>
                 </div>
             </div>
-            <Images />
-        </div>
+            {/* <Images /> */}
+        </>
+        // </div>
     )
 }
 

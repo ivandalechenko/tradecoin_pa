@@ -16,6 +16,7 @@ import HomePage from './content/HomePage';
 import { useDispatch, useSelector } from "react-redux";
 import { checkAuthAction } from "../redux/userActions";
 import { CSSTransition } from 'react-transition-group'
+import AuthPage from './auth/AuthPage';
 
 const Router = (props) => {
     const dispatch = useDispatch()
@@ -42,6 +43,7 @@ const Router = (props) => {
             {/* <CSSTransition transitionName="example"> */}
             <Routes>
                 {/* Внутри компонента юз парамс и можно вытащзить реф айди, а от туда перенаправлять на страничку регистрации, и там прикреплять реф айди  */}
+                <Route element={<AuthPage />} path="/auth/:auth" />
                 <Route element={<LoginPage />} path="/login" />
                 <Route element={<RegistrationPage />} path="/signup" />
                 <Route element={<ForgotPassword />} path="/forgot_password" />

@@ -12,7 +12,7 @@ const InviteLink = (props) => {
     useEffect(() => {
         user.refCode ? setIsRefCode(true) : setIsRefCode(false)
     }, [])
-    const host = window.location.host + '/invite/'
+    const host = 'https://app.tradecoinai.com/invite/'
     const [edited, setEdited] = useState(false)
     const referal = useInput(host + user.refCode, { minLength: host.length + 4, maxLength: host.length + 20 })
     referal.onChange = (e) => {

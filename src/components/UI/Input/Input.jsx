@@ -13,7 +13,7 @@ const Input = ({ props }) => {
 
     return (
         <div className="input_block" id="email">
-            <img src={"img/pa/login/" + props.imageName} alt="decor" />
+            <img src={"/img/pa/login/" + props.imageName} alt="decor" />
             <div className="label_and_input_and_eye">
                 <div className="label_and_input">
                     <div className="label">
@@ -34,7 +34,7 @@ const Input = ({ props }) => {
                 </div>
                 {
                     props.password
-                        ? <img className="eye" src={"img/login/" + eyeType + ".svg"} onClick={() => {
+                        ? <img className="eye" src={"/img/login/" + eyeType + ".svg"} onClick={() => {
                             if (inputType == 'password') {
                                 setEyeType('eye')
                                 setInputType('text')
