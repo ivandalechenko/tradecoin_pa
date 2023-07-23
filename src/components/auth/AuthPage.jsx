@@ -1,12 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import Images from './Images';
-import { useParams } from 'react-router-dom';
+import { Navigate, useParams } from 'react-router-dom';
 import LoginPage from './LoginPage';
 import RegistrationPage from './RegistrationPage';
+import { useSelector } from 'react-redux';
 
 const AuthPage = (props) => {
     const { auth } = useParams()
     const [authType, setAuthType] = useState(auth)
+
+    const { isLoggedIn } = useSelector(state => state.userReducer)
+    if (isLoggedIn) {
+        return <Navigate to="/profile" replace />
+    }
     return (
         <div className="elements">
             {authType == 'login'

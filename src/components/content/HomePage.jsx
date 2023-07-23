@@ -7,7 +7,7 @@ const HomePage = () => {
     if (isLoggedIn) {
         return <Navigate to="/profile" replace />
     } else {
-        return <Navigate to="/login" replace />
+        return <Navigate to="/auth/login" replace />
     }
 };
 

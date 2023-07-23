@@ -4,8 +4,6 @@ import RefPage from './content/ref/RefPage';
 import RefRedirector from './content/ref/RefRedirector';
 import ProfilePage from './content/profile/ProfilePage';
 import ManageTarifPage from './content/manageTarif/ManageTarifPage';
-import LoginPage from './auth/LoginPage';
-import RegistrationPage from './auth/RegistrationPage';
 import ForgotPassword from './auth/ForgotPassword';
 import EnterCode from './auth/EnterCode';
 import NewPassword from './auth/NewPassword';
@@ -13,10 +11,12 @@ import StatPage from './content/stat/StatPage';
 import Modal from './modal/Modal';
 import ProtectedRoute from './ProtectedRoute';
 import HomePage from './content/HomePage';
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { checkAuthAction } from "../redux/userActions";
-import { CSSTransition } from 'react-transition-group'
 import AuthPage from './auth/AuthPage';
+
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const Router = (props) => {
     const dispatch = useDispatch()
@@ -44,8 +44,8 @@ const Router = (props) => {
             <Routes>
                 {/* Внутри компонента юз парамс и можно вытащзить реф айди, а от туда перенаправлять на страничку регистрации, и там прикреплять реф айди  */}
                 <Route element={<AuthPage />} path="/auth/:auth" />
-                <Route element={<LoginPage />} path="/login" />
-                <Route element={<RegistrationPage />} path="/signup" />
+                {/* <Route element={<LoginPage />} path="/login" /> */}
+                {/* <Route element={<RegistrationPage />} path="/signup" /> */}
                 <Route element={<ForgotPassword />} path="/forgot_password" />
                 <Route element={<EnterCode action='registration' />} path="/enter_code" />
                 <Route element={<EnterCode action='restore_password' />} path="/enter_code_reset_password" />

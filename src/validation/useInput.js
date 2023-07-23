@@ -12,6 +12,10 @@ const useInput = (initialValue, validations) => {
     const onBlur = (e) => {
         setIsDirty(true)
     }
+    const reset = () => {
+        setValue('')
+        setIsDirty(false)
+    }
     return {
         value,
         setValue,
@@ -20,6 +24,7 @@ const useInput = (initialValue, validations) => {
         isDirty,
         setIsDirty,
         isValid,
+        reset,
         ...valid
     }
 }

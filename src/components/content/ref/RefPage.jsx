@@ -19,31 +19,28 @@ const RefPage = () => {
     const { user } = useSelector(state => state.userReducer)
     if (!user.referralEnabled) return <Navigate to="/profile" replace />
     return (
-        <div className="container">
-            <Sidebar />
-            <div id='content'>
-                <div id="ref_page">
-                    <div className="section" id="ref">
-                        <div className="header h5">
-                            Your balance
-                        </div>
-                        <HorizontalLine />
-                        <div className="content">
-                            <div className="balance">
-                                <img src="img/pa/peoples.png" alt='peoples' />
-                                <Balance />
-                            </div>
-                            <InviteLink />
-                        </div>
-
-                        <HorizontalLine />
-                        <div className="referals">
-                            <RefTable />
-
-                        </div>
+        <div id='content'>
+            <div id="ref_page">
+                <div className="section" id="ref">
+                    <div className="header h5">
+                        Your balance
                     </div>
-                    <HaveProblems />
+                    <HorizontalLine />
+                    <div className="content">
+                        <div className="balance">
+                            <img src="img/pa/peoples.png" alt='peoples' />
+                            <Balance />
+                        </div>
+                        <InviteLink />
+                    </div>
+
+                    <HorizontalLine />
+                    <div className="referals">
+                        <RefTable />
+
+                    </div>
                 </div>
+                <HaveProblems />
             </div>
         </div>
 

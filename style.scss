@@ -633,9 +633,10 @@ body {
   position: fixed;
   right: 0px;
   top: 0px;
-  padding: 15px;
+  padding: 0px 15px;
 
   .inner {
+    margin-top: 15px;
     border-radius: 14px;
     border: 1px solid rgba(255, 255, 255, 0.10);
     background: var(--5, rgba(255, 255, 255, 0.05));
@@ -1565,6 +1566,9 @@ body {
     .accept_btn_form {
       width: 300px;
       margin-top: 20px;
+      @media (max-width:350px) {
+        width: 100%;
+      }
     }
 
     .content {
@@ -1598,13 +1602,8 @@ body {
           font-size: 36px;
           font-weight: 700;
           letter-spacing: -0.72px;
-
-          @media (max-width: 350px) {
-            font-size: 26px;
-          }
-
-          @media (max-width: 400px) {
-            font-size: 30px;
+          @media (max-width: 500px) {
+            font-size: 8vw;
           }
         }
 
@@ -1844,6 +1843,15 @@ body {
   }
 
   #password {
+    
+    .accept_btn_form {
+      width: 300px;
+      margin-top: 20px;
+      @media (max-width:350px) {
+        width: 100%;
+      }
+    }
+
     .content {
       display: flex;
       column-gap: 32px;
@@ -3663,3 +3671,25 @@ body {
   }
 }
 
+.Toastify__toast-body {
+  div:last-child{
+    word-break: break-word;
+    flex: 1 1;
+    font-size: 15px;
+  }
+}
+.Toastify__toast--success{
+    background: #2cba65 !important;
+}
+.Toastify__toast--warning{
+    background: #ff5f72 !important;
+}
+.Toastify__toast--info{
+    background: #3763ff !important;
+}
+
+
+
+.Toastify__close-button, .Toastify__close-button--colored{
+  display: none;
+}

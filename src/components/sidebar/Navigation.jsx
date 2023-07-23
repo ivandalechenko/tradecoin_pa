@@ -10,7 +10,7 @@ const Navigation = ({ setModalType, setModalProps }) => {
     const logout = () => {
         localStorage.removeItem('token')
         dispatch({ type: 'LOGOUT' })
-        navigate("/login")
+        navigate("/auth/login")
     }
 
     return (

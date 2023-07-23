@@ -10,17 +10,14 @@ const ProfilePage = () => {
         document.title = "Profile - TradeCoinAI";
     }, []);
     return (
-        <div className="container">
-            <Sidebar />
-            <div id='content'>
-                <div id="profile_page" className="page">
-                    <Profile />
-                    <Balance />
-                    <ChangePassword />
-                    <HaveProblems />
-                </div>
+        <div id='content'>
+            <div id="profile_page" className="page">
+                <Profile />
+                <Balance />
+                <ChangePassword />
+                <HaveProblems />
             </div>
-        </div >
+        </div>
     )
 }
 

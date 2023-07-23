@@ -9,15 +9,12 @@ const StatPage = () => {
         document.title = "Statistics - TradeCoinAI";
     }, []);
     return (
-        <div className="container">
-            <Sidebar />
-            <div id='content'>
-                <div id="ref_page">
-                    {/* <Balance />
+        <div id='content'>
+            <div id="ref_page">
+                {/* <Balance />
                     <ChartBlock /> */}
-                    <div className='section'>
-                        Coming soon :)
-                    </div>
+                <div className='section'>
+                    Coming soon :)
                 </div>
             </div>
         </div>

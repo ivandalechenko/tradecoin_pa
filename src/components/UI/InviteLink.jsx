@@ -1,10 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react';
 import useInput from '../../validation/useInput';
-import Notification from '../modal/Notification';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import Modal from '../modal/Modal';
 import { updateRefCodeAction } from '../../redux/userActions';
+
+import { ToastContainer, toast, Slide } from 'react-toastify';
+import ToastConfig from './ToastConfig';
 
 const InviteLink = (props) => {
     const { user } = useSelector(state => state.userReducer)
@@ -22,7 +24,6 @@ const InviteLink = (props) => {
     }
     const [modalType, setModalType] = useState('hidden')
 
-    const [notificationShow, setNotificationShow] = useState(false)
     const [serverError, setServerError] = useState('')
     useEffect(() => {
         setServerError('')
@@ -35,10 +36,7 @@ const InviteLink = (props) => {
     }, [referal.value])
     const input = useRef(null)
 
-    const navigate = useNavigate()
     const dispatch = useDispatch()
-
-
     const savecopy = () => {
         if (referal.isDirty) {
             if (referal.isValid) {
@@ -49,7 +47,8 @@ const InviteLink = (props) => {
                 dispatch(updateRefCodeAction(data))
                     .then(() => {
                         setModalType('hidden')
-                        setNotificationShow(true)
+                        toast.success("Invite link successfully changed", ToastConfig);
+
                         referal.setIsDirty(false)
                         setEdited(false)
                     })
@@ -60,13 +59,15 @@ const InviteLink = (props) => {
             }
         } else {
             navigator.clipboard.writeText(referal.value)
+            toast.info("Invite link copied to clipboard", ToastConfig);
         }
     }
 
     return (
         <div className="invite_link">
             <Modal setModalType={setModalType} modalType={modalType} />
-            <Notification notificationShow={notificationShow} setNotificationShow={setNotificationShow} message={"Invite link changed"} />
+            <ToastContainer transition={Slide} />
+
             <div className="header">
                 <img src="img/pa/arrow_out.svg" alt='arrow' />
                 <div className="text">

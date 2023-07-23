@@ -46,7 +46,7 @@ const NewPassword = () => {
             <div className="modal_auth transiton_show_hide" id="modal_auth">
                 <div className="modal_auth_inner">
                     <div className="back">
-                        <Link to="/login">
+                        <Link to="/auth/login">
                             <img src="img/login/left_arr.svg" />
                             Back to login
                         </Link>

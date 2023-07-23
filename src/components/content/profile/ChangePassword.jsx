@@ -1,72 +1,49 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Input from '../../UI/Input/Input';
-import Button from '../../UI/Button';
 import { useDispatch } from 'react-redux';
-import { changePasswordAction, registrationAction } from '../../../redux/userActions';
+import { changePasswordAction } from '../../../redux/userActions';
 import Modal from '../../modal/Modal';
-import { getValue } from '@testing-library/user-event/dist/utils';
-import Notification from '../../modal/Notification';
+
+import { ToastContainer, toast, Slide } from 'react-toastify';
+import ToastConfig from '../../UI/ToastConfig';
+import useInput from '../../../validation/useInput';
 
 const ChangePassword = (props) => {
     const [modalType, setModalType] = useState('hidden')
-    const [oldPassword, setOldPassword] = useState('')
-    const [newPassword, setNewPassword] = useState('')
-    const [repeatNewPassword, setRepeatNewPassword] = useState('')
-    const oldPasswordChange = (event) => { setOldPassword(event.target.value); };
-    const newPasswordChange = (event) => { setNewPassword(event.target.value); };
-    const repeatNewPasswordChange = (event) => { setRepeatNewPassword(event.target.value); };
-    const [printedError, setPrintedError] = useState('')
+
+    const oldPassword = useInput('', { isEmpty: true, minLength: 6, maxLength: 32 })
+    const newPassword = useInput('', { isEmpty: true, minLength: 6, maxLength: 32, isNotEquals: oldPassword.value })
+    const repeatNewPassword = useInput('', { isEquals: newPassword.value })
+    const [serverError, setServerError] = useState('')
+    useEffect(() => {
+        setServerError('')
+    }, [oldPassword.value, newPassword.value, repeatNewPassword.value]);
     const dispatch = useDispatch()
-    const [notificationShow, setNotificationShow] = useState(false)
-
-
     const changePassword = () => {
-        if (canChange) {
+        if (oldPassword.isValid && newPassword.isValid && repeatNewPassword.isValid && serverError == '') {
             setModalType('loader')
-            setPrintedError('')
             const data = {
-                oldPassword: oldPassword,
-                newPassword: newPassword,
+                oldPassword: oldPassword.value,
+                newPassword: newPassword.value,
             }
             dispatch(changePasswordAction(data))
                 .then(() => {
                     setModalType('hidden')
-                    setNotificationShow(true)
+                    toast.success("Password successfully changed", ToastConfig);
+                    oldPassword.reset()
+                    newPassword.reset()
+                    repeatNewPassword.reset()
                 })
                 .catch(function (error) {
                     setModalType('hidden')
-                    setPrintedError(error)
+                    setServerError(error)
                 });
-        }
-    }
-    const [canChange, setCanChange] = useState(false)
-
-    const validatePasswords = () => {
-
-        if (oldPassword.length == 0) {
-            setPrintedError('Please enter old password')
-            setCanChange(false)
-        } else if (newPassword.length == 0) {
-            setPrintedError('Please enter new password')
-            setCanChange(false)
-        } else if (newPassword == oldPassword) {
-            setPrintedError('New and old passwords must be different')
-            setCanChange(false)
-        } else if (newPassword != repeatNewPassword) {
-            setPrintedError('New passwords must be the same')
-            setCanChange(false)
-        } else if (newPassword.length < 6 || oldPassword.length < 6) {
-            setPrintedError('Password length must be more than 5 characters')
-            setCanChange(false)
-        } else {
-            setPrintedError('')
-            setCanChange(true)
         }
     }
 
     return (
         <div className="section" id="password">
-            <Notification notificationShow={notificationShow} setNotificationShow={setNotificationShow} message={'Password successfuly changed'} />
+            <ToastContainer transition={Slide} />
             <Modal modalType={modalType} setModalType={setModalType} />
             <div className="section_header h5">
                 Change password
@@ -87,10 +64,9 @@ const ChangePassword = (props) => {
                             label: "Your password",
                             placeholder: "Enter your password",
                             password: true,
-                            value: oldPassword,
-                            onChange: oldPasswordChange,
-                            onBlur: validatePasswords
-
+                            value: oldPassword.value,
+                            onChange: oldPassword.onChange,
+                            onBlur: oldPassword.onBlur
                         }} />
                     </div>
                     <div className="btn">
@@ -102,10 +78,9 @@ const ChangePassword = (props) => {
                             label: "Your password",
                             placeholder: "Enter your password",
                             password: true,
-                            value: newPassword,
-                            onChange: newPasswordChange,
-                            onBlur: validatePasswords
-
+                            value: newPassword.value,
+                            onChange: newPassword.onChange,
+                            onBlur: newPassword.onBlur
                         }} />
 
                         <Input props={{
@@ -113,21 +88,50 @@ const ChangePassword = (props) => {
                             label: "Repeat password",
                             placeholder: "Repeat your password",
                             password: true,
-                            value: repeatNewPassword,
-                            onChange: repeatNewPasswordChange,
-                            onBlur: validatePasswords
-
-
+                            value: repeatNewPassword.value,
+                            onChange: repeatNewPassword.onChange,
+                            onBlur: repeatNewPassword.onBlur
                         }} />
                     </div>
+                    <button className={newPassword.isValid && oldPassword.isValid && repeatNewPassword.isValid && !serverError ? "accept_btn_form accept_btn_valid" : "accept_btn_form"} onClick={changePassword}>Save changes</button>
                     <div className="errors">
-                        <div className="error">
-                            {printedError}
-                        </div>
+                        {
+                            serverError
+                                ? <div className='error'>{serverError}</div>
+                                : <></>
+                        }
+                        {
+                            oldPassword.isDirty
+                                ?
+                                <>
+                                    {oldPassword.isEmpty ? <div className='error'>Enter old password</div> : <>
+                                        {oldPassword.maxLength ? <div className='error'>Old password length must be no more than 32 characters</div> : <></>}
+                                        {oldPassword.minLength ? <div className='error'>Old password length must be at least 6 characters</div> : <></>}
+                                    </>}
+                                </>
+                                : <></>
+                        }
+                        {
+                            newPassword.isDirty
+                                ?
+                                <>
+                                    {newPassword.isEmpty ? <div className='error'>Enter new password</div> : <>
+                                        {newPassword.maxLength ? <div className='error'>New password length must be no more than 32 characters</div> : <></>}
+                                        {newPassword.minLength ? <div className='error'>New password length must be at least 6 characters</div> : <></>}
+                                        {!newPassword.isNotEquals ? <div className='error'>The new password must be different from the previous one</div> : <></>}
+                                    </>}
+                                </>
+                                : <></>
+                        }
+                        {
+                            repeatNewPassword.isDirty
+                                ?
+                                <>
+                                    {!repeatNewPassword.isEquals ? <div className='error'>New passwords must match</div> : <></>}
+                                </>
+                                : <></>
+                        }
                     </div>
-                    <button className={canChange ? "send_info_button" : "send_info_button accept_btn_inactive"} onClick={changePassword}>
-                        Save changes
-                    </button>
                 </div>
             </div>
         </div>

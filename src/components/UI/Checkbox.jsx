@@ -11,7 +11,7 @@ const Checkbox = ({ checked, setChecked, label }) => {
             <div className={checked ? "checkbox_wrapper checked" : "checkbox_wrapper"} onClick={checkClick}>
                 {
                     checked
-                        ? <img src="img/pa/check.svg" alt="check" />
+                        ? <img src="/img/pa/check.svg" alt="check" />
                         : <></>
                 }
 

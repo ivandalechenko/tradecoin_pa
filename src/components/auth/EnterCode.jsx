@@ -4,11 +4,12 @@ import Modal from '../modal/Modal';
 import { useDispatch, useSelector } from 'react-redux';
 import { enterCodeAction, forgotPasswordSendCodeAction } from '../../redux/userActions';
 import useInput from '../../validation/useInput';
-import Notification from '../modal/Notification';
+
+import { ToastContainer, toast, Slide } from 'react-toastify';
+import ToastConfig from '../UI/ToastConfig';
 
 const EnterCode = ({ action }) => {
     const [modalType, setModalType] = useState('hidden')
-    const [notificationShow, setNotificationShow] = useState(false)
 
     const dispatch = useDispatch()
     const navigate = useNavigate()
@@ -51,7 +52,7 @@ const EnterCode = ({ action }) => {
         dispatch(forgotPasswordSendCodeAction(data))
             .then(() => {
                 setModalType('hidden')
-                setNotificationShow(true)
+                toast.success('Code successfully resent', ToastConfig)
             })
             .catch(function (error) {
                 setModalType('hidden')
@@ -63,16 +64,15 @@ const EnterCode = ({ action }) => {
     useEffect(() => {
         document.title = "Enter code - TradeCoinAI";
     }, []);
-
     return (
         <div className="elements">
             <Modal modalType={modalType} setModalType={setModalType} />
-            <Notification notificationShow={notificationShow} setNotificationShow={setNotificationShow} message={'Code resent'} />
+            <ToastContainer transition={Slide} />
 
             <div className="modal_auth transiton_show_hide" id="modal_auth">
                 <div className="modal_auth_inner">
                     <div className="back">
-                        <Link to="/login">
+                        <Link to="/auth/login">
                             <img src="img/login/left_arr.svg" />
                             Back to login
                         </Link>

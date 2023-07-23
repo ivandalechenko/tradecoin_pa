@@ -13,8 +13,7 @@ const ManageTarifPage = () => {
     }, []);
     const [modalType, setModalType] = useState('hidden')
     return (
-        <div className="container">
-            <Sidebar />
+        <>
             <Modal modalType={modalType} setModalType={setModalType} />
             <div id='content'>
                 <div id="manage_tarif_page">
@@ -37,7 +36,8 @@ const ManageTarifPage = () => {
                     </div> */}
                 </div>
             </div>
-        </div>
+        </>
+
     )
 }
 

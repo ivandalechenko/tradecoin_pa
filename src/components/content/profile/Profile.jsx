@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import Input from '../../UI/Input/Input';
-import Button from '../../UI/Button';
 import HorizontalLine from '../../UI/HorizontalLine';
 import { useDispatch, useSelector } from "react-redux";
-import Notification from '../../modal/Notification';
 import useInput from '../../../validation/useInput';
 import { updateUsernameAction } from '../../../redux/userActions';
 import Modal from '../../modal/Modal';
+
+
+import { ToastContainer, toast, Slide } from 'react-toastify';
+import ToastConfig from '../../UI/ToastConfig';
+
 
 const Profile = (props) => {
     const { user } = useSelector(state => state.userReducer)
@@ -15,8 +18,6 @@ const Profile = (props) => {
 
     const [serverError, setServerError] = useState('')
     const [modalType, setModalType] = useState('hidden')
-
-    const [notificationShow, setNotificationShow] = useState(false)
 
     const dispatch = useDispatch()
     useEffect(() => {
@@ -35,7 +36,7 @@ const Profile = (props) => {
             dispatch(updateUsernameAction(data))
                 .then(() => {
                     setModalType('hidden')
-                    setNotificationShow(true)
+                    toast.success("Username successfully changed", ToastConfig);
                 })
                 .catch(function (error) {
                     setModalType('hidden')
@@ -48,7 +49,7 @@ const Profile = (props) => {
 
     return (
         <div className="section" id="profile">
-            <Notification notificationShow={notificationShow} setNotificationShow={setNotificationShow} message="Username successfully changed" />
+            <ToastContainer transition={Slide} />
             <Modal modalType={modalType} setModalType={setModalType} />
             <div className="section_header h5">
                 Profile
