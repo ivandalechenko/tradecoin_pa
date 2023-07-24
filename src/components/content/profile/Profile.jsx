@@ -49,7 +49,7 @@ const Profile = (props) => {
 
     return (
         <div className="section" id="profile">
-            <ToastContainer transition={Slide} />
+            {username.isValid ? <ToastContainer transition={Slide} /> : <></>}
             <Modal modalType={modalType} setModalType={setModalType} />
             <div className="section_header h5">
                 Profile

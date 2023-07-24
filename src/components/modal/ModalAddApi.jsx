@@ -106,152 +106,157 @@ const ModalAddApi = ({ setModalType }) => {
     }
 
     return (
-        <div id="inner_add_api" className="modal_inner">
-            <div className="header">
-                <div className="name">
-                    <img src="img/pa/modal/key.svg" alt="key" />
-                    <div className="text">
-                        Add crypto-key API
-                    </div>
-                </div>
-                <img className="modal_closer" src="img/pa/modal/cross.svg" alt="cross" onClick={() => setModalType("hidden")} />
-            </div>
-            <div className="content">
-                <div className="platforms">
-                    {/* <div className={"platform " + activeExchangeStyle.binance} onClick={() => setActiveExchange('binance')}> */}
-                    <div className={"platform " + activeExchangeStyle.binance}>
-                        {/* <div className="border"> */}
-                        {/* </div> */}
-                        <img src="img/pa/modal/platforms/lock.svg" alt="bybit" />
-                        <div className="img">
-                            <img src="img/pa/modal/platforms/binance.svg" alt="binance" />
-                        </div>
-                    </div>
-                    <div className={"platform " + activeExchangeStyle.bybit} onClick={() => setActiveExchange('bybit')}>
-                        <div className="border">
-                        </div>
 
-                        <div className="img">
-                            <img src="img/pa/modal/platforms/bybit.svg" alt="bybit" />
-                        </div>
-                    </div>
-                    {/* <div className={"platform " + activeExchangeStyle.bitget} onClick={() => setActiveExchange('bitget')}> */}
-                    <div className={"platform " + activeExchangeStyle.bitget}>
-                        {/* <div className="border"> */}
-                        {/* </div> */}
-                        <img src="img/pa/modal/platforms/lock.svg" alt="bybit" />
-                        <div className="img">
-                            <img src="img/pa/modal/platforms/bitget.png" alt="bitget" />
-                        </div>
-                    </div>
-                </div>
-                {user.bybit.apiKey
-                    ? <Input props={{
-                        imageName: 'key.svg',
-                        label: 'API key',
-                        placeholder: user.bybit.apiKey,
-                        onChange: (e) => setApi(e.target.value),
-                        value: api,
-                        onBlur: validateKeySecret
-                    }} />
-                    : <Input props={{
-                        imageName: 'key.svg',
-                        label: 'API key',
-                        placeholder: 'Enter API key',
-                        onChange: (e) => setApi(e.target.value),
-                        value: api,
-                        onBlur: validateKeySecret
-
-                    }} />
-                }
-                {user.bybit.secret
-                    ? <Input props={{
-                        imageName: 'lock.svg',
-                        label: 'Secret key',
-                        placeholder: user.bybit.secret,
-                        onChange: (e) => setSecret(e.target.value),
-                        value: secret,
-                        onBlur: validateKeySecret
-
-                    }} />
-                    : <Input props={{
-                        imageName: 'lock.svg',
-                        label: 'Secret key',
-                        placeholder: 'Enter Secret key',
-                        onChange: (e) => setSecret(e.target.value),
-                        value: secret,
-                        onBlur: validateKeySecret
-
-                    }} />
-                }
-
-                <div className="errors">
-                    <div className="error">
-                        {printedError}
-                    </div>
-                </div>
-                <div className="button_and_check">
-                    <button className={canAddApi ? "send_info_button input_block_first" : "send_info_button input_block_first accept_btn_inactive"} onClick={handleUpdate}>Add API key</button>
-
-                    <Checkbox checked={checked} setChecked={setChecked} label={'I understand how to use API keys'} />
-
-                </div>
-                <div className="steps_and_notice">
-                    <div className="steps_and_bg">
-                        <div className="bg">
-                        </div>
-                        <div className="steps">
-                            <div className="step">
-                                <button className="num">
-                                    1
-                                </button>
-                                <div className="text">
-                                    <div className="head">
-                                        Step 1
-                                    </div>
-                                    <div className="info">
-                                        Перейдите на сайт биржи
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="step">
-                                <button className="num">
-                                    2
-                                </button>
-                                <div className="text">
-                                    <div className="head">
-                                        Step 2
-                                    </div>
-                                    <div className="info">
-                                        Create key “only for reading”
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="step">
-                                <button className="num">
-                                    3
-                                </button>
-                                <div className="text">
-                                    <div className="head">
-                                        Step 3
-                                    </div>
-                                    <div className="info">
-                                        Enter the key
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="notice">
-                        <div className="wrapper">
-
-                            <img src="img/pa/notice.svg" alt="notice" />
+        <div className='modal modal_show' onClick={() => setModalType("hidden")}>
+            <div onClick={(e) => e.stopPropagation()}>
+                <div id="inner_add_api" className="modal_inner">
+                    <div className="header">
+                        <div className="name">
+                            <img src="img/pa/modal/key.svg" alt="key" />
                             <div className="text">
-                                <div className="head">
-                                    Important!
+                                Add crypto-key API
+                            </div>
+                        </div>
+                        <img className="modal_closer" src="img/pa/modal/cross.svg" alt="cross" onClick={() => setModalType("hidden")} />
+                    </div>
+                    <div className="content">
+                        <div className="platforms">
+                            {/* <div className={"platform " + activeExchangeStyle.binance} onClick={() => setActiveExchange('binance')}> */}
+                            <div className={"platform " + activeExchangeStyle.binance}>
+                                {/* <div className="border"> */}
+                                {/* </div> */}
+                                <img src="img/pa/modal/platforms/lock.svg" alt="bybit" />
+                                <div className="img">
+                                    <img src="img/pa/modal/platforms/binance.svg" alt="binance" />
                                 </div>
-                                <div className="info">
-                                    Always use API keys “only for reading. Dairy book available only for features
+                            </div>
+                            <div className={"platform " + activeExchangeStyle.bybit} onClick={() => setActiveExchange('bybit')}>
+                                <div className="border">
+                                </div>
+
+                                <div className="img">
+                                    <img src="img/pa/modal/platforms/bybit.svg" alt="bybit" />
+                                </div>
+                            </div>
+                            {/* <div className={"platform " + activeExchangeStyle.bitget} onClick={() => setActiveExchange('bitget')}> */}
+                            <div className={"platform " + activeExchangeStyle.bitget}>
+                                {/* <div className="border"> */}
+                                {/* </div> */}
+                                <img src="img/pa/modal/platforms/lock.svg" alt="bybit" />
+                                <div className="img">
+                                    <img src="img/pa/modal/platforms/bitget.png" alt="bitget" />
+                                </div>
+                            </div>
+                        </div>
+                        {user.bybit.apiKey
+                            ? <Input props={{
+                                imageName: 'key.svg',
+                                label: 'API key',
+                                placeholder: user.bybit.apiKey,
+                                onChange: (e) => setApi(e.target.value),
+                                value: api,
+                                onBlur: validateKeySecret
+                            }} />
+                            : <Input props={{
+                                imageName: 'key.svg',
+                                label: 'API key',
+                                placeholder: 'Enter API key',
+                                onChange: (e) => setApi(e.target.value),
+                                value: api,
+                                onBlur: validateKeySecret
+
+                            }} />
+                        }
+                        {user.bybit.secret
+                            ? <Input props={{
+                                imageName: 'lock.svg',
+                                label: 'Secret key',
+                                placeholder: user.bybit.secret,
+                                onChange: (e) => setSecret(e.target.value),
+                                value: secret,
+                                onBlur: validateKeySecret
+
+                            }} />
+                            : <Input props={{
+                                imageName: 'lock.svg',
+                                label: 'Secret key',
+                                placeholder: 'Enter Secret key',
+                                onChange: (e) => setSecret(e.target.value),
+                                value: secret,
+                                onBlur: validateKeySecret
+
+                            }} />
+                        }
+
+                        <div className="errors">
+                            <div className="error">
+                                {printedError}
+                            </div>
+                        </div>
+                        <div className="button_and_check">
+                            <button className={canAddApi ? "send_info_button input_block_first" : "send_info_button input_block_first accept_btn_inactive"} onClick={handleUpdate}>Add API key</button>
+
+                            <Checkbox checked={checked} setChecked={setChecked} label={'I understand how to use API keys'} />
+
+                        </div>
+                        <div className="steps_and_notice">
+                            <div className="steps_and_bg">
+                                <div className="bg">
+                                </div>
+                                <div className="steps">
+                                    <div className="step">
+                                        <button className="num">
+                                            1
+                                        </button>
+                                        <div className="text">
+                                            <div className="head">
+                                                Step 1
+                                            </div>
+                                            <div className="info">
+                                                Перейдите на сайт биржи
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="step">
+                                        <button className="num">
+                                            2
+                                        </button>
+                                        <div className="text">
+                                            <div className="head">
+                                                Step 2
+                                            </div>
+                                            <div className="info">
+                                                Create key “only for reading”
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="step">
+                                        <button className="num">
+                                            3
+                                        </button>
+                                        <div className="text">
+                                            <div className="head">
+                                                Step 3
+                                            </div>
+                                            <div className="info">
+                                                Enter the key
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="notice">
+                                <div className="wrapper">
+
+                                    <img src="img/pa/notice.svg" alt="notice" />
+                                    <div className="text">
+                                        <div className="head">
+                                            Important!
+                                        </div>
+                                        <div className="info">
+                                            Always use API keys “only for reading. Dairy book available only for features
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>

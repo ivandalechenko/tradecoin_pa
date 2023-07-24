@@ -43,7 +43,7 @@ const ChangePassword = (props) => {
 
     return (
         <div className="section" id="password">
-            <ToastContainer transition={Slide} />
+            {oldPassword.isValid ? <ToastContainer transition={Slide} /> : <></>}
             <Modal modalType={modalType} setModalType={setModalType} />
             <div className="section_header h5">
                 Change password

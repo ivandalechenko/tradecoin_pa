@@ -40,12 +40,8 @@ const Router = (props) => {
 
     return (
         < BrowserRouter >
-            {/* <CSSTransition transitionName="example"> */}
             <Routes>
-                {/* Внутри компонента юз парамс и можно вытащзить реф айди, а от туда перенаправлять на страничку регистрации, и там прикреплять реф айди  */}
                 <Route element={<AuthPage />} path="/auth/:auth" />
-                {/* <Route element={<LoginPage />} path="/login" /> */}
-                {/* <Route element={<RegistrationPage />} path="/signup" /> */}
                 <Route element={<ForgotPassword />} path="/forgot_password" />
                 <Route element={<EnterCode action='registration' />} path="/enter_code" />
                 <Route element={<EnterCode action='restore_password' />} path="/enter_code_reset_password" />
@@ -60,7 +56,6 @@ const Router = (props) => {
                     <Route element={<StatPage />} path="statistic" />
                 </Route>
             </Routes>
-            {/* </CSSTransition> */}
         </BrowserRouter >
     )
 }

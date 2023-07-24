@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, Link, useNavigate } from 'react-router-dom';
+import Modal from '../modal/Modal';
 
-const Navigation = ({ setModalType, setModalProps }) => {
+const Navigation = () => {
 
     const { user } = useSelector(state => state.userReducer)
     const navigate = useNavigate()
@@ -12,9 +13,13 @@ const Navigation = ({ setModalType, setModalProps }) => {
         dispatch({ type: 'LOGOUT' })
         navigate("/auth/login")
     }
+    const [modalProps, setModalProps] = useState({})
+    const [modalType, setModalType] = useState('hidden')
 
     return (
         <>
+            <Modal modalType={modalType} setModalType={setModalType} props={modalProps} />
+
             <div className="navigation">
                 <NavLink to="/statistic" className="navigation_element">
                     <img src="img/pa/navigation/rounds.svg" alt="stat menu img" />
@@ -34,7 +39,7 @@ const Navigation = ({ setModalType, setModalProps }) => {
                         Manage tarifs
                     </div>
                 </NavLink>
-                {/* <div id="pay_opener" className="navigation_element_no_act">
+                {/* <div id="pay_opener" className="navigation_element">
                     <img src="img/pa/navigation/wallet.svg" alt="pay now menu img" />
                     <div className="text">
                         Pay now
@@ -43,7 +48,7 @@ const Navigation = ({ setModalType, setModalProps }) => {
                 {
                     user.tariff
                         ?
-                        <div id="renew_tarif_opener" className="navigation_element_no_act" onClick={() => {
+                        <div id="renew_tarif_opener" className="navigation_element" onClick={() => {
                             setModalType('select_your_wallet')
                             setModalProps({ tariff: user.tariff })
                         }}>
@@ -76,19 +81,19 @@ const Navigation = ({ setModalType, setModalProps }) => {
                         : <>Add api keys</>
                     }
                 </div>
-            </button>
+            </button >
             {/* <button className="bottom_button lang">
                 <img src="img/pa/flags/usa.png" alt="usa flag" />
                 <div className="text">
                 Change language
                 </div>
             </button> */}
-            <Link to="https://tradecoinai.com/" className="bottom_button mt200">
+            < Link to="https://tradecoinai.com/" className="bottom_button mt200" >
                 <img src="img/pa/back_arrow.svg" alt="arrow back to main" />
                 <div className="text">
                     Back to website
                 </div>
-            </Link>
+            </Link >
             <button onClick={logout} className="bottom_button background_transparent">
                 <img src="img/pa/return_arrow.svg" alt="arrow logout" />
                 <div className="text">

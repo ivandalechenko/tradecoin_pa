@@ -683,7 +683,6 @@ body {
   padding: 15px;
   transition: opacity 500ms ease-in-out;
   align-items: center;
-
   .modal_closer:hover {
     transform: rotate(10deg) scale(1.1);
   }
@@ -1433,45 +1432,60 @@ body {
       flex-wrap: wrap;
       margin-top: 26px;
 
-      .navigation_element,
-      .navigation_element_no_act {
+      .navigation_element {
         width: 100%;
         padding: 12px;
         background: none;
         border-radius: 12px;
         display: flex;
         column-gap: 16px;
-        transition: background 300ms, filter 100ms;
-        filter: brightness(0.7);
-
+        transition: background 300ms;
         .text {
+          opacity: 0.7;
           font-size: 15px;
           font-weight: 500;
+          transition: opacity 100ms;
         }
-
-        img,
-        .text {
-          margin: auto 0;
+        img{
+          transition: opacity 100ms;
+          opacity: 0.7;
         }
+        align-items: center;
       }
 
-      .navigation_element:hover,
-      .navigation_element_no_act:hover {
+      .navigation_element:hover{
+        opacity: 1;
         background: #3763FF;
         cursor: pointer;
-        filter: brightness(1);
+        .text {
+          opacity: 1;
+        }
+        img{
+          opacity: 1;
+        }
       }
 
       .active {
-        filter: brightness(1);
-        background: #3763FF;
+          transition: opacity 100ms;
+          background: #3763FF;
+        .text {
+          opacity: 1;
+        }
+        img{
+          opacity: 1;
+        }
       }
     }
-
-    #add_api_opener:hover {
-      cursor: pointer;
+    .navigation:hover {
+      .active {
+        background: #3763FF;
+        opacity: 0.8;
+      }
+      .active:hover {
+        background: #3763FF;
+        opacity: 1;
+      }
     }
-
     #add_api_opener {
       margin-top: 44px;
       background: #3763FF;
@@ -3688,8 +3702,7 @@ body {
     background: #3763ff !important;
 }
 
-
-
 .Toastify__close-button, .Toastify__close-button--colored{
   display: none;
 }
+
