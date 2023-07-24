@@ -1,9 +1,8 @@
 import React, { useEffect } from 'react';
-import Sidebar from '../../sidebar/Sidebar';
-import HorizontalLine from '../../UI/HorizontalLine';
 import Balance from './Balance';
 import ChartBlock from './ChartBlock';
 import { motion } from 'framer-motion';
+import Transactions from './Transactions';
 
 const StatPage = () => {
     useEffect(() => {
@@ -17,11 +16,9 @@ const StatPage = () => {
             id='content'
         >
             <div id="ref_page">
-                {/* <Balance />
-                    <ChartBlock /> */}
-                <div className='section'>
-                    Coming soon :)
-                </div>
+                <Balance />
+                <ChartBlock />
+                <Transactions />
             </div>
         </motion.div>
     )

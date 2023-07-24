@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import RefPage from './content/ref/RefPage';
 import RefRedirector from './content/ref/RefRedirector';
 import ProfilePage from './content/profile/ProfilePage';
+import PaymentStatusPage from './content/paymentStatus/PaymentStatusPage';
 import ManageTarifPage from './content/manageTarif/ManageTarifPage';
 import ForgotPassword from './auth/ForgotPassword';
 import EnterCode from './auth/EnterCode';
@@ -48,8 +49,8 @@ const Router = (props) => {
                 <Route element={<NewPassword />} path="/new_password" />
                 <Route element={<RefRedirector />} path='/invite/:referal' />
                 <Route element={<HomePage />} path="" />
-
                 <Route path='/' element={<ProtectedRoute />}>
+                    <Route element={<PaymentStatusPage />} path='status/:status' />
                     <Route element={<ProfilePage />} path="profile" />
                     <Route element={<RefPage />} path="referal" />
                     <Route element={<ManageTarifPage />} path="manage_tarif" />

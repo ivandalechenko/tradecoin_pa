@@ -3,6 +3,7 @@ import Input from '../UI/Input/Input';
 import { updateTokensAction } from "../../redux/userActions";
 import { useDispatch, useSelector } from "react-redux";
 import Checkbox from '../UI/Checkbox';
+import useInput from '../../validation/useInput';
 
 const ModalAddApi = ({ setModalType }) => {
     const dispatch = useDispatch()
@@ -15,8 +16,6 @@ const ModalAddApi = ({ setModalType }) => {
             binance: '',
         }
     )
-    const [checked, setChecked] = useState(false)
-    const [canAddApi, setCanAddApi] = useState(false)
     useEffect(() => {
         if (activeExchange == 'binance') {
             setActiveExchangeStyle({
@@ -42,68 +41,59 @@ const ModalAddApi = ({ setModalType }) => {
     }, [activeExchange]);
 
     const handleUpdate = (e) => {
-        if (canAddApi) {
+        if (api.isValid && secret.isValid && checked) {
             e.preventDefault()
             if (activeExchange == 'binance') {
                 const binance = {
-                    apiKey: api,
-                    secret: secret
+                    apiKey: api.value,
+                    secret: secret.value
                 }
                 dispatch(updateTokensAction({ binance })).then(() => {
+                    api.reset()
+                    secret.reset()
                     setModalType("hidden")
                 }).catch((err) => {
-                    console.log(err)
+                    setServerError(err)
                 })
             }
             if (activeExchange == 'bybit') {
                 const bybit = {
-                    apiKey: api,
-                    secret: secret
+                    apiKey: api.value,
+                    secret: secret.value
                 }
                 dispatch(updateTokensAction({ bybit })).then(() => {
+                    api.reset()
+                    secret.reset()
                     setModalType("hidden")
                 }).catch((err) => {
-                    console.log(err)
+                    setServerError(err)
+
                 })
             }
             if (activeExchange == 'bitget') {
                 const bitget = {
-                    apiKey: api,
-                    secret: secret
+                    apiKey: api.value,
+                    secret: secret.value
                 }
                 dispatch(updateTokensAction({ bitget })).then(() => {
+                    api.reset()
+                    secret.reset()
                     setModalType("hidden")
                 }).catch((err) => {
-                    console.log(err)
+                    setServerError(err)
                 })
             }
         }
     }
 
-    const [api, setApi] = useState('')
-    const [secret, setSecret] = useState('')
-
-    const [printedError, setPrintedError] = useState('')
-
+    const [checked, setChecked] = useState(false)
+    const [serverError, setServerError] = useState('')
+    const api = useInput('', { eLength: 18 })
+    const secret = useInput('', { eLength: 36 })
     useEffect(() => {
-        validateKeySecret()
-    }, [checked]);
+        setServerError('')
+    }, [api.value, secret.value])
 
-    const validateKeySecret = () => {
-        if (api.length != 18) {
-            setPrintedError('API key length must be 18 characters')
-            setCanAddApi(false)
-        } else if (secret.length != 36) {
-            setPrintedError('The length of the private key must be 36 characters')
-            setCanAddApi(false)
-        } else if (!checked) {
-            setPrintedError('Please check the box that you understand how to use API keys')
-            setCanAddApi(false)
-        } else {
-            setPrintedError('')
-            setCanAddApi(true)
-        }
-    }
 
     return (
 
@@ -112,12 +102,12 @@ const ModalAddApi = ({ setModalType }) => {
                 <div id="inner_add_api" className="modal_inner">
                     <div className="header">
                         <div className="name">
-                            <img src="img/pa/modal/key.svg" alt="key" />
+                            <img src="/img/pa/modal/key.svg" alt="key" />
                             <div className="text">
                                 Add crypto-key API
                             </div>
                         </div>
-                        <img className="modal_closer" src="img/pa/modal/cross.svg" alt="cross" onClick={() => setModalType("hidden")} />
+                        <img className="modal_closer" src="/img/pa/modal/cross.svg" alt="cross" onClick={() => setModalType("hidden")} />
                     </div>
                     <div className="content">
                         <div className="platforms">
@@ -125,9 +115,9 @@ const ModalAddApi = ({ setModalType }) => {
                             <div className={"platform " + activeExchangeStyle.binance}>
                                 {/* <div className="border"> */}
                                 {/* </div> */}
-                                <img src="img/pa/modal/platforms/lock.svg" alt="bybit" />
+                                <img src="/img/pa/modal/platforms/lock.svg" alt="bybit" />
                                 <div className="img">
-                                    <img src="img/pa/modal/platforms/binance.svg" alt="binance" />
+                                    <img src="/img/pa/modal/platforms/binance.svg" alt="binance" />
                                 </div>
                             </div>
                             <div className={"platform " + activeExchangeStyle.bybit} onClick={() => setActiveExchange('bybit')}>
@@ -135,16 +125,16 @@ const ModalAddApi = ({ setModalType }) => {
                                 </div>
 
                                 <div className="img">
-                                    <img src="img/pa/modal/platforms/bybit.svg" alt="bybit" />
+                                    <img src="/img/pa/modal/platforms/bybit.svg" alt="bybit" />
                                 </div>
                             </div>
                             {/* <div className={"platform " + activeExchangeStyle.bitget} onClick={() => setActiveExchange('bitget')}> */}
                             <div className={"platform " + activeExchangeStyle.bitget}>
                                 {/* <div className="border"> */}
                                 {/* </div> */}
-                                <img src="img/pa/modal/platforms/lock.svg" alt="bybit" />
+                                <img src="/img/pa/modal/platforms/lock.svg" alt="bybit" />
                                 <div className="img">
-                                    <img src="img/pa/modal/platforms/bitget.png" alt="bitget" />
+                                    <img src="/img/pa/modal/platforms/bitget.png" alt="bitget" />
                                 </div>
                             </div>
                         </div>
@@ -153,17 +143,17 @@ const ModalAddApi = ({ setModalType }) => {
                                 imageName: 'key.svg',
                                 label: 'API key',
                                 placeholder: user.bybit.apiKey,
-                                onChange: (e) => setApi(e.target.value),
-                                value: api,
-                                onBlur: validateKeySecret
+                                value: api.value,
+                                onChange: api.onChange,
+                                onBlur: api.onBlur
                             }} />
                             : <Input props={{
                                 imageName: 'key.svg',
                                 label: 'API key',
                                 placeholder: 'Enter API key',
-                                onChange: (e) => setApi(e.target.value),
-                                value: api,
-                                onBlur: validateKeySecret
+                                value: api.value,
+                                onChange: api.onChange,
+                                onBlur: api.onBlur
 
                             }} />
                         }
@@ -172,32 +162,47 @@ const ModalAddApi = ({ setModalType }) => {
                                 imageName: 'lock.svg',
                                 label: 'Secret key',
                                 placeholder: user.bybit.secret,
-                                onChange: (e) => setSecret(e.target.value),
-                                value: secret,
-                                onBlur: validateKeySecret
+                                value: secret.value,
+                                onChange: secret.onChange,
+                                onBlur: secret.onBlur
 
                             }} />
                             : <Input props={{
                                 imageName: 'lock.svg',
                                 label: 'Secret key',
                                 placeholder: 'Enter Secret key',
-                                onChange: (e) => setSecret(e.target.value),
-                                value: secret,
-                                onBlur: validateKeySecret
+                                value: secret.value,
+                                onChange: secret.onChange,
+                                onBlur: secret.onBlur
 
                             }} />
                         }
 
-                        <div className="errors">
-                            <div className="error">
-                                {printedError}
-                            </div>
-                        </div>
+
                         <div className="button_and_check">
-                            <button className={canAddApi ? "send_info_button input_block_first" : "send_info_button input_block_first accept_btn_inactive"} onClick={handleUpdate}>Add API key</button>
+                            <button className={api.isValid && secret.isValid && checked ? "accept_btn_form accept_btn_valid" : "accept_btn_form "} onClick={handleUpdate}>Add API key</button>
 
                             <Checkbox checked={checked} setChecked={setChecked} label={'I understand how to use API keys'} />
 
+                        </div>
+                        <div className="errors">
+                            {
+                                serverError
+                                    ? <div className='error'>{serverError}</div>
+                                    : <></>
+                            }
+                            {
+                                api.isDirty &&
+                                <>
+                                    {!api.eLength && <div className='error'>API key length must be 18 characters</div>}
+                                </>
+                            }
+                            {
+                                secret.isDirty &&
+                                <>
+                                    {!secret.eLength && <div className='error'>Secret key length must be 36 characters</div>}
+                                </>
+                            }
                         </div>
                         <div className="steps_and_notice">
                             <div className="steps_and_bg">
@@ -248,7 +253,7 @@ const ModalAddApi = ({ setModalType }) => {
                             <div className="notice">
                                 <div className="wrapper">
 
-                                    <img src="img/pa/notice.svg" alt="notice" />
+                                    <img src="/img/pa/notice.svg" alt="notice" />
                                     <div className="text">
                                         <div className="head">
                                             Important!

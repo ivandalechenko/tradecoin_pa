@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Header = ({ setSidebarOpen }) => {
     const openSidebar = () => {
@@ -9,25 +10,25 @@ const Header = ({ setSidebarOpen }) => {
     }
     return (
         <div className="header">
-            <div className="logo">
-                <img src="img/pa/logo.svg" width="32" height="32" alt="logo" />
+            <Link to="https://tradecoinai.com/" className="logo">
+                <img src="/img/pa/logo.svg" width="32" height="32" alt="logo" />
                 <div className="text super_tight">
                     TradeCoinAi
                 </div>
-            </div>
+            </Link>
             <div className="burger_and_lang">
                 {/* <div id="lang">
-                    <img src="img/pa/flags/usa.png" alt="flag_usa" />
+                    <img src="/img/pa/flags/usa.png" alt="flag_usa" />
                     <div className="name">
                         English
                     </div>
-                    <img width='18' height="10" src="img/pa/flags/arrow_down.png" alt="arrow_down" />
+                    <img width='18' height="10" src="/img/pa/flags/arrow_down.png" alt="arrow_down" />
                 </div> */}
                 <div id="burger_opener" onClick={openSidebar}>
-                    <img width="20" height="20" alt="menu_opener" src="img/pa/burger.svg" />
+                    <img width="20" height="20" alt="menu_opener" src="/img/pa/burger.svg" />
                 </div>
                 <div id="burger_closer" onClick={closeSidebar}>
-                    <img width="20" height="20" alt="menu_closer" src="img/pa/cross.svg" />
+                    <img width="20" height="20" alt="menu_closer" src="/img/pa/cross.svg" />
                 </div>
             </div>
         </div>

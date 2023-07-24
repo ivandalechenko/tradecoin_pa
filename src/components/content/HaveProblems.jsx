@@ -20,7 +20,7 @@ const HaveProblems = (props) => {
                             Our mail
                         </div>
                         <div className="btn">
-                            Tradecoinai@gmail.com
+                            support@tradecoinai.com
                         </div>
                     </div>
                 </div>

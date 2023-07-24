@@ -15,7 +15,6 @@ const ProfilePage = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             id='content'
-
         >
             <div id="profile_page" className="page">
                 <Profile />

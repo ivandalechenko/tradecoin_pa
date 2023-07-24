@@ -12,7 +12,7 @@ const useValidation = (value, validations, setIsValid) => {
     const [isEmpty, setIsEmpty] = useState(true)
     const [minLength, setMinLength] = useState(false)
     const [maxLength, setMaxLength] = useState(false)
-    const [length, setLength] = useState(false)
+    const [eLength, setELength] = useState(false)
     const [isEquals, setIsEquals] = useState(true)
     const [isNotEquals, setIsNotEquals] = useState(true)
     useEffect(() => {
@@ -67,12 +67,12 @@ const useValidation = (value, validations, setIsValid) => {
                         setIsNotEquals(false)
                     }
                     break
-                case 'length':
+                case 'eLength':
                     if (value.length != validations[validation]) {
-                        setLength(false)
+                        setELength(false)
                         setIsValid(false)
                     } else {
-                        setLength(true)
+                        setELength(true)
                     }
                     break
             }
@@ -86,7 +86,7 @@ const useValidation = (value, validations, setIsValid) => {
         isEmail,
         isEquals,
         isNotEquals,
-        length,
+        eLength,
     }
 
 }

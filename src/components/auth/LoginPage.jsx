@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link, Navigate, useNavigate } from 'react-router-dom';
 import Input from '../UI/Input/Input';
-import Images from './Images';
 import Modal from '../modal/Modal';
 import { useDispatch, useSelector } from "react-redux";
 import { loginAction } from "../../redux/userActions";
