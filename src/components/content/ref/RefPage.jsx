@@ -9,6 +9,7 @@ import InviteLink from '../../UI/InviteLink';
 import Sidebar from '../../sidebar/Sidebar';
 import { useSelector } from 'react-redux';
 import { Navigate } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 
 const RefPage = () => {
@@ -19,7 +20,12 @@ const RefPage = () => {
     const { user } = useSelector(state => state.userReducer)
     if (!user.referralEnabled) return <Navigate to="/profile" replace />
     return (
-        <div id='content'>
+        <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            id='content'
+        >
             <div id="ref_page">
                 <div className="section" id="ref">
                     <div className="header h5">
@@ -42,7 +48,7 @@ const RefPage = () => {
                 </div>
                 <HaveProblems />
             </div>
-        </div>
+        </motion.div>
 
     )
 }

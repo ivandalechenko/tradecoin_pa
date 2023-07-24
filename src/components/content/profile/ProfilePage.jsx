@@ -3,21 +3,28 @@ import HaveProblems from '../HaveProblems';
 import ChangePassword from './ChangePassword';
 import Balance from './Balance';
 import Profile from './Profile';
-import Sidebar from '../../sidebar/Sidebar';
+import { motion } from 'framer-motion';
 
 const ProfilePage = () => {
     useEffect(() => {
         document.title = "Profile - TradeCoinAI";
     }, []);
     return (
-        <div id='content'>
+        <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            id='content'
+
+        >
             <div id="profile_page" className="page">
                 <Profile />
                 <Balance />
                 <ChangePassword />
                 <HaveProblems />
             </div>
-        </div>
+        </motion.div>
+
     )
 }
 

@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, Link, useNavigate } from 'react-router-dom';
 import Modal from '../modal/Modal';
 
-const Navigation = () => {
+const Navigation = ({ setModalProps, setModalType }) => {
 
     const { user } = useSelector(state => state.userReducer)
     const navigate = useNavigate()
@@ -13,12 +13,9 @@ const Navigation = () => {
         dispatch({ type: 'LOGOUT' })
         navigate("/auth/login")
     }
-    const [modalProps, setModalProps] = useState({})
-    const [modalType, setModalType] = useState('hidden')
 
     return (
         <>
-            <Modal modalType={modalType} setModalType={setModalType} props={modalProps} />
 
             <div className="navigation">
                 <NavLink to="/statistic" className="navigation_element">
