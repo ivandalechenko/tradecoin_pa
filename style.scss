@@ -1671,7 +1671,7 @@ body {
             background: rgba(255, 255, 255, 0.10);
           }
 
-          .element {
+          div {
             border-radius: 12px;
             font-size: 16px;
             font-weight: 700;
@@ -1688,7 +1688,7 @@ body {
             }
           }
 
-          .element:hover {
+          div:hover {
             cursor: pointer;
             background: rgba(255, 255, 255, 0.15);
           }
@@ -3727,206 +3727,33 @@ body {
   }
 }
 
-#stat_table{
+.notransactions{
+  font-weight: 500;
+  font-size: 18px;
+  letter-spacing: -0.02em;
+  margin-top: 20px;
+}
 
-.table {
+
+.loader{
+  min-height: 475px;
+  width: 100%;
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
-  .send_info_button {
-    display: none;
-
-    @media (max-width: 900px) {
-      display: block;
-      margin-top: 16px;
+  align-items: center;
+  img {
+    animation: loader_svg 1s infinite cubic-bezier(0.5, 0, 0.5, 1);
+    overflow: auto;
+  }
+  @keyframes loader_svg {
+    0% {
+      transform: rotate(0deg);
+    }
+    80% {
+      transform: rotate(360deg);
+    }
+    100% {
+      transform: rotate(360deg);
     }
   }
-
-  .element:first-child {
-    background: none;
-    margin-top: 20px;
-
-    @media (max-width: 900px) {
-      display: none;
-    }
-
-    .num,
-    .type,
-    .date,
-    .earned,
-    .sum {
-      font-size: 14px;
-      font-weight: 400;
-      // opacity: 0.7;
-      color: rgba(255,255,255, 0.7)
-    }
-  }
-
-  .element {
-    margin-top: 6px;
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    border-radius: 12px;
-    background: rgba(255, 255, 255, 0.03);
-    padding: 12px 25px;
-    flex-wrap: wrap;
-    align-items: center;
-    @media (max-width: 900px) {
-      margin-top: 12px;
-      padding: 20px;
-    }
-
-    .name {
-      display: none;
-
-      @media (max-width: 900px) {
-        display: block;
-        opacity: 0.7;
-        font-size: 14px;
-        font-weight: 400;
-        line-height: 20px;
-        margin: auto 0;
-        color: white;
-      }
-    }
-
-    .success {
-      background: #2CBA65;
-    }
-
-    .error {
-      background: #FF5F72;
-    }
-
-    .num {
-      width: 5.5%;
-      font-size: 16px;
-      font-weight: 700;
-      letter-spacing: -0.32px;
-      color: rgba(255, 255, 255, 0.5);
-    }
-
-    .type {
-      width: 28.3%;
-      display: flex;
-      column-gap: 12px;
-
-      .text,
-      img {
-        margin: auto 0;
-      }
-
-      .text {
-        font-size: 15px;
-        font-weight: 500;
-
-        @media (max-width: 900px) {
-          text-align: right;
-        }
-      }
-
-      img {
-        @media (max-width: 900px) {
-          display: none;
-        }
-      }
-    }
-
-    .date {
-      width: 16.6%;
-      font-size: 15px;
-      font-weight: 500;
-      color: rgba(255, 255, 255, 0.7);
-    }
-
-    .earned {
-      width: 30.9%;
-
-      span {
-        font-size: 15px;
-        font-weight: 500;
-        line-height: 20px;
-      }
-    }
-
-    .sum {
-      width: 12.8%;
-
-      .text {
-        column-gap: 16px;
-        display: flex;
-
-        .count,
-        .percent {
-          margin: auto 0;
-        }
-
-        .count {
-          font-size: 15px;
-          font-weight: 700;
-          letter-spacing: -0.375px;
-        }
-
-        .percent {
-          border-radius: 31px;
-          font-size: 15px;
-          font-weight: 500;
-          line-height: 20px;
-          padding: 4px 12px;
-        }
-      }
-    }
-
-    .num,
-    .type,
-    .date,
-    .earned,
-    .sum {
-      @media (max-width: 900px) {
-        display: flex;
-        justify-content: space-between;
-        width: 100%;
-        padding: 8px 0px;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-      }
-    }
-  }
-}
-
-.security_and_pages {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 23px;
-  column-gap: 100px;
-
-  @media (max-width: 900px) {
-    display: none;
-  }
-
-  .pages,
-  .secure {
-    margin: auto 0;
-  }
-
-  .pages {
-    display: flex;
-    column-gap: 8px;
-
-    button {
-      width: 48px;
-      height: 48px;
-      background: rgba(255, 255, 255, 0.05);
-      border-radius: 12px;
-      font-style: normal;
-      font-weight: 500;
-      font-size: 15px;
-      line-height: 20px;
-    }
-
-    .active {
-      background: #3763FF;
-    }
-  }
-}
 }

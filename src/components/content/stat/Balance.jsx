@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ChangeTarifCheckStatus from '../../UI/ChangeTarifCheckStatus';
 
 const Balance = (props) => {
+    const [timePeriod, setTimePeriod] = useState('1d')
     return (
         <div className="section" id="balance">
             <div className="header ">
@@ -13,28 +14,28 @@ const Balance = (props) => {
                         Select period
                     </div>
                     <div className="elements">
-                        <div className="element">
+                        <div className={timePeriod == '1h' && "active"} onClick={() => setTimePeriod('1h')}>
                             1h
                         </div>
-                        <div className="element">
+                        <div className={timePeriod == '3h' && "active"} onClick={() => setTimePeriod('3h')}>
                             3h
                         </div>
-                        <div className="element active">
+                        <div className={timePeriod == '1d' && "active"} onClick={() => setTimePeriod('1d')}>
                             1d
                         </div>
-                        <div className="element">
+                        <div className={timePeriod == '3d' && "active"} onClick={() => setTimePeriod('3d')}>
                             3d
                         </div>
-                        <div className="element">
+                        <div className={timePeriod == '7d' && "active"} onClick={() => setTimePeriod('7d')}>
                             7d
                         </div>
-                        <div className="element">
+                        <div className={timePeriod == '2w' && "active"} onClick={() => setTimePeriod('2w')}>
                             2w
                         </div>
-                        <div className="element">
+                        <div className={timePeriod == '1m' && "active"} onClick={() => setTimePeriod('1m')}>
                             1m
                         </div>
-                        <div className="element">
+                        <div className={timePeriod == '1y' && "active"} onClick={() => setTimePeriod('1y')}>
                             1y
                         </div>
                     </div>

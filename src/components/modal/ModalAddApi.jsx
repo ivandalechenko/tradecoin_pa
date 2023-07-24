@@ -4,6 +4,7 @@ import { updateTokensAction } from "../../redux/userActions";
 import { useDispatch, useSelector } from "react-redux";
 import Checkbox from '../UI/Checkbox';
 import useInput from '../../validation/useInput';
+import { Link } from 'react-router-dom';
 
 const ModalAddApi = ({ setModalType }) => {
     const dispatch = useDispatch()
@@ -250,7 +251,7 @@ const ModalAddApi = ({ setModalType }) => {
                                     </div>
                                 </div>
                             </div>
-                            <div className="notice">
+                            <Link to="https://tradecoinai.com/guide.html" target="_blank" className="notice">
                                 <div className="wrapper">
 
                                     <img src="/img/pa/notice.svg" alt="notice" />
@@ -263,7 +264,7 @@ const ModalAddApi = ({ setModalType }) => {
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </Link>
                         </div>
                     </div>
                 </div>

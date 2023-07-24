@@ -5,7 +5,7 @@ import Prices from './Prices';
 const ChartBlock = (props) => {
 
 
-    var prices = [20, 30, 4, 33, 78, 22, 34, 98, 23, 25, -2, 120, 33]
+    var prices = [0, 600]
     var steps = 7
 
     return (
@@ -15,7 +15,7 @@ const ChartBlock = (props) => {
             </div>
             <div className="chart_wrapper">
                 <div className="chart" >
-                    <Chart props={{ prices: prices, steps: steps }} />
+                    {/* <Chart props={{ prices: prices, steps: steps }} /> */}
                 </div>
             </div>
             <Prices props={{ prices: prices, steps: steps }} />
