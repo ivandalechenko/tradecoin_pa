@@ -3440,6 +3440,8 @@ body {
     background: black linear-gradient(180deg, rgba(18, 70, 255, 0.68) 0%, rgba(18, 47, 147, 0.00) 100%);
     overflow: hidden;
 
+    position: relative;
+    z-index: -1;
     @media (max-width: 800px) {
       width: 100%;
       background: black linear-gradient(0deg, rgba(18, 70, 255, 0.68) 0%, rgba(18, 47, 147, 0.00) 100%);
