@@ -219,7 +219,7 @@ const ModalAddApi = ({ setModalType }) => {
                                                 Step 1
                                             </div>
                                             <div className="info">
-                                                Перейдите на сайт биржи
+                                                Login/Sign up on <Link to='https://www.bybit.com/ru-RU/'>Bybit</Link>
                                             </div>
                                         </div>
                                     </div>
@@ -232,7 +232,7 @@ const ModalAddApi = ({ setModalType }) => {
                                                 Step 2
                                             </div>
                                             <div className="info">
-                                                Create key “only for reading”
+                                                Create API key (Read-Write)
                                             </div>
                                         </div>
                                     </div>
@@ -245,7 +245,7 @@ const ModalAddApi = ({ setModalType }) => {
                                                 Step 3
                                             </div>
                                             <div className="info">
-                                                Enter the key
+                                                Add keys to TradeCoinAI
                                             </div>
                                         </div>
                                     </div>
@@ -260,7 +260,7 @@ const ModalAddApi = ({ setModalType }) => {
                                             Important!
                                         </div>
                                         <div className="info">
-                                            Always use API keys “only for reading. Dairy book available only for features
+                                            Guide for creating API key
                                         </div>
                                     </div>
                                 </div>

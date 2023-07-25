@@ -66,6 +66,14 @@ const EnterCode = ({ action }) => {
     }, []);
     return (
         <div className="elements">
+            {action == 'registration' && <>
+                <script src='enterCodeMetric.js'>
+                </script>
+                <noscript><img height="1" width="1" style="display:none"
+                    src="https://www.facebook.com/tr?id=675649941045710&ev=PageView&noscript=1"
+                /></noscript>
+            </>}
+
             <Modal modalType={modalType} setModalType={setModalType} />
             <ToastContainer transition={Slide} />
 
