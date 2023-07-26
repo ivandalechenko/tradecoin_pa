@@ -219,7 +219,7 @@ const ModalAddApi = ({ setModalType }) => {
                                                 Step 1
                                             </div>
                                             <div className="info">
-                                                Login/Sign up on <Link to='https://www.bybit.com/ru-RU/'>Bybit</Link>
+                                                Login/Sign up on <Link to='https://www.bybit.com/invite?ref=9PPZMB'>Bybit</Link>
                                             </div>
                                         </div>
                                     </div>
