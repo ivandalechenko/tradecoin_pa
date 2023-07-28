@@ -61,12 +61,12 @@ const RegistrationPage = ({ setAuthType }) => {
             <Modal modalType={modalType} setModalType={setModalType} />
             <div className="left transiton_show_hide" id="left">
                 <div className="container" id="left_container">
-                    <div className="logo">
+                    <Link to="https://tradecoinai.com/" className="logo">
                         <img src="/img/login/logo.svg" />
                         <div className="text">
                             TradeCoinAi
                         </div>
-                    </div>
+                    </Link>
                     <h1>
                         Sign in to TradeCoinAi
                     </h1>
@@ -174,7 +174,7 @@ const RegistrationPage = ({ setAuthType }) => {
                         }
                     </div>
                 </div>
-            </div>
+            </div >
             {/* <Images /> */}
         </>
         // </div>

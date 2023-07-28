@@ -51,12 +51,13 @@ const LoginPage = ({ setAuthType }) => {
             <Modal modalType={modalType} setModalType={setModalType} />
             <div className="left transiton_show_hide" id="left">
                 <div className="container" id="left_container">
-                    <div className="logo">
+                    <Link to="https://tradecoinai.com/" className="logo">
+
                         <img src="/img/login/logo.svg" alt='logo' />
                         <div className="text">
                             TradeCoinAi
                         </div>
-                    </div>
+                    </Link>
                     <h1>
                         Login to TradeCoinAi
                     </h1>
