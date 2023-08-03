@@ -121,3 +121,32 @@ export const getPaymentsAction = (getPaymentsData) => async dispatch => {
         throw (e.response.data.message)
     }
 }
+
+export const getBalanceAction = () => async dispatch => {
+    try {
+        const { data } = await api.get('/users/getBalance')
+        dispatch({ type: 'UPDATE_BALANCE', payload: data })
+    } catch (e) {
+        dispatch({ type: 'UPDATE_BALANCE', payload: { balance: 0, profit: 0 } })
+        throw (e.response.data.message)
+    }
+}
+
+export const getStatisticAction = (getStatisticData) => async dispatch => {
+    try {
+        const { data } = await api.get('/users/getStatistics?limit=' + getStatisticData.limit + '&page=' + getStatisticData.page)
+        return data
+
+    } catch (e) {
+        throw (e.response.data.message)
+    }
+}
+
+export const getStatisticsSinceDateAction = (getStatisticsSinceDateData) => async dispatch => {
+    try {
+        const { data } = await api.get('/users/getStatisticsSinceDate?date=' + getStatisticsSinceDateData.date)
+        return data
+    } catch (e) {
+        throw (e.response.data.message)
+    }
+}

@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 
 const Prices = ({ props }) => {
     function getMaxOfArray(numArray) {
@@ -11,12 +12,10 @@ const Prices = ({ props }) => {
     var steps = props.steps
     var maxPrice = getMaxOfArray(prices)
     var minPrice = getMinOfArray(prices)
-    console.log(prices)
 
     var priceArray = []
-    priceArray.push(maxPrice)
 
-    for (let i = 1; i < steps - 1; i++) {
+    for (let i = 0; i < steps; i++) {
         var price = maxPrice - ((maxPrice - minPrice) / (steps - 1)) * i
         for (let j = -5; j < 5; j++) {
             if (Math.abs(price) >= Math.pow(10, j + 2)) {
@@ -29,17 +28,19 @@ const Prices = ({ props }) => {
         }
         priceArray.push(price)
     }
-    priceArray.push(minPrice)
     return (
         <div className="lines_and_prices">
             {
                 priceArray.map((el, index) => {
-                    return <div key={index} className="line_and_price">
+                    return <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }} key={index} className="line_and_price">
                         <div className="price">
                             ${el}
                         </div>
                         <div className="line"></div>
-                    </div>
+                    </motion.div>
                 })
             }
         </div>

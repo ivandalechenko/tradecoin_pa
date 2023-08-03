@@ -4,9 +4,8 @@ import { useDispatch } from 'react-redux';
 import { changePasswordAction } from '../../../redux/userActions';
 import Modal from '../../modal/Modal';
 
-import { ToastContainer, toast, Slide } from 'react-toastify';
-import ToastConfig from '../../UI/ToastConfig';
 import useInput from '../../../validation/useInput';
+import { successNotification } from '../../../redux/notificationActions';
 
 const ChangePassword = (props) => {
     const [modalType, setModalType] = useState('hidden')
@@ -29,7 +28,7 @@ const ChangePassword = (props) => {
             dispatch(changePasswordAction(data))
                 .then(() => {
                     setModalType('hidden')
-                    toast.success("Password successfully changed", ToastConfig);
+                    successNotification('Password successfully changed')
                     oldPassword.reset()
                     newPassword.reset()
                     repeatNewPassword.reset()
@@ -43,7 +42,6 @@ const ChangePassword = (props) => {
 
     return (
         <div className="section" id="password">
-            {oldPassword.isValid ? <ToastContainer transition={Slide} /> : <></>}
             <Modal modalType={modalType} setModalType={setModalType} />
             <div className="section_header h5">
                 Change password

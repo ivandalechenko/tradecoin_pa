@@ -1,4 +1,5 @@
 const intialState = {
+    money: { balance: 0, profit: 0 },
     user: {},
     isLoggedIn: false
 }
@@ -21,6 +22,11 @@ const userReducer = (state = intialState, action) => {
             return {
                 ...state,
                 user: action.payload,
+            }
+        case 'UPDATE_BALANCE':
+            return {
+                ...state,
+                money: { balance: action.payload.balance, profit: action.payload.profit }
             }
         default:
             return state

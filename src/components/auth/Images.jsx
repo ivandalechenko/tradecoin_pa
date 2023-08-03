@@ -6,7 +6,7 @@ const Images = ({ authType }) => {
     useEffect(() => {
         setRotate(true)
         setTimeout(() => setRotate(false), 400)
-        authType == 'login' ? setTimeout(() => setImgType('safe'), 200) : setTimeout(() => setImgType('usd'), 200)
+        authType == 'login' ? setTimeout(() => setImgType('safe'), 100) : setTimeout(() => setImgType('usd'), 100)
     }, [authType])
     return (
         <div className="right transiton_show_hide" id="right">

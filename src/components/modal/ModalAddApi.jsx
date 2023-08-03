@@ -1,15 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import Input from '../UI/Input/Input';
-import { updateTokensAction } from "../../redux/userActions";
+import { getBalanceAction, updateTokensAction } from "../../redux/userActions";
 import { useDispatch, useSelector } from "react-redux";
 import Checkbox from '../UI/Checkbox';
 import useInput from '../../validation/useInput';
 import { Link } from 'react-router-dom';
+import { successNotification, warningNotification } from '../../redux/notificationActions';
+import Modal from './Modal';
 
 const ModalAddApi = ({ setModalType }) => {
     const dispatch = useDispatch()
     const { user } = useSelector(state => state.userReducer)
     const [activeExchange, setActiveExchange] = useState('bybit')
+    const [loadingModalStatus, setLoadingModalStatus] = useState('hidden')
     const [activeExchangeStyle, setActiveExchangeStyle] = useState(
         {
             bybit: 'selected',
@@ -44,19 +47,7 @@ const ModalAddApi = ({ setModalType }) => {
     const handleUpdate = (e) => {
         if (api.isValid && secret.isValid && checked) {
             e.preventDefault()
-            if (activeExchange == 'binance') {
-                const binance = {
-                    apiKey: api.value,
-                    secret: secret.value
-                }
-                dispatch(updateTokensAction({ binance })).then(() => {
-                    api.reset()
-                    secret.reset()
-                    setModalType("hidden")
-                }).catch((err) => {
-                    setServerError(err)
-                })
-            }
+            setLoadingModalStatus('loader')
             if (activeExchange == 'bybit') {
                 const bybit = {
                     apiKey: api.value,
@@ -65,23 +56,19 @@ const ModalAddApi = ({ setModalType }) => {
                 dispatch(updateTokensAction({ bybit })).then(() => {
                     api.reset()
                     secret.reset()
-                    setModalType("hidden")
+                    successNotification('API keys successfully changed')
+                    dispatch(getBalanceAction())
+                        .then((data) => {
+                            setLoadingModalStatus('hidden')
+                            setModalType('hidden')
+                        })
+                        .catch(function (error) {
+                            warningNotification('Invalid API keys')
+                            setLoadingModalStatus('hidden')
+                        });
                 }).catch((err) => {
                     setServerError(err)
 
-                })
-            }
-            if (activeExchange == 'bitget') {
-                const bitget = {
-                    apiKey: api.value,
-                    secret: secret.value
-                }
-                dispatch(updateTokensAction({ bitget })).then(() => {
-                    api.reset()
-                    secret.reset()
-                    setModalType("hidden")
-                }).catch((err) => {
-                    setServerError(err)
                 })
             }
         }
@@ -99,6 +86,7 @@ const ModalAddApi = ({ setModalType }) => {
     return (
 
         <div className='modal modal_show' onClick={() => setModalType("hidden")}>
+            <Modal modalType={loadingModalStatus} />
             <div onClick={(e) => e.stopPropagation()}>
                 <div id="inner_add_api" className="modal_inner">
                     <div className="header">

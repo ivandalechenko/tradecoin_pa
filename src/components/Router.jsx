@@ -16,8 +16,8 @@ import { useDispatch } from "react-redux";
 import { checkAuthAction } from "../redux/userActions";
 import AuthPage from './auth/AuthPage';
 
+import { ToastContainer, Slide } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
 
 const Router = (props) => {
     const dispatch = useDispatch()
@@ -41,6 +41,7 @@ const Router = (props) => {
 
     return (
         < BrowserRouter >
+            <ToastContainer transition={Slide} />
             <Routes>
                 <Route element={<AuthPage />} path="/auth/:auth" />
                 <Route element={<ForgotPassword />} path="/forgot_password" />

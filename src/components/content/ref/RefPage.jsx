@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import HorizontalLine from '../../UI/HorizontalLine';
 import HaveProblems from '../HaveProblems';
 import Secure from '../Secure';
@@ -13,7 +13,9 @@ import { motion } from 'framer-motion';
 
 
 const RefPage = () => {
-
+    const [balance, setBalance] = useState(0)
+    const [refEarned, setRefEarned] = useState(0)
+    const [balanceLoading, setBalanceLoading] = useState(true)
     useEffect(() => {
         document.title = "Refferal - TradeCoinAI";
     }, []);
@@ -35,15 +37,14 @@ const RefPage = () => {
                     <div className="content">
                         <div className="balance">
                             <img src="img/pa/peoples.png" alt='peoples' />
-                            <Balance />
+                            <Balance balance={balance} refEarned={refEarned} balanceLoading={balanceLoading} />
                         </div>
                         <InviteLink />
                     </div>
 
                     <HorizontalLine />
                     <div className="referals">
-                        <RefTable />
-
+                        <RefTable setBalance={setBalance} setRefEarned={setRefEarned} setBalanceLoading={setBalanceLoading} />
                     </div>
                 </div>
                 <HaveProblems />

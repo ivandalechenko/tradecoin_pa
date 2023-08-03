@@ -2,7 +2,7 @@ import React from 'react';
 
 const RefTableElement = ({ props }) => {
     var date = new Date(Date.parse(props.date));
-    var dateFormat = date.getHours() + ":" + date.getMinutes() + ", " + date.toDateString();
+    var dateFormat = date.getDate() + ' ' + date.toLocaleString('default', { month: 'long' }) + ' ' + date.getFullYear()
     return (
         <div className="element">
             <div className="num">
@@ -18,7 +18,6 @@ const RefTableElement = ({ props }) => {
                 <img src="img/pa/people_green.svg" alt='people' />
                 <div className="text">
                     @{props.user}
-
                 </div>
             </div>
             <div className="date">

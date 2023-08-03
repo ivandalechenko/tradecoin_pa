@@ -1,21 +1,16 @@
 import React, { useState } from 'react';
 import { useSelector } from "react-redux";
 import Modal from '../../modal/Modal';
+import { warningNotification } from '../../../redux/notificationActions';
 
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import ToastConfig from '../../UI/ToastConfig';
-import { Slide } from 'react-toastify';
 
 const Offer = ({ offer }) => {
 
     const { user } = useSelector(state => state.userReducer)
     const [modalType, setModalType] = useState('hidden')
     const handleClick = () => {
-        // console.log(offer.tariff)
-
         if (offer.tariff == 'ai_premium') {
-            toast.warn('Temporarily unavailable', ToastConfig)
+            warningNotification('Temporarily unavailable')
         } else {
             setModalType('select_your_wallet')
         }
@@ -24,7 +19,6 @@ const Offer = ({ offer }) => {
 
     return (
         <div className="offers_offers_list_offer">
-            {offer.tariff == 'ai_premium' ? <ToastContainer transition={Slide} /> : <></>}
             <Modal modalType={modalType} setModalType={setModalType} props={{ tariff: offer.tariff }} />
 
             <div className="offers_offers_list_offer_header">

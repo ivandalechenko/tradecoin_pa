@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import Button from '../../UI/Button';
 import RefTableElement from './RefTableElement';
 import Secure from '../Secure';
-import Pagination from '../../UI/Pagination';
 import { getPaymentsAction } from '../../../redux/userActions';
 import { useDispatch } from 'react-redux';
+import { motion } from 'framer-motion';
 
-const RefTable = (props) => {
+const RefTable = ({ setBalance, setRefEarned, setBalanceLoading }) => {
 
     const [page, setPage] = useState(1)
     const [limit, setLimit] = useState(6)
@@ -35,8 +34,10 @@ const RefTable = (props) => {
         }
         dispatch(getPaymentsAction(data))
             .then((data) => {
-                console.log(data)
                 setLoading(false)
+                setBalanceLoading(false)
+                setBalance(data.userEarned)
+                setRefEarned(data.referralEarned)
                 setTotalTransactions(data.total)
                 setPayments(data.payments)
             })
@@ -60,12 +61,18 @@ const RefTable = (props) => {
         <>
             {
                 loading
-                    ? <div className="loader">
+                    ? <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }} className="loader">
                         <img src='img/pa/loader.svg' />
-                    </div>
+                    </motion.div>
                     : <>
                         {payments.length > 0
-                            ? <>
+                            ? <motion.div
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                exit={{ opacity: 0 }}>
                                 <div className="table">
                                     <div className="element">
                                         <div className="num">
@@ -86,7 +93,7 @@ const RefTable = (props) => {
                                     </div>
                                     {
                                         payments.map((payment, index) => {
-                                            return <RefTableElement key="index" props={{ id: (page - 1) * limit + index + 1, user: payment.user.username, tariff: payment.tariff, fullPrice: payment.fullPrice, earned: payment.earned, percent: payment.percent, date: payment.updatedAt }} />
+                                            return <RefTableElement key={index} props={{ id: (page - 1) * limit + index + 1, user: payment.user.username, tariff: payment.tariff, fullPrice: payment.fullPrice, earned: payment.earned, percent: payment.percent, date: payment.updatedAt }} />
                                         })
                                     }
                                     <button className="send_info_button" onClick={() => { loadMore(limit) }}>
@@ -166,11 +173,13 @@ const RefTable = (props) => {
                                         }
                                     </div>
                                 </div>
-                            </>
-                            : <div className='no_transactions'>Your referrals have not made any transactions yet</div>}
+                            </motion.div>
+                            : <motion.div
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                exit={{ opacity: 0 }} className='no_transactions'>Your referrals have not made any transactions yet</motion.div>}
                     </>
             }
-
         </>
     )
 }

@@ -1,8 +1,40 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import ChangeTarifCheckStatus from '../../UI/ChangeTarifCheckStatus';
+import { useDispatch, useSelector } from 'react-redux';
+import { getBalanceAction } from '../../../redux/userActions';
+import { warningNotification } from '../../../redux/notificationActions';
+import { motion } from 'framer-motion';
 
-const Balance = (props) => {
-    const [timePeriod, setTimePeriod] = useState('1d')
+const Balance = ({ setPeriod, period }) => {
+    const { money } = useSelector(state => state.userReducer)
+    const [isBalanceLoading, setIsBalanceLoading] = useState(true)
+    const dispatch = useDispatch()
+
+    const second = 1000
+    const minute = second * 60
+    const hour = minute * 60
+    const day = hour * 24
+    const week = day * 7
+    const mounth = day * 30
+    const year = day * 365
+
+    const getBalance = () => {
+        setIsBalanceLoading(true)
+        dispatch(getBalanceAction())
+            .then(() => {
+                setIsBalanceLoading(false)
+            })
+            .catch(function (error) {
+                warningNotification("Invalid API keys")
+                setIsBalanceLoading(false)
+                dispatch({ type: 'UPDATE_BALANCE', payload: { balance: 0, profit: 0 } })
+            });
+    }
+    useEffect(() => {
+        getBalance();
+    }, [])
+
+
     return (
         <div className="section" id="balance">
             <div className="header ">
@@ -14,28 +46,19 @@ const Balance = (props) => {
                         Select period
                     </div>
                     <div className="elements">
-                        <div className={timePeriod == '1h' && "active"} onClick={() => setTimePeriod('1h')}>
-                            1h
-                        </div>
-                        <div className={timePeriod == '3h' && "active"} onClick={() => setTimePeriod('3h')}>
-                            3h
-                        </div>
-                        <div className={timePeriod == '1d' && "active"} onClick={() => setTimePeriod('1d')}>
-                            1d
-                        </div>
-                        <div className={timePeriod == '3d' && "active"} onClick={() => setTimePeriod('3d')}>
+                        <div className={period == day * 3 ? "active" : ""} onClick={() => setPeriod(day * 3)}>
                             3d
                         </div>
-                        <div className={timePeriod == '7d' && "active"} onClick={() => setTimePeriod('7d')}>
+                        <div className={period == week ? "active" : ""} onClick={() => setPeriod(week)}>
                             7d
                         </div>
-                        <div className={timePeriod == '2w' && "active"} onClick={() => setTimePeriod('2w')}>
+                        <div className={period == week * 2 ? "active" : ""} onClick={() => setPeriod(week * 2)}>
                             2w
                         </div>
-                        <div className={timePeriod == '1m' && "active"} onClick={() => setTimePeriod('1m')}>
+                        <div className={period == mounth ? "active" : ""} onClick={() => setPeriod(mounth)}>
                             1m
                         </div>
-                        <div className={timePeriod == '1y' && "active"} onClick={() => setTimePeriod('1y')}>
+                        <div className={period == year ? "active" : ""} onClick={() => setPeriod(year)}>
                             1y
                         </div>
                     </div>
@@ -54,19 +77,38 @@ const Balance = (props) => {
                         </div>
                         <div className="count">
                             <div className="num">
-                                $0
+                                {isBalanceLoading ? <motion.img
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    exit={{ opacity: 0 }} src='/img/pa/mini_loader2.svg' width='60' height='55' /> : <motion.div
+                                        initial={{ opacity: 0 }}
+                                        animate={{ opacity: 1 }}
+                                        exit={{ opacity: 0 }}>{"$" + money.balance}</motion.div>}
                             </div>
-                            <div className="percent">
-                                +0%
-                            </div>
+                            {/* {!isBalanceLoading && <>
+                                <motion.div
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    exit={{ opacity: 0 }} className="percent">
+                                    +0%
+                                </motion.div>
+                            </>} */}
                         </div>
                         <div className="earned">
-                            <div className="text">
-                                Earned
-                            </div>
-                            <div className="num">
-                                $0
-                            </div>
+                            {!isBalanceLoading && <>
+                                <motion.div
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    exit={{ opacity: 0 }} className="text">
+                                    Earned
+                                </motion.div>
+                                <motion.div
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    exit={{ opacity: 0 }} className="num">
+                                    {Math.round(money.profit * 100) / 100}$
+                                </motion.div>
+                            </>}
                         </div>
                     </div>
                 </div>

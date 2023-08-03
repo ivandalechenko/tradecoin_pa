@@ -5,8 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { enterCodeAction, forgotPasswordSendCodeAction } from '../../redux/userActions';
 import useInput from '../../validation/useInput';
 
-import { ToastContainer, toast, Slide } from 'react-toastify';
-import ToastConfig from '../UI/ToastConfig';
+import { successNotification } from '../../redux/notificationActions';
 
 const EnterCode = ({ action }) => {
     const [modalType, setModalType] = useState('hidden')
@@ -52,7 +51,7 @@ const EnterCode = ({ action }) => {
         dispatch(forgotPasswordSendCodeAction(data))
             .then(() => {
                 setModalType('hidden')
-                toast.success('Code successfully resent', ToastConfig)
+                successNotification('Code successfully resent')
             })
             .catch(function (error) {
                 setModalType('hidden')
@@ -75,8 +74,6 @@ const EnterCode = ({ action }) => {
             </>}
 
             <Modal modalType={modalType} setModalType={setModalType} />
-            <ToastContainer transition={Slide} />
-
             <div className="modal_auth transiton_show_hide" id="modal_auth">
                 <div className="modal_auth_inner">
                     <div className="back">

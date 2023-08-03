@@ -7,8 +7,7 @@ import { updateUsernameAction } from '../../../redux/userActions';
 import Modal from '../../modal/Modal';
 
 
-import { ToastContainer, toast, Slide } from 'react-toastify';
-import ToastConfig from '../../UI/ToastConfig';
+import { successNotification } from '../../../redux/notificationActions';
 
 
 const Profile = (props) => {
@@ -36,7 +35,7 @@ const Profile = (props) => {
             dispatch(updateUsernameAction(data))
                 .then(() => {
                     setModalType('hidden')
-                    toast.success("Username successfully changed", ToastConfig);
+                    successNotification('Username successfully changed')
                 })
                 .catch(function (error) {
                     setModalType('hidden')
@@ -49,7 +48,6 @@ const Profile = (props) => {
 
     return (
         <div className="section" id="profile">
-            {username.isValid ? <ToastContainer transition={Slide} /> : <></>}
             <Modal modalType={modalType} setModalType={setModalType} />
             <div className="section_header h5">
                 Profile
