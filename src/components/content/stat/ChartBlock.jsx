@@ -13,7 +13,7 @@ const ChartBlock = ({ period }) => {
         const { clientHeight, clientWidth } = ref.current || {};
         setSize({ clientHeight, clientWidth });
     };
-    const [size, setSize] = React.useState({});
+    const [size, setSize] = useState({});
     const ref = useRef();
     useEffect(() => {
         window.addEventListener("resize", resizeHandler);
@@ -28,37 +28,37 @@ const ChartBlock = ({ period }) => {
         if (size.clientWidth <= 800 && size.clientWidth > 700) {
             if (timesCount != 10) {
                 setTimesCount(10)
-                getStatisticsSinceDate(10)
+                getStatisticsSinceDate()
             }
         } else if (size.clientWidth <= 700 && size.clientWidth > 600) {
             if (timesCount != 8) {
                 setTimesCount(8)
-                getStatisticsSinceDate(8)
+                getStatisticsSinceDate()
             }
         } else if (size.clientWidth <= 600 && size.clientWidth > 500) {
             if (timesCount != 6) {
                 setTimesCount(6)
-                getStatisticsSinceDate(6)
+                getStatisticsSinceDate()
             }
         } else if (size.clientWidth <= 500 && size.clientWidth > 400) {
             if (timesCount != 5) {
                 setTimesCount(5)
-                getStatisticsSinceDate(5)
+                getStatisticsSinceDate()
             }
         } else if (size.clientWidth <= 400 && size.clientWidth > 340) {
             if (timesCount != 4) {
                 setTimesCount(4)
-                getStatisticsSinceDate(4)
+                getStatisticsSinceDate()
             }
         } else if (size.clientWidth <= 340) {
             if (timesCount != 3) {
                 setTimesCount(3)
-                getStatisticsSinceDate(3)
+                getStatisticsSinceDate()
             }
         } else {
             if (timesCount != 12) {
                 setTimesCount(12)
-                getStatisticsSinceDate(12)
+                getStatisticsSinceDate()
             }
         }
     }, [size]);
@@ -76,186 +76,196 @@ const ChartBlock = ({ period }) => {
     const [times, setTimes] = useState([])
 
     const dispatch = useDispatch()
-    const getStatisticsSinceDate = (tk) => {
-        // tk - timesCount - Количество точек на графике, зависит от размера экрана
+    const getStatisticsSinceDate = () => {
         setLoading(true)
         // Получаем дату по которую выполняем запрос
+        // Запрос всегда шлём на 12 периодов, на случай если в момент загрузки произойдёт резайз окна
         const data = {
-            date: Date.now() - tk * period,
+            date: Date.now() - 12 * period,
         }
         dispatch(getStatisticsSinceDateAction(data))
             .then((data) => {
+                // Определение ширины графика в момент когда данные получены 
+                const { clientHeight, clientWidth } = ref.current || {};
+                var tk = 12;
+                if (clientWidth <= 800 && clientWidth > 700) { tk = 10; }
+                else if (clientWidth <= 700 && clientWidth > 600) { tk = 8; }
+                else if (clientWidth <= 600 && clientWidth > 500) { tk = 6; }
+                else if (clientWidth <= 500 && clientWidth > 400) { tk = 5; }
+                else if (clientWidth <= 400 && clientWidth > 340) { tk = 4; }
+                else if (clientWidth <= 340) { tk = 3; }
+                var statistics = data.statistics
                 // setStatistics(data.statistics)
-                var statistics = [
-                    {
-                        "_id": "64c96b8e062e924ac2d9005b",
-                        "user": "64b10551b1a65ae009f0734e",
-                        "type": "LONG",
-                        "amount": 0.028,
-                        "price": 29191.9,
-                        "value": 817.3732000000001,
-                        "profit": 2,
-                        "percent": 0,
-                        "leverage": 30,
-                        "createdAt": "2023-08-01T20:31:10.869Z",
-                        "updatedAt": "2023-08-01T20:31:10.869Z",
-                        "__v": 0
-                    },
-                    {
-                        "leverage": 10,
-                        "_id": "64c93114fd7417325cd90fee",
-                        "user": "64b10551b1a65ae009f0734e",
-                        "type": "LONG",
-                        "amount": 0.028,
-                        "price": 28940.3,
-                        "value": 810.3284,
-                        "profit": -5,
-                        "percent": 0,
-                        "createdAt": "2023-07-29T16:20:33.908Z",
-                        "updatedAt": "2023-08-01T16:20:33.908Z",
-                        "__v": 0
-                    },
-                    {
-                        "leverage": 10,
-                        "_id": "64c93112fd7417325cd90fed",
-                        "user": "64b10551b1a65ae009f0734e",
-                        "type": "LONG",
-                        "amount": 0.028,
-                        "price": 28940.3,
-                        "value": 810.3284,
-                        "profit": 2,
-                        "percent": 0,
-                        "createdAt": "2023-07-26T16:20:33.908Z",
-                        "updatedAt": "2023-08-01T16:20:33.908Z",
-                        "__v": 0
-                    },
-                    {
-                        "leverage": 10,
-                        "_id": "64c9310dfd7417325cd90fec",
-                        "user": "64b10551b1a65ae009f0734e",
-                        "type": "LONG",
-                        "amount": 0.028,
-                        "price": 28940.3,
-                        "value": 810.3284,
-                        "profit": -2,
-                        "percent": 0,
-                        "createdAt": "2023-07-23T16:20:33.908Z",
-                        "updatedAt": "2023-08-01T16:20:33.908Z",
-                        "__v": 0
-                    },
-                    {
-                        "leverage": 10,
-                        "_id": "64c9310afd7417325cd90feb",
-                        "user": "64b10551b1a65ae009f0734e",
-                        "type": "LONG",
-                        "amount": 0.028,
-                        "price": 28940.3,
-                        "value": 810.3284,
-                        "profit": 5,
-                        "percent": 0,
-                        "createdAt": "2023-07-21T16:20:33.908Z",
-                        "updatedAt": "2023-08-01T16:20:33.908Z",
-                        "__v": 0
-                    },
-                    {
-                        "leverage": 10,
-                        "_id": "64c93107fd7417325cd90fea",
-                        "user": "64b10551b1a65ae009f0734e",
-                        "type": "LONG",
-                        "amount": 0.028,
-                        "price": 28940.3,
-                        "value": 810.3284,
-                        "profit": -2,
-                        "percent": 0,
-                        "createdAt": "2023-07-18T16:20:33.908Z",
-                        "updatedAt": "2023-08-01T16:20:33.908Z",
-                        "__v": 0
-                    },
-                    {
-                        "leverage": 10,
-                        "_id": "64c93104fd7417325cd90fe9",
-                        "user": "64b10551b1a65ae009f0734e",
-                        "type": "LONG",
-                        "amount": 0.028,
-                        "price": 28940.3,
-                        "value": 810.3284,
-                        "profit": 2,
-                        "percent": 0,
-                        "createdAt": "2023-07-14T16:20:33.908Z",
-                        "updatedAt": "2023-08-01T16:20:33.908Z",
-                        "__v": 0
-                    },
-                    {
-                        "leverage": 10,
-                        "_id": "64c93101fd7417325cd90fe8",
-                        "user": "64b10551b1a65ae009f0734e",
-                        "type": "LONG",
-                        "amount": 0.028,
-                        "price": 28940.3,
-                        "value": 810.3284,
-                        "profit": -2,
-                        "percent": 0,
-                        "createdAt": "2023-07-11T16:20:33.908Z",
-                        "updatedAt": "2023-08-01T16:20:33.908Z",
-                        "__v": 0
-                    },
-                    {
-                        "leverage": 10,
-                        "_id": "64c930fefd7417325cd90fe7",
-                        "user": "64b10551b1a65ae009f0734e",
-                        "type": "LONG",
-                        "amount": 0.028,
-                        "price": 28940.3,
-                        "value": 810.3284,
-                        "profit": 1,
-                        "percent": 0,
-                        "createdAt": "2023-07-08T16:20:33.908Z",
-                        "updatedAt": "2023-08-01T16:20:33.908Z",
-                        "__v": 0
-                    },
-                    {
-                        "leverage": 10,
-                        "_id": "64c930fcfd7417325cd90fe6",
-                        "user": "64b10551b1a65ae009f0734e",
-                        "type": "LONG",
-                        "amount": 0.028,
-                        "price": 28940.3,
-                        "value": 810.3284,
-                        "profit": 1.5,
-                        "percent": 0,
-                        "createdAt": "2023-07-05T16:20:33.908Z",
-                        "updatedAt": "2023-08-01T16:20:33.908Z",
-                        "__v": 0
-                    },
-                    {
-                        "leverage": 10,
-                        "_id": "64c930f8fd7417325cd90fe5",
-                        "user": "64b10551b1a65ae009f0734e",
-                        "type": "LONG",
-                        "amount": 0.028,
-                        "price": 28940.3,
-                        "value": 810.3284,
-                        "profit": 2,
-                        "percent": 0,
-                        "createdAt": "2023-07-02T16:20:33.908Z",
-                        "updatedAt": "2023-08-01T16:20:33.908Z",
-                        "__v": 0
-                    },
-                    {
-                        "leverage": 10,
-                        "_id": "64c930d1009eb22e46ff9f07",
-                        "user": "64b10551b1a65ae009f0734e",
-                        "type": "LONG",
-                        "amount": 0.028,
-                        "price": 28940.3,
-                        "value": 810.3284,
-                        "profit": -2,
-                        "percent": 0,
-                        "createdAt": "2023-06-29T16:20:33.908Z",
-                        "updatedAt": "2023-08-01T16:20:33.908Z",
-                        "__v": 0
-                    }
-                ]
+                // var statistics = [
+                //     {
+                //         "_id": "64c96b8e062e924ac2d9005b",
+                //         "user": "64b10551b1a65ae009f0734e",
+                //         "type": "LONG",
+                //         "amount": 0.028,
+                //         "price": 29191.9,
+                //         "value": 817.3732000000001,
+                //         "profit": 2,
+                //         "percent": 0,
+                //         "leverage": 30,
+                //         "createdAt": "2023-08-01T20:31:10.869Z",
+                //         "updatedAt": "2023-08-01T20:31:10.869Z",
+                //         "__v": 0
+                //     },
+                //     {
+                //         "leverage": 10,
+                //         "_id": "64c93114fd7417325cd90fee",
+                //         "user": "64b10551b1a65ae009f0734e",
+                //         "type": "LONG",
+                //         "amount": 0.028,
+                //         "price": 28940.3,
+                //         "value": 810.3284,
+                //         "profit": -5,
+                //         "percent": 0,
+                //         "createdAt": "2023-07-29T16:20:33.908Z",
+                //         "updatedAt": "2023-08-01T16:20:33.908Z",
+                //         "__v": 0
+                //     },
+                //     {
+                //         "leverage": 10,
+                //         "_id": "64c93112fd7417325cd90fed",
+                //         "user": "64b10551b1a65ae009f0734e",
+                //         "type": "LONG",
+                //         "amount": 0.028,
+                //         "price": 28940.3,
+                //         "value": 810.3284,
+                //         "profit": 2,
+                //         "percent": 0,
+                //         "createdAt": "2023-07-26T16:20:33.908Z",
+                //         "updatedAt": "2023-08-01T16:20:33.908Z",
+                //         "__v": 0
+                //     },
+                //     {
+                //         "leverage": 10,
+                //         "_id": "64c9310dfd7417325cd90fec",
+                //         "user": "64b10551b1a65ae009f0734e",
+                //         "type": "LONG",
+                //         "amount": 0.028,
+                //         "price": 28940.3,
+                //         "value": 810.3284,
+                //         "profit": -2,
+                //         "percent": 0,
+                //         "createdAt": "2023-07-23T16:20:33.908Z",
+                //         "updatedAt": "2023-08-01T16:20:33.908Z",
+                //         "__v": 0
+                //     },
+                //     {
+                //         "leverage": 10,
+                //         "_id": "64c9310afd7417325cd90feb",
+                //         "user": "64b10551b1a65ae009f0734e",
+                //         "type": "LONG",
+                //         "amount": 0.028,
+                //         "price": 28940.3,
+                //         "value": 810.3284,
+                //         "profit": 5,
+                //         "percent": 0,
+                //         "createdAt": "2023-07-21T16:20:33.908Z",
+                //         "updatedAt": "2023-08-01T16:20:33.908Z",
+                //         "__v": 0
+                //     },
+                //     {
+                //         "leverage": 10,
+                //         "_id": "64c93107fd7417325cd90fea",
+                //         "user": "64b10551b1a65ae009f0734e",
+                //         "type": "LONG",
+                //         "amount": 0.028,
+                //         "price": 28940.3,
+                //         "value": 810.3284,
+                //         "profit": -2,
+                //         "percent": 0,
+                //         "createdAt": "2023-07-18T16:20:33.908Z",
+                //         "updatedAt": "2023-08-01T16:20:33.908Z",
+                //         "__v": 0
+                //     },
+                //     {
+                //         "leverage": 10,
+                //         "_id": "64c93104fd7417325cd90fe9",
+                //         "user": "64b10551b1a65ae009f0734e",
+                //         "type": "LONG",
+                //         "amount": 0.028,
+                //         "price": 28940.3,
+                //         "value": 810.3284,
+                //         "profit": 2,
+                //         "percent": 0,
+                //         "createdAt": "2023-07-14T16:20:33.908Z",
+                //         "updatedAt": "2023-08-01T16:20:33.908Z",
+                //         "__v": 0
+                //     },
+                //     {
+                //         "leverage": 10,
+                //         "_id": "64c93101fd7417325cd90fe8",
+                //         "user": "64b10551b1a65ae009f0734e",
+                //         "type": "LONG",
+                //         "amount": 0.028,
+                //         "price": 28940.3,
+                //         "value": 810.3284,
+                //         "profit": -2,
+                //         "percent": 0,
+                //         "createdAt": "2023-07-11T16:20:33.908Z",
+                //         "updatedAt": "2023-08-01T16:20:33.908Z",
+                //         "__v": 0
+                //     },
+                //     {
+                //         "leverage": 10,
+                //         "_id": "64c930fefd7417325cd90fe7",
+                //         "user": "64b10551b1a65ae009f0734e",
+                //         "type": "LONG",
+                //         "amount": 0.028,
+                //         "price": 28940.3,
+                //         "value": 810.3284,
+                //         "profit": 1,
+                //         "percent": 0,
+                //         "createdAt": "2023-07-08T16:20:33.908Z",
+                //         "updatedAt": "2023-08-01T16:20:33.908Z",
+                //         "__v": 0
+                //     },
+                //     {
+                //         "leverage": 10,
+                //         "_id": "64c930fcfd7417325cd90fe6",
+                //         "user": "64b10551b1a65ae009f0734e",
+                //         "type": "LONG",
+                //         "amount": 0.028,
+                //         "price": 28940.3,
+                //         "value": 810.3284,
+                //         "profit": 1.5,
+                //         "percent": 0,
+                //         "createdAt": "2023-07-05T16:20:33.908Z",
+                //         "updatedAt": "2023-08-01T16:20:33.908Z",
+                //         "__v": 0
+                //     },
+                //     {
+                //         "leverage": 10,
+                //         "_id": "64c930f8fd7417325cd90fe5",
+                //         "user": "64b10551b1a65ae009f0734e",
+                //         "type": "LONG",
+                //         "amount": 0.028,
+                //         "price": 28940.3,
+                //         "value": 810.3284,
+                //         "profit": 2,
+                //         "percent": 0,
+                //         "createdAt": "2023-07-02T16:20:33.908Z",
+                //         "updatedAt": "2023-08-01T16:20:33.908Z",
+                //         "__v": 0
+                //     },
+                //     {
+                //         "leverage": 10,
+                //         "_id": "64c930d1009eb22e46ff9f07",
+                //         "user": "64b10551b1a65ae009f0734e",
+                //         "type": "LONG",
+                //         "amount": 0.028,
+                //         "price": 28940.3,
+                //         "value": 810.3284,
+                //         "profit": -2,
+                //         "percent": 0,
+                //         "createdAt": "2023-06-29T16:20:33.908Z",
+                //         "updatedAt": "2023-08-01T16:20:33.908Z",
+                //         "__v": 0
+                //     }
+                // ]
                 // Заполняем массив разности цен в зависимости от размера экрана
                 lambdaArr = []
                 for (let i = 0; i < tk; i++) {
@@ -270,7 +280,9 @@ const ChartBlock = ({ period }) => {
                         // Вычисляем какому промежутку принадлежит операция
                         var periodNum = Math.round((now - date) / period)
                         // Добавляем в промежуток профит
-                        lambdaArr[Math.round((now - date) / period)] += statistics[i].profit
+                        if (periodNum < tk) {
+                            lambdaArr[Math.round((now - date) / period)] += statistics[i].profit
+                        }
                     }
                 }
                 // Переварачиваем массив
@@ -292,7 +304,7 @@ const ChartBlock = ({ period }) => {
     }
 
     useEffect(() => {
-        getStatisticsSinceDate(timesCount)
+        getStatisticsSinceDate()
     }, [period])
 
 
@@ -307,7 +319,7 @@ const ChartBlock = ({ period }) => {
                 <div className="chart" ref={ref} >
                     {
                         !loading &&
-                        <Chart props={{ prices: prices, steps: steps, times: times }} />
+                        <Chart props={{ prices: prices, steps: steps, times: times, chartWidth: size.clientWidth }} />
                     }
                 </div>
             </div>

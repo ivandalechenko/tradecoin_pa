@@ -3664,6 +3664,9 @@ body {
     .chart {
       width: 100%;
       padding-left: 88px;
+      @media (max-width: 350px) {
+        padding-left: 73px;
+      }
       svg {
         width: 100%;
         circle{

@@ -68,7 +68,7 @@ const Transaction = (props) => {
                         ? <motion.div
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
-                            exit={{ opacity: 0 }} className="loader">
+                            exit={{ opacity: 0 }} className="loader" style={{ height: 547 }}>
                             <img src='img/pa/loader.svg' />
                         </motion.div>
                         : <>
@@ -195,7 +195,7 @@ const Transaction = (props) => {
                         </>
                 }
             </>
-        </div>
+        </div >
     )
 }
 

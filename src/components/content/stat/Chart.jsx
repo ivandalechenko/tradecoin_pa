@@ -13,7 +13,8 @@ const Chart = ({ props }) => {
     var minPrice = getMinOfArray(pricesArr)
 
 
-    const chartWidth = Math.round(document.documentElement.clientWidth / 3) * 2
+    // const chartWidth = Math.round(document.documentElement.clientWidth / 3) * 2
+    const chartWidth = props.chartWidth - 88
 
     const chartHeight = 54 * (props.steps - 1)
 
@@ -71,7 +72,7 @@ const Chart = ({ props }) => {
         var showList = [false, false, false, false, false, false, false, false, false, false, false, false]
         showList[index] = true
         setShow(showList)
-        console.log(showList)
+        // console.log(showList)
     }
 
     return (
@@ -97,17 +98,35 @@ const Chart = ({ props }) => {
                             <circle cx={circle.x} cy={circle.y} r="12" fill="white" />
                             <circle cx={circle.x} cy={circle.y} r="8.5" stroke="#2CBA65" stroke-width="7" />
                             <rect className='bg_info'
-                                x={circle.x > 100 ? circle.x < chartWidth - 100 ? circle.x - 100 : circle.x - 180 : circle.x - 15}
+                                x={circle.x > 50 && circle.x < chartWidth - 50
+                                    ? circle.x - 95
+                                    : circle.x <= 50
+                                        ? circle.x - 15
+                                        : circle.x >= chartWidth - 50
+                                        && circle.x - 175
+                                }
                                 y={circle.y > 120 ? circle.y - 120 : circle.y + 20}
                                 height={90}
-                                width={200}
+                                width={190}
                                 fill='#111' />
                             <text
-                                x={circle.x > 100 ? circle.x < chartWidth - 90 ? circle.x - 90 : circle.x - 170 : circle.x - 5}
+                                x={circle.x > 50 && circle.x < chartWidth - 50
+                                    ? circle.x - 85
+                                    : circle.x <= 50
+                                        ? circle.x - 5
+                                        : circle.x >= chartWidth - 50
+                                        && circle.x - 165
+                                }
                                 y={circle.y > 120 ? circle.y - 95 : circle.y + 45} fill="white" className='yourIncome'>Your income {props.times[index]}</text>
                             <text
-                                x={circle.x > 100 ? circle.x < chartWidth - 90 ? circle.x - 90 : circle.x - 170 : circle.x - 5}
-                                y={circle.y > 120 ? circle.y - 65 : circle.y + 75} fill="white" className='price'>{props.prices[index]}$</text>
+                                x={circle.x > 50 && circle.x < chartWidth - 50
+                                    ? circle.x - 85
+                                    : circle.x <= 50
+                                        ? circle.x - 5
+                                        : circle.x >= chartWidth - 50
+                                        && circle.x - 165
+                                }
+                                y={circle.y > 120 ? circle.y - 65 : circle.y + 75} fill="white" className='price'>{Math.round(props.prices[index] * 100) / 100}$</text>
 
                         </g >
                         <rect onMouseEnter={() => { showRound(index) }} className='activator' x={circle.x - 40} rx="20" ry="20" y="-20" width="80" height={chartHeight + 40} fill='black' />

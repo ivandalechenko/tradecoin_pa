@@ -46,7 +46,7 @@ const TransactionElement = ({ props }) => {
                     Amount
                 </div>
                 <div className="info">
-                    {props.amount}
+                    {Math.round(props.amount * 1000) / 1000}
                 </div>
             </div>
             <div className="price">
@@ -54,7 +54,7 @@ const TransactionElement = ({ props }) => {
                     Price
                 </div>
                 <div className="info">
-                    {props.price}
+                    {Math.round(props.price * 1000) / 1000}
                 </div>
             </div>
             <div className="volume">
@@ -62,7 +62,7 @@ const TransactionElement = ({ props }) => {
                     Volume
                 </div>
                 <div className="info">
-                    {props.value}
+                    {Math.round(props.value * 1000) / 1000}
                 </div>
             </div>
             <div className="profit">
@@ -71,7 +71,7 @@ const TransactionElement = ({ props }) => {
                 </div>
                 <div className="info">
                     <div className="usdt">
-                        {props.profit}
+                        {Math.round(props.profit * 1000) / 1000}$
                     </div>
                 </div>
             </div>
