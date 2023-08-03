@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-const Times = ({ period, timesCount }) => {
+const Times = ({ period, timesCount, times, setTimes }) => {
     const second = 1000
     const minute = second * 60
     const hour = minute * 60
@@ -8,7 +8,7 @@ const Times = ({ period, timesCount }) => {
     const week = day * 7
     const mounth = day * 30
     const year = day * 365
-    const [times, setTimes] = useState([])
+    // const [times, setTimes] = useState([])
     const monthNames = {
         1: 'Jan',
         2: 'Feb',

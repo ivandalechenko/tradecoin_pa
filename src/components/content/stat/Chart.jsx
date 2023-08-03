@@ -51,7 +51,13 @@ const Chart = ({ props }) => {
     var path = ''
     pricesArr.map((price, index) => {
         if (index != 0) { path += 'L' }
+        if (index == 0) {
+            path += '-20 ' + price + ','
+        }
         path += (Math.round(chartWidth / (pricesArr.length - 1)) * index) + ' ' + price + ','
+        if (index == pricesArr.length - 1) {
+            path += chartWidth + 20 + ' ' + price + ','
+        }
     })
     // Круги
     var circles = []
@@ -81,7 +87,7 @@ const Chart = ({ props }) => {
             preserveAspectRatio="none">
 
             <path d={'M' + path} stroke="#2CBA65" strokeWidth="3" />
-            <path d={"M0 " + chartHeight + "," + path + "L" + chartWidth + " " + chartHeight + "Z"} fill="url(#fone)" />
+            <path d={"M-20 " + chartHeight + "," + path + "L" + chartWidth + 20 + " " + chartHeight + "Z"} fill="url(#fone)" />
             {
                 circles.map((circle, index) => {
                     return <>
@@ -90,13 +96,19 @@ const Chart = ({ props }) => {
                             <rect className="bg" x={circle.x - 20} rx="20" ry="20" y="-20" width="40" height={chartHeight + 40} fill="#2DBA65" />
                             <circle cx={circle.x} cy={circle.y} r="12" fill="white" />
                             <circle cx={circle.x} cy={circle.y} r="8.5" stroke="#2CBA65" stroke-width="7" />
-                            {/* <text x={circle.x - 20} y={circle.y + 200} fill="red">Мой</text> */}
                             <rect className='bg_info'
-                                x={circle.x > 70 ? circle.x < chartWidth - 70 ? circle.x - 70 : circle.x - 125 : circle.x - 15}
-                                y={circle.y > 120 ? circle.y - 80 : circle.y + 20}
-                                height={60}
-                                width={140}
-                                fill='#454545' />
+                                x={circle.x > 100 ? circle.x < chartWidth - 100 ? circle.x - 100 : circle.x - 180 : circle.x - 15}
+                                y={circle.y > 120 ? circle.y - 120 : circle.y + 20}
+                                height={90}
+                                width={200}
+                                fill='#111' />
+                            <text
+                                x={circle.x > 100 ? circle.x < chartWidth - 90 ? circle.x - 90 : circle.x - 170 : circle.x - 5}
+                                y={circle.y > 120 ? circle.y - 95 : circle.y + 45} fill="white" className='yourIncome'>Your income {props.times[index]}</text>
+                            <text
+                                x={circle.x > 100 ? circle.x < chartWidth - 90 ? circle.x - 90 : circle.x - 170 : circle.x - 5}
+                                y={circle.y > 120 ? circle.y - 65 : circle.y + 75} fill="white" className='price'>{props.prices[index]}$</text>
+
                         </g >
                         <rect onMouseEnter={() => { showRound(index) }} className='activator' x={circle.x - 40} rx="20" ry="20" y="-20" width="80" height={chartHeight + 40} fill='black' />
                     </>

@@ -3686,6 +3686,13 @@ body {
           fill-opacity:0;
           transition: fill-opacity 200ms
         }
+        .yourIncome{
+          font-size: 16px;
+        }
+        .price{
+          font-size: 22px;
+          font-weight: 700;
+        }
         .activator:hover{
           cursor: pointer;
         }
@@ -3704,7 +3711,7 @@ body {
             fill-opacity:1;
           }
           .bg_info{
-            fill-opacity:0.8;
+            fill-opacity:0.9;
           }
       }
       }

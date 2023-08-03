@@ -73,7 +73,7 @@ const ChartBlock = ({ period }) => {
     const mounth = day * 30
     const year = day * 365
     const now = new Date().getTime()
-
+    const [times, setTimes] = useState([])
 
     const dispatch = useDispatch()
     const getStatisticsSinceDate = (tk) => {
@@ -109,7 +109,7 @@ const ChartBlock = ({ period }) => {
                         "amount": 0.028,
                         "price": 28940.3,
                         "value": 810.3284,
-                        "profit": -2,
+                        "profit": -5,
                         "percent": 0,
                         "createdAt": "2023-07-29T16:20:33.908Z",
                         "updatedAt": "2023-08-01T16:20:33.908Z",
@@ -151,7 +151,7 @@ const ChartBlock = ({ period }) => {
                         "amount": 0.028,
                         "price": 28940.3,
                         "value": 810.3284,
-                        "profit": 2,
+                        "profit": 5,
                         "percent": 0,
                         "createdAt": "2023-07-21T16:20:33.908Z",
                         "updatedAt": "2023-08-01T16:20:33.908Z",
@@ -207,7 +207,7 @@ const ChartBlock = ({ period }) => {
                         "amount": 0.028,
                         "price": 28940.3,
                         "value": 810.3284,
-                        "profit": 2,
+                        "profit": 1,
                         "percent": 0,
                         "createdAt": "2023-07-08T16:20:33.908Z",
                         "updatedAt": "2023-08-01T16:20:33.908Z",
@@ -221,7 +221,7 @@ const ChartBlock = ({ period }) => {
                         "amount": 0.028,
                         "price": 28940.3,
                         "value": 810.3284,
-                        "profit": -2,
+                        "profit": 1.5,
                         "percent": 0,
                         "createdAt": "2023-07-05T16:20:33.908Z",
                         "updatedAt": "2023-08-01T16:20:33.908Z",
@@ -307,7 +307,7 @@ const ChartBlock = ({ period }) => {
                 <div className="chart" ref={ref} >
                     {
                         !loading &&
-                        <Chart props={{ prices: prices, steps: steps }} />
+                        <Chart props={{ prices: prices, steps: steps, times: times }} />
                     }
                 </div>
             </div>
@@ -322,7 +322,7 @@ const ChartBlock = ({ period }) => {
                         <img src='/img/pa/loader.svg' /></motion.div>
             }
 
-            <Times period={period} timesCount={timesCount} />
+            <Times period={period} timesCount={timesCount} times={times} setTimes={setTimes} />
 
         </div >
     )
