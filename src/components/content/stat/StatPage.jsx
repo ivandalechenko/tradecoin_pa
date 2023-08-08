@@ -3,6 +3,7 @@ import Balance from './Balance';
 import ChartBlock from './ChartBlock';
 import { motion } from 'framer-motion';
 import Transactions from './Transactions';
+import HaveProblems from '../HaveProblems';
 
 const StatPage = () => {
     useEffect(() => {
@@ -24,6 +25,7 @@ const StatPage = () => {
                 <Balance setPeriod={setPeriod} period={period} />
                 <ChartBlock period={period} />
                 <Transactions />
+                <HaveProblems />
             </div>
         </motion.div>
     )

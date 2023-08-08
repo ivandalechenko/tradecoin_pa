@@ -113,7 +113,11 @@ const EnterCode = ({ action }) => {
                         </div>
 
                         <button className="send_code_btn" id="send_a_code" onClick={sendCode}>
-                            Recover password
+                            {action == 'registration'
+                                ? <>Sign Up</>
+                                : <>Recover password</>
+                            }
+
                         </button>
 
 

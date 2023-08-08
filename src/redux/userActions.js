@@ -150,3 +150,13 @@ export const getStatisticsSinceDateAction = (getStatisticsSinceDateData) => asyn
         throw (e.response.data.message)
     }
 }
+
+export const getHistoryOfTradesAction = (getHistoryOfTradesData) => async dispatch => {
+    try {
+        const { data } = await api.get('/users/transactions?limit=' + getHistoryOfTradesData.limit + '&page=' + getHistoryOfTradesData.page + '&category=' + getHistoryOfTradesData.category)
+        return data
+    } catch (e) {
+        throw (e.response.data.message)
+    }
+}
+

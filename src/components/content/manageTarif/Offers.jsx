@@ -11,10 +11,13 @@ const Offers = (props) => {
             budget: '$200 - $1000',
             medium_profit: '$165.34',
             percent_profit: '+17,39%',
-            medium_winrate: '67.8%',
-            medium_open_time: '2 hours',
-            medium_position_time: '4',
-            subscribers: '138/170 users',
+
+            average_profit: '40-57%',
+            average_winrate: '47%',
+            average_loss: '15-55%',
+            subscribers: '138/170',
+            comment: 'A profitable option for beginners',
+
             price: '59$',
             price_old: '',
         },
@@ -24,10 +27,14 @@ const Offers = (props) => {
             budget: '$1000 - $7000',
             medium_profit: '$875.34',
             percent_profit: '+38,33%',
-            medium_winrate: '73%',
-            medium_open_time: '2 hours',
-            medium_position_time: '7',
-            subscribers: '271/320 users',
+
+
+            average_winrate: '78%',
+            average_profit: '35%',
+            average_loss: '15%',
+            subscribers: '271/320',
+            comment: 'Option for confident traders of the cryptocurrency market',
+
             price: '79$',
             price_old: '149$',
 
@@ -38,10 +45,14 @@ const Offers = (props) => {
             budget: '$7000+',
             medium_profit: '$2378.34',
             percent_profit: '+12%',
-            medium_winrate: '82%',
-            medium_open_time: '6 hours',
-            medium_position_time: '5',
-            subscribers: '74/99 users',
+
+
+            average_winrate: '87%',
+            average_profit: '15%',
+            average_loss: '5-7%',
+            subscribers: '74/99',
+            comment: 'The best solution for major investors',
+
             price: '30% ',
             price_old: '40%',
             individual: true

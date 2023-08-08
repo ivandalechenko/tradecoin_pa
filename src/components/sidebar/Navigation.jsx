@@ -24,12 +24,12 @@ const Navigation = ({ setModalProps, setModalType }) => {
                         Statistics
                     </div>
                 </NavLink>
-                <NavLink to="/profile" className="navigation_element" id="profile_opener">
+                {/* <NavLink to="/profile" className="navigation_element" id="profile_opener">
                     <img src="/img/pa/navigation/profile.svg" alt="profile menu img" />
                     <div className="text">
                         Profile
                     </div>
-                </NavLink>
+                </NavLink> */}
                 <NavLink to="/manage_tarif" className="navigation_element" id="manage_tarif_opener">
                     <img src="/img/pa/navigation/tarif.svg" alt="manage tarifs menu img" />
                     <div className="text">

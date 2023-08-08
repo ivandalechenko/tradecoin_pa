@@ -63,7 +63,7 @@ const ChartBlock = ({ period }) => {
         }
     }, [size]);
     const [loading, setLoading] = useState(false)
-    const [prices, setPrices] = useState([0])
+    const [prices, setPrices] = useState([1, 2])
     const steps = 7
     const second = 1000
     const minute = second * 60
@@ -266,6 +266,7 @@ const ChartBlock = ({ period }) => {
                 //         "__v": 0
                 //     }
                 // ]
+
                 // Заполняем массив разности цен в зависимости от размера экрана
                 lambdaArr = []
                 for (let i = 0; i < tk; i++) {
@@ -308,8 +309,6 @@ const ChartBlock = ({ period }) => {
     }, [period])
 
 
-
-
     return (
         <div className="section" id="chart">
             <div className="header">
@@ -318,7 +317,7 @@ const ChartBlock = ({ period }) => {
             <div className="chart_wrapper">
                 <div className="chart" ref={ref} >
                     {
-                        !loading &&
+                        !loading && !prices.every((price, index, array) => { return price == 0 }) &&
                         <Chart props={{ prices: prices, steps: steps, times: times, chartWidth: size.clientWidth }} />
                     }
                 </div>

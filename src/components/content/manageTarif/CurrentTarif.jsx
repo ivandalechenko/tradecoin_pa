@@ -31,7 +31,7 @@ const CurrentTarif = (props) => {
                             <div className="num">
                                 {
                                     user.tariff == ""
-                                        ? <>Isn't chosen</>
+                                        ? <>Not selected</>
                                         : <>{user.tariff.firstLetterToUppercase()}</>
                                 }
                             </div>

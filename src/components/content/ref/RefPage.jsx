@@ -20,7 +20,7 @@ const RefPage = () => {
         document.title = "Refferal - TradeCoinAI";
     }, []);
     const { user } = useSelector(state => state.userReducer)
-    if (!user.referralEnabled) return <Navigate to="/profile" replace />
+    if (!user.referralEnabled) return <Navigate to="/statistic" replace />
     return (
         <motion.div
             initial={{ opacity: 0 }}

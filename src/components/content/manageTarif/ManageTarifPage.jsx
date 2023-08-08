@@ -6,6 +6,8 @@ import Offers from './Offers';
 import CurrentTarif from './CurrentTarif';
 import Modal from '../../modal/Modal';
 import { motion } from 'framer-motion';
+import HaveProblems from '../HaveProblems';
+import Transaction from '../manageTarif/Transactions';
 
 const ManageTarifPage = () => {
     useEffect(() => {
@@ -29,17 +31,9 @@ const ManageTarifPage = () => {
                         </div>
                         <Offers />
                     </div>
-                    {/* <div className="section" id="previous_payments">
-                        <div className="header h5">
-                            Previous payments
-                        </div>
-                        <PreviousPaymentsTable />
-                        <div className="security_and_pages">
-                            <Secure />
-                            <Pagination />
-                        </div>
-                    </div> */}
+                    <Transaction />
                 </div>
+                <HaveProblems />
             </motion.div>
         </>
 

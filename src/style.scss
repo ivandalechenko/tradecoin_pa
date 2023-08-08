@@ -2014,7 +2014,10 @@ body {
           background: rgba(79, 128, 255, 0.14);
         }
 
-        &_offer {
+        &_offer:nth-child(2) {
+          border: 1px solid #adc113;
+        }
+          &_offer {
           width: 32%;
           min-width: 302px;
           background: rgba(255, 255, 255, 0.06);
@@ -2192,6 +2195,9 @@ body {
                     line-height: 16px;
                   }
                 }
+              }
+              &_info_element:last-child {
+                height: 40px;
               }
             }
 
@@ -3809,6 +3815,63 @@ body {
 }
 
 #stat_table{
+    .header_large{
+      font-style: normal;
+      font-weight: 700;
+      font-size: 36px;
+      line-height: 44px;
+      letter-spacing: -0.02em;
+    }
+    .header_small{
+      font-style: normal;
+      font-weight: 300;
+      font-size: 16px;
+      line-height: 25px;
+      color: #b5b6b6;
+      margin-top: 12px;
+    }
+    .transactions_navigation{
+      display: flex;
+      margin-top: 40px;
+    }
+
+    .transactions_navigation_element {
+      transition: color .5s,border-bottom .5s;
+      width: 33%;
+      text-align: center;
+      min-width: 150px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid rgba(255,255,255,.15);
+      color: rgba(255,255,255,.5);
+      font-style: normal;
+      font-weight: 700;
+      font-size: 18px;
+      line-height: 22px;
+      letter-spacing: -0.02em;
+    }
+    .transactions_navigation_active {
+      transition: color .5s,border-bottom .5s;
+      width: 33%;
+      text-align: center;
+      min-width: 150px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid rgba(255,255,255,.15);
+      color: rgba(255,255,255,.5);
+      font-style: normal;
+      font-weight: 700;
+      font-size: 18px;
+      line-height: 22px;
+      letter-spacing: -0.02em;
+      border-bottom: 1px solid #d9e44f;
+      color: #fff;
+    }
+    .transactions_navigation_element:hover {
+        border-bottom: 1px solid white;
+        cursor: pointer;
+        color: #fff;
+    }
+
+
   .no_transactions{
     padding: 10px;
     margin-top: 10px;
@@ -3835,6 +3898,7 @@ body {
         transform: rotate(360deg);
       }
     }
+
   }
 
   .table {
@@ -4092,9 +4156,9 @@ body {
   }
 }
 
-.SHORT {
+.SHORT, .Short {
   color: #FF5F72;
 }
-.LONG {
+.LONG, .Long {
   color: #D9E44F;
 }

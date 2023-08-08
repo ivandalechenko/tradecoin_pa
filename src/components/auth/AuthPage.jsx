@@ -11,7 +11,7 @@ const AuthPage = (props) => {
 
     const { isLoggedIn } = useSelector(state => state.userReducer)
     if (isLoggedIn) {
-        return <Navigate to="/profile" replace />
+        return <Navigate to="/statistic" replace />
     }
     return (
         <div className="elements">

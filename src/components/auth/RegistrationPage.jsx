@@ -53,7 +53,7 @@ const RegistrationPage = ({ setAuthType }) => {
     }
 
     const { isLoggedIn } = useSelector(state => state.userReducer)
-    if (isLoggedIn) return <Navigate to="/profile" replace />
+    if (isLoggedIn) return <Navigate to="/statistic" replace />
 
     return (
         // <div className="elements">
@@ -71,7 +71,7 @@ const RegistrationPage = ({ setAuthType }) => {
                         Sign in to TradeCoinAi
                     </h1>
                     <h2>
-                        Please,login or sign up to your account
+                        Please, login or sign up to your account
                     </h2>
                     <div className="log_reg_switcher_buttons">
                         <button onClick={() => setAuthType('login')}>Log in</button>

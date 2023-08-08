@@ -13,11 +13,11 @@ const RefTableElement = ({ props }) => {
             </div>
             <div className="type">
                 <div className="name">
-                    Nickname
+                    Email
                 </div>
                 <img src="img/pa/people_green.svg" alt='people' />
                 <div className="text">
-                    @{props.user}
+                    {props.email}
                 </div>
             </div>
             <div className="date">

@@ -40,6 +40,7 @@ const RefTable = ({ setBalance, setRefEarned, setBalanceLoading }) => {
                 setRefEarned(data.referralEarned)
                 setTotalTransactions(data.total)
                 setPayments(data.payments)
+                console.log(data.payments)
             })
             .catch(function (error) {
                 setLoading(false)
@@ -79,7 +80,7 @@ const RefTable = ({ setBalance, setRefEarned, setBalanceLoading }) => {
                                             #
                                         </div>
                                         <div className="type">
-                                            Nickname
+                                            Email
                                         </div>
                                         <div className="date">
                                             Date
@@ -93,7 +94,7 @@ const RefTable = ({ setBalance, setRefEarned, setBalanceLoading }) => {
                                     </div>
                                     {
                                         payments.map((payment, index) => {
-                                            return <RefTableElement key={index} props={{ id: (page - 1) * limit + index + 1, user: payment.user.username, tariff: payment.tariff, fullPrice: payment.fullPrice, earned: payment.earned, percent: payment.percent, date: payment.updatedAt }} />
+                                            return <RefTableElement key={index} props={{ id: (page - 1) * limit + index + 1, user: payment.user.email, tariff: payment.tariff, fullPrice: payment.fullPrice, earned: payment.earned, percent: payment.percent, date: payment.updatedAt }} />
                                         })
                                     }
                                     <button className="send_info_button" onClick={() => { loadMore(limit) }}>

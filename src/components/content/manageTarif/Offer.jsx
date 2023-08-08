@@ -19,7 +19,7 @@ const Offer = ({ offer }) => {
 
     return (
         <div className="offers_offers_list_offer">
-            <Modal modalType={modalType} setModalType={setModalType} props={{ tariff: offer.tariff }} />
+            <Modal modalType={modalType} setModalType={setModalType} props={{ tariff: offer.tariff, price: offer.price }} />
 
             <div className="offers_offers_list_offer_header">
                 <div className="offers_offers_list_offer_header_name">
@@ -61,7 +61,7 @@ const Offer = ({ offer }) => {
             <div className="offers_offers_list_offer_content">
                 <div className="offers_offers_list_offer_content_pnl">
                     <div className="offers_offers_list_offer_content_pnl_medium15 medium15">
-                        Средняя прибыль
+                        Average profit
                     </div>
                     <div className="offers_offers_list_offer_content_pnl_num">
                         <div className="offers_offers_list_offer_content_pnl_num_h4 h4">
@@ -77,47 +77,53 @@ const Offer = ({ offer }) => {
                     <div className="offers_offers_list_offer_content_info_info_element">
                         <div
                             className="offers_offers_list_offer_content_info_info_element_name offers_offers_list_offer_content_info_info_element_regular14 regular14">
-                            Средний win rate
+                            Average winrate
                         </div>
                         <div
                             className="offers_offers_list_offer_content_info_info_element_value offers_offers_list_offer_content_info_info_element_medium14 medium14">
-                            {offer.medium_winrate}
+                            {offer.average_winrate}
                         </div>
                     </div>
                     <div className="offers_offers_list_offer_content_info_info_element">
                         <div
                             className="offers_offers_list_offer_content_info_info_element_name offers_offers_list_offer_content_info_info_element_regular14 regular14">
-                            Среднее время открытой
+                            Average monthly profit
                         </div>
                         <div
                             className="offers_offers_list_offer_content_info_info_element_value offers_offers_list_offer_content_info_info_element_medium14 medium14">
-                            {offer.medium_open_time}
+                            {offer.average_profit}
                         </div>
                     </div>
                     <div className="offers_offers_list_offer_content_info_info_element">
                         <div
                             className="offers_offers_list_offer_content_info_info_element_name offers_offers_list_offer_content_info_info_element_regular14 regular14">
-                            Среднее позиций в месяц
+                            Average loss
                         </div>
                         <div
                             className="offers_offers_list_offer_content_info_info_element_value offers_offers_list_offer_content_info_info_element_medium14 medium14">
-                            {offer.medium_position_time}
+                            {offer.average_loss}
                         </div>
                     </div>
                     <div className="offers_offers_list_offer_content_info_info_element">
                         <div
                             className="offers_offers_list_offer_content_info_info_element_name offers_offers_list_offer_content_info_info_element_regular14 regular14">
-                            Подписалось
+                            Subscribers
                         </div>
                         <div
                             className="offers_offers_list_offer_content_info_info_element_value offers_offers_list_offer_content_info_info_element_medium14 medium14">
                             {offer.subscribers}
                         </div>
                     </div>
+                    <div className="offers_offers_list_offer_content_info_info_element">
+                        <div
+                            className="offers_offers_list_offer_content_info_info_element_name offers_offers_list_offer_content_info_info_element_regular14 regular14">
+                            {offer.comment}
+                        </div>
+                    </div>
                 </div>
                 <div className="offers_offers_list_offer_content_price">
                     <div className="offers_offers_list_offer_content_price_medium15 medium15">
-                        Цена
+                        Price
                     </div>
                     <div className="offers_offers_list_offer_content_price_price_value">
                         <div className="offers_offers_list_offer_content_price_price_value_h6 h6">

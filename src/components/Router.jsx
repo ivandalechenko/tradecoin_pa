@@ -52,7 +52,7 @@ const Router = (props) => {
                 <Route element={<HomePage />} path="" />
                 <Route path='/' element={<ProtectedRoute />}>
                     <Route element={<PaymentStatusPage />} path='status/:status' />
-                    <Route element={<ProfilePage />} path="profile" />
+                    {/* <Route element={<ProfilePage />} path="profile" /> */}
                     <Route element={<RefPage />} path="referal" />
                     <Route element={<ManageTarifPage />} path="manage_tarif" />
                     <Route element={<StatPage />} path="statistic" />

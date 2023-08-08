@@ -12,10 +12,10 @@ const LoginPage = ({ setAuthType }) => {
     useEffect(() => { document.title = "Login - TradeCoinAI"; }, []);
     const [modalType, setModalType] = useState('hidden')
 
-    const email = useInput('', { isEmpty: true, isEmail: true })
-    const password = useInput('', { isEmpty: true, minLength: 6, maxLength: 32 })
-    // const email = useInput('gepijeg766@mahmul.com', { isEmpty: true, isEmail: true })
-    // const password = useInput('Ananasik95', { isEmpty: true, minLength: 6, maxLength: 32 })
+    // const email = useInput('', { isEmpty: true, isEmail: true })
+    // const password = useInput('', { isEmpty: true, minLength: 6, maxLength: 32 })
+    const email = useInput('gepijeg766@mahmul.com', { isEmpty: true, isEmail: true })
+    const password = useInput('Ananasik95', { isEmpty: true, minLength: 6, maxLength: 32 })
     const [serverError, setServerError] = useState('')
     useEffect(() => {
         setServerError('')
@@ -33,7 +33,7 @@ const LoginPage = ({ setAuthType }) => {
             dispatch(loginAction(data))
                 .then(() => {
                     setModalType('hidden')
-                    navigate("/profile")
+                    navigate("/statis")
                 })
                 .catch(function (error) {
                     setModalType('hidden')
@@ -43,7 +43,7 @@ const LoginPage = ({ setAuthType }) => {
     }
 
     const { isLoggedIn } = useSelector(state => state.userReducer)
-    if (isLoggedIn) return <Navigate to="/profile" replace />
+    if (isLoggedIn) return <Navigate to="/statistic" replace />
     return (
         <>
 

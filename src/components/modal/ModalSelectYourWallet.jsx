@@ -3,7 +3,7 @@ import api from '../../api/api';
 
 const ModalSelectYourWallet = ({ setModalType, props }) => {
 
-    const [activePayType, setActivePayType] = useState('mm')
+    const [activePayType, setActivePayType] = useState('cc')
 
     // useEffect(() => {
     //     if (activePayType == 'mm') {
@@ -45,7 +45,16 @@ const ModalSelectYourWallet = ({ setModalType, props }) => {
                         <div className="description">
                             Select wallet you would like to make transaction with
                         </div>
-                        <div className={activePayType === 'mm' ? "wallet_type wallet_type_first selected" : "wallet_type wallet_type_first"} onClick={() => setActivePayType('mm')}>
+                        <div className={activePayType === 'cc' ? "wallet_type wallet_type_first selected" : "wallet_type wallet_type_first"} onClick={() => setActivePayType('cc')}>
+                            <div className="border">
+                            </div>
+                            <img src="/img/pa/modal/platforms/cwallet.png" width={32} height={32} alt="" />
+                            <div className="text">
+                                Pay By Crypto
+                            </div>
+                        </div>
+
+                        {/* <div className={activePayType === 'mm' ? "wallet_type wallet_type_first selected" : "wallet_type wallet_type_first"} onClick={() => setActivePayType('mm')}>
                             <div className="border">
                             </div>
                             <img src="/img/pa/modal/platforms/metamask.svg" alt="" />
@@ -53,6 +62,8 @@ const ModalSelectYourWallet = ({ setModalType, props }) => {
                                 Metamask
                             </div>
                         </div>
+
+                        
                         <div className={activePayType === 'wc' ? "wallet_type selected" : "wallet_type "} onClick={() => setActivePayType('wc')}>
                             <div className="border">
                             </div>
@@ -68,7 +79,7 @@ const ModalSelectYourWallet = ({ setModalType, props }) => {
                             <div className="text">
                                 Trust Wallet
                             </div>
-                        </div>
+                        </div> */}
                         <div className="or">
                             <div className="line">
                             </div>
@@ -88,7 +99,7 @@ const ModalSelectYourWallet = ({ setModalType, props }) => {
                                 Pay by card
                             </div>
                         </div>
-                        <button className='accept_btn' onClick={pay}>Pay now</button>
+                        <button className='accept_btn' onClick={pay}>Pay {props.price} & Subscribe</button>
                     </div>
                 </div >
             </div >
